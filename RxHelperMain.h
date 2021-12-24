@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RXHELPERMAIN_H
+#define RXHELPERMAIN_H
 
 #include "wx/wx.h"
 #include "PrimaryFrame.h"
@@ -14,3 +15,4 @@ private:
 	PrimaryFrame* primary_frame = nullptr;
 };
 
+#endif // RXHELPERMAIN_H

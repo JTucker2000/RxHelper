@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STATEENUM_H
+#define STATEENUM_H
 enum class StateEnum 
 {
 	AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,
@@ -8,3 +9,4 @@ enum class StateEnum
 	SD, TN, TX, UT, VT, VA, WA, WV, WI, WY
 };
 
+#endif // STATEENUM_H

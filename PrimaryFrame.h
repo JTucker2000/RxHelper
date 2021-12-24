@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PRIMARYFRAME_H
+#define PRIMARYFRAME_H
 
 #include "wx/wx.h"
 
@@ -9,3 +10,4 @@ public:
 	~PrimaryFrame();
 };
 
+#endif // PRIMARYFRAME_H

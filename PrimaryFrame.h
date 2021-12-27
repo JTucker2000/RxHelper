@@ -2,6 +2,7 @@
 #define PRIMARYFRAME_H
 
 #include "wx/wx.h"
+#include "LoginUI.h"
 
 class PrimaryFrame : public wxFrame
 {
@@ -10,7 +11,7 @@ public:
 	~PrimaryFrame();
 
 private:
-	wxBoxSizer* horizontal_sizer = nullptr;
+	LoginUI* login_ui = nullptr;
 };
 
 #endif // PRIMARYFRAME_H

@@ -1,6 +1,6 @@
 #include "LoginUI.h"
 
-LoginUI::LoginUI(wxWindow* parent) : wxEvtHandler()
+LoginUI::LoginUI(wxWindow* parent)
 {
 	if (!parent) {
 		std::cout << "ERROR: LoginUI's parent window is NULL. Exiting . . ." << std::endl;
@@ -37,11 +37,13 @@ LoginUI::LoginUI(wxWindow* parent) : wxEvtHandler()
 	);
 
 	// Sizer for login button.
+	wxButton* lbutton = new wxButton(login_panel, wxID_ANY, "Log In", wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxButtonNameStr);
+	lbutton->Bind(wxEVT_BUTTON, &LoginUI::printTest, this);
 	wxBoxSizer* lbutton_sizer = new wxBoxSizer(wxHORIZONTAL);
 	lbutton_sizer->AddStretchSpacer(1);
 	lbutton_sizer->Add
 	(
-		new wxButton(login_panel, wxID_ANY, "Log In", wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxButtonNameStr),
+		lbutton,
 		wxSizerFlags().Center().Border(wxALL, 10)
 	);
 	lbutton_sizer->AddStretchSpacer(1);
@@ -74,14 +76,16 @@ LoginUI::LoginUI(wxWindow* parent) : wxEvtHandler()
 		wxSizerFlags().Center().Border(wxALL, 10)
 	);
 	sizer->AddStretchSpacer(1);
-
-	// Define dynamic event handlers.
-	
 }
 
 wxBoxSizer* LoginUI::getSizer() 
 {
 	return sizer;
+}
+
+void LoginUI::printTest(wxCommandEvent& event)
+{
+	wxMessageBox("Test");
 }
 
 LoginUI::~LoginUI() 

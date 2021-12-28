@@ -3,7 +3,7 @@
 
 #include "wx/wx.h"
 
-class LoginUI : public wxEvtHandler
+class LoginUI
 {
 public:
 	LoginUI(wxWindow* parent);
@@ -12,6 +12,8 @@ public:
 
 private:
 	wxBoxSizer* sizer = nullptr;
+
+	void printTest(wxCommandEvent& event);
 };
 
 #endif // LOGINUI_H

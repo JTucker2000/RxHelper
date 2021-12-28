@@ -8,10 +8,10 @@ LoginUI::LoginUI(wxWindow* parent)
 	}
 
 	// Panel for login screen.
-	wxPanel* login_panel = new wxPanel(parent, wxID_ANY, wxDefaultPosition, wxSize(300, 150), 2621440L, wxPanelNameStr);
+	wxPanel* login_panel = new wxPanel(parent, wxID_ANY, wxDefaultPosition, wxSize(300, 180), 2621440L, wxPanelNameStr);
 
 	// Sizer for Username.
-	wxBoxSizer* user_sizer = new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* user_sizer = new wxBoxSizer(wxVERTICAL);
 	user_sizer->Add
 	(
 		new wxStaticText(login_panel, wxID_ANY, "Username: ", wxDefaultPosition, wxDefaultSize, 0, wxStaticTextNameStr),
@@ -24,7 +24,7 @@ LoginUI::LoginUI(wxWindow* parent)
 	);
 
 	// Sizer for Password.
-	wxBoxSizer* pass_sizer = new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* pass_sizer = new wxBoxSizer(wxVERTICAL);
 	pass_sizer->Add
 	(
 		new wxStaticText(login_panel, wxID_ANY, "Password:  ", wxDefaultPosition, wxDefaultSize, 0, wxStaticTextNameStr),

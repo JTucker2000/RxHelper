@@ -10,8 +10,8 @@ class User
 public:
 	User();
 	User(std::string user, std::string pass, std::string fname, std::string lname,
-		std::string addr, std::string ct, std::string zc, std::string jt, std::string phnum,
-		PhoneTypeEnum phty, StateEnum st);
+		std::string addr, std::string cty, std::string zip, std::string job, std::string phnum,
+		PhoneTypeEnum phtype, StateEnum st);
 
 private:
 	std::string username;

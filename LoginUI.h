@@ -11,7 +11,7 @@ public:
 	~LoginUI();
 
 private:
-	wxBoxSizer* vertical_sizer = nullptr;
+	wxBoxSizer* sizer = nullptr;
 };
 
 #endif // LOGINUI_H

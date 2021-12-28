@@ -3,7 +3,7 @@
 
 #include "wx/wx.h"
 
-class LoginUI
+class LoginUI : public wxEvtHandler
 {
 public:
 	LoginUI(wxWindow* parent);

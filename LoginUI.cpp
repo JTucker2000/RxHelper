@@ -1,6 +1,6 @@
 #include "LoginUI.h"
 
-LoginUI::LoginUI(wxWindow* parent)
+LoginUI::LoginUI(wxWindow* parent) : wxEvtHandler()
 {
 	if (!parent) {
 		std::cout << "ERROR: LoginUI's parent window is NULL. Exiting . . ." << std::endl;
@@ -74,6 +74,9 @@ LoginUI::LoginUI(wxWindow* parent)
 		wxSizerFlags().Center().Border(wxALL, 10)
 	);
 	sizer->AddStretchSpacer(1);
+
+	// Define dynamic event handlers.
+	
 }
 
 wxBoxSizer* LoginUI::getSizer() 

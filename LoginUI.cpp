@@ -36,6 +36,16 @@ LoginUI::LoginUI(wxWindow* parent)
 		wxSizerFlags(1).Expand().Border(wxALL, 10)
 	);
 
+	// Sizer for login button.
+	wxBoxSizer* lbutton_sizer = new wxBoxSizer(wxHORIZONTAL);
+	lbutton_sizer->AddStretchSpacer(1);
+	lbutton_sizer->Add
+	(
+		new wxButton(login_panel, wxID_ANY, "Log In", wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxButtonNameStr),
+		wxSizerFlags().Center().Border(wxALL, 10)
+	);
+	lbutton_sizer->AddStretchSpacer(1);
+
 	// Sizer for login panel.
 	wxBoxSizer* lpanel_sizer = new wxBoxSizer(wxVERTICAL);
 	lpanel_sizer->Add
@@ -46,6 +56,11 @@ LoginUI::LoginUI(wxWindow* parent)
 	lpanel_sizer->Add
 	(
 		pass_sizer,
+		wxSizerFlags().Expand()
+	);
+	lpanel_sizer->Add
+	(
+		lbutton_sizer,
 		wxSizerFlags().Expand()
 	);
 	login_panel->SetSizer(lpanel_sizer);

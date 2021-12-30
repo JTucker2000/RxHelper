@@ -16,8 +16,8 @@ User::User()
 }
 
 User::User(std::string user, std::string pass, std::string fname, std::string lname,
-	std::string addr, std::string ct, std::string zc, std::string jt, std::string phnum,
-	PhoneTypeEnum phty, StateEnum st)
+	std::string addr, std::string cty, std::string zip, std::string job, std::string phnum,
+	PhoneTypeEnum phtype, StateEnum st)
 {
 	// TODO: Sanitize these before putting them in the container.
 	username = user;
@@ -25,10 +25,10 @@ User::User(std::string user, std::string pass, std::string fname, std::string ln
 	first_name = fname;
 	last_name = lname;
 	street_addr = addr;
-	city = ct;
-	zip_code = zc;
-	job_title = jt;
+	city = cty;
+	zip_code = zip;
+	job_title = job;
 	phone_number = phnum;
-	phone_type = phty;
+	phone_type = phtype;
 	state = st;
 }

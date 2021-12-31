@@ -8,12 +8,13 @@ class PrimaryFrame : public wxFrame
 {
 public:
 	PrimaryFrame();
-	void printTest(wxCommandEvent& event);
 	~PrimaryFrame();
 
 private:
-	wxPanel* login_ui = nullptr;
-	wxBoxSizer* sizer = nullptr;
+	wxPanel* login_ui_panel = nullptr;
+	wxBoxSizer* login_sizer = nullptr;
+
+	void loginButtonPress(wxCommandEvent& event);
 };
 
 #endif // PRIMARYFRAME_H

@@ -4,7 +4,7 @@ PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,
 {
 	// Create the login UI panel.
 	login_ui_panel = new LoginUIPanel(this);
-	login_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::loginButtonPress, this, wxID_EXECUTE); // Handle login UI events.
+	login_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::loginButtonPress, this, LOGINBUTTON_ID); // Handle login UI events.
 	login_sizer = new wxBoxSizer(wxVERTICAL); // Prepare login UI sizer.
 	login_sizer->AddStretchSpacer(1);
 	login_sizer->Add

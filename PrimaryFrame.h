@@ -3,6 +3,7 @@
 
 #include "wx/wx.h"
 #include "LoginUIPanel.h"
+#include "ObjectIDs.h"
 
 class PrimaryFrame : public wxFrame
 {

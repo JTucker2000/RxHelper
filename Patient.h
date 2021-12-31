@@ -12,6 +12,7 @@ public:
 	Patient(std::string fname, std::string lname,
 		std::string addr, std::string cty, std::string zip, std::string phnum,
 		std::string insname, PhoneTypeEnum phtype, StateEnum st);
+	~Patient();
 
 private:
 	std::string first_name;

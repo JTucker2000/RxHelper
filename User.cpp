@@ -32,3 +32,8 @@ User::User(std::string user, std::string pass, std::string fname, std::string ln
 	phone_type = phtype;
 	state = st;
 }
+
+User::~User()
+{
+
+}

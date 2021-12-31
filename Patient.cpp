@@ -28,3 +28,8 @@ Patient::Patient(std::string fname, std::string lname,
 	phone_type = phtype;
 	state = st;
 }
+
+Patient::~Patient()
+{
+
+}

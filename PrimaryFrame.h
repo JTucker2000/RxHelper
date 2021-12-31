@@ -8,6 +8,7 @@ class PrimaryFrame : public wxFrame
 {
 public:
 	PrimaryFrame();
+	void printTest(wxCommandEvent& event);
 	~PrimaryFrame();
 
 private:

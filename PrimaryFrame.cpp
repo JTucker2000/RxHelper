@@ -16,7 +16,15 @@ PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,
 	SetSizer(sizer);
 	SetMinSize(sizer->GetMinSize());
 
+	// Event processing for login screen.
+	login_ui->Bind(wxEVT_BUTTON, &PrimaryFrame::printTest, this, wxID_EXECUTE);
+
 	Center();
+}
+
+void PrimaryFrame::printTest(wxCommandEvent& event)
+{
+	wxMessageBox("TEST");
 }
 
 PrimaryFrame::~PrimaryFrame()

@@ -1,0 +1,13 @@
+#ifndef PATIENTLISTUIPANEL_H
+#define PATIENTLISTUIPANEL_H
+
+#include "wx/wx.h"
+
+class PatientListUIPanel : public wxPanel
+{
+public:
+	PatientListUIPanel(wxWindow* parent);
+	~PatientListUIPanel();
+};
+
+#endif // PATIENTLISTUIPANEL_H

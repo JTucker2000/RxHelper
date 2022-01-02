@@ -1,4 +1,4 @@
-﻿  Medication.cpp
-  Patient.cpp
+﻿  MainSearchUIPanel.cpp
+  PrimaryFrame.cpp
   Generating Code...
   RxHelper.vcxproj -> D:\Programs\RxHelper\RxHelper\Debug\RxHelper.exe

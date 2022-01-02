@@ -30,22 +30,22 @@ PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,
 	left_main_sizer->Add
 	(
 		main_search_ui_panel,
-		wxSizerFlags().Expand().Border(wxALL, 10)
+		wxSizerFlags(1).Expand().Border(wxLEFT | wxUP, 10)
 	);
 	left_main_sizer->Add
 	(
 		patient_list_ui_panel,
-		wxSizerFlags().Expand().Border(wxALL, 10)
+		wxSizerFlags(1).Expand().Border(wxLEFT | wxUP | wxDOWN, 10)
 	);
 	main_page_sizer->Add
 	(
 		left_main_sizer,
-		wxSizerFlags().Center()
+		wxSizerFlags(1).Expand()
 	);
 	main_page_sizer->Add
 	(
 		patient_info_ui_panel,
-		wxSizerFlags().Expand().Border(wxALL, 10)
+		wxSizerFlags(1).Expand().Border(wxALL, 10)
 	);
 
 	Center();
@@ -53,7 +53,14 @@ PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,
 
 void PrimaryFrame::loginButtonPress(wxCommandEvent& event)
 {
-	wxMessageBox("TEST");
+	// For now, this function simply switches from the login UI
+	// to the main UI when the login button is pressed.
+	login_ui_panel->Hide();
+	main_search_ui_panel->Show();
+	patient_info_ui_panel->Show();
+	patient_list_ui_panel->Show();
+	SetSizer(main_page_sizer);
+	Layout();
 }
 
 PrimaryFrame::~PrimaryFrame()
@@ -62,5 +69,4 @@ PrimaryFrame::~PrimaryFrame()
 	delete(main_search_ui_panel);
 	delete(patient_info_ui_panel);
 	delete(patient_list_ui_panel);
-	delete(main_page_sizer);
 }

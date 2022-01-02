@@ -3,6 +3,9 @@
 
 #include "wx/wx.h"
 #include "LoginUIPanel.h"
+#include "MainSearchUIPanel.h"
+#include "PatientInfoUIPanel.h"
+#include "PatientListUIPanel.h"
 #include "ObjectIDs.h"
 
 class PrimaryFrame : public wxFrame
@@ -14,6 +17,10 @@ public:
 private:
 	wxPanel* login_ui_panel = nullptr;
 	wxBoxSizer* login_sizer = nullptr;
+	wxPanel* main_search_ui_panel = nullptr;
+	wxPanel* patient_info_ui_panel = nullptr;
+	wxPanel* patient_list_ui_panel = nullptr;
+	wxBoxSizer* main_page_sizer = nullptr;
 
 	void loginButtonPress(wxCommandEvent& event);
 };

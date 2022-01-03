@@ -3,8 +3,24 @@
 PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,0) , wxSize(1280, 720))
 {
 	// Create the login UI.
+	initializeLoginUI();
+	
+	// Set sizer to login sizer, login UI appears on program start.
+	SetSizer(login_sizer);
+	SetMinSize(login_sizer->GetMinSize());
+
+	// Create the main page UI.
+	initializeMainPageUI();
+
+	Center();
+}
+
+void PrimaryFrame::initializeLoginUI() 
+{
 	login_ui_panel = new LoginUIPanel(this);
+
 	login_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::loginButtonPress, this, LOGINBUTTON_ID); // Handle login UI events.
+
 	login_sizer = new wxBoxSizer(wxVERTICAL); // Prepare login UI sizer.
 	login_sizer->AddStretchSpacer(1);
 	login_sizer->Add
@@ -13,12 +29,10 @@ PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,
 		wxSizerFlags().Center().Border(wxALL, 10)
 	);
 	login_sizer->AddStretchSpacer(1);
-	
-	// Set sizer to login sizer, login UI appears on program start.
-	SetSizer(login_sizer);
-	SetMinSize(login_sizer->GetMinSize());
+}
 
-	// Create the main page UI.
+void PrimaryFrame::initializeMainPageUI()
+{
 	main_search_ui_panel = new MainSearchUIPanel(this);
 	patient_info_ui_panel = new PatientInfoUIPanel(this);
 	patient_list_ui_panel = new PatientListUIPanel(this);
@@ -47,8 +61,6 @@ PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,
 		patient_info_ui_panel,
 		wxSizerFlags(1).Expand().Border(wxALL, 10)
 	);
-
-	Center();
 }
 
 void PrimaryFrame::loginButtonPress(wxCommandEvent& event)

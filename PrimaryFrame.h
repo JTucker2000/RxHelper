@@ -22,6 +22,8 @@ private:
 	wxPanel* patient_list_ui_panel = nullptr;
 	wxBoxSizer* main_page_sizer = nullptr;
 
+	void initializeLoginUI();
+	void initializeMainPageUI();
 	void loginButtonPress(wxCommandEvent& event);
 };
 

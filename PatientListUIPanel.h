@@ -2,6 +2,7 @@
 #define PATIENTLISTUIPANEL_H
 
 #include "wx/wx.h"
+#include "PatientListBtnPanel.h"
 
 class PatientListUIPanel : public wxPanel
 {

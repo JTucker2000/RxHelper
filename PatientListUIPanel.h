@@ -16,8 +16,9 @@ public:
 private:
 	wxListCtrl* patient_listctrl = nullptr;
 
-	// Resizes columns in listctrl after a window resize event.
-	void resizeColumns(wxSizeEvent& event);
+	// Resizes columns in listctrl. Evt version runs after window resize event.
+	void resizeColumns();
+	void resizeColumnsEvt(wxSizeEvent& event);
 
 	// Adds the patient to the listctrl.
 	void addPatient(Patient* p);

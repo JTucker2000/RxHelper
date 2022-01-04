@@ -13,6 +13,9 @@ public:
 
 private:
 	wxListCtrl* patient_listctrl = nullptr;
+
+	// Resizes columns in listctrl after a window resize event.
+	void resizeColumns(wxSizeEvent& event);
 };
 
 #endif // PATIENTLISTUIPANEL_H

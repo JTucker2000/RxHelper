@@ -32,10 +32,27 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	patient_listctrl->SetItem(0, 4, "123-456-7890");
 	patient_listctrl->SetItem(0, 5, "2");
 
-	patient_listctrl->SetColumnWidth(0, wxLIST_AUTOSIZE_USEHEADER); // Resize columns.
+	patient_listctrl->SetColumnWidth(0, wxLIST_AUTOSIZE_USEHEADER); // Resize columns
 	patient_listctrl->SetColumnWidth(1, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(2, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(3, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(4, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(5, wxLIST_AUTOSIZE_USEHEADER);
+
+	patient_listctrl->Bind(wxEVT_SIZE, &PatientListUIPanel::resizeColumns, this); // Automatically resize columns.
 
 	SetSizer(lc_sizer);
+}
+
+void PatientListUIPanel::resizeColumns(wxSizeEvent& event)
+{
+	if (!patient_listctrl) return;
+	patient_listctrl->SetColumnWidth(0, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(1, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(2, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(3, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(4, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(5, wxLIST_AUTOSIZE_USEHEADER);
 }
 
 PatientListUIPanel::~PatientListUIPanel()

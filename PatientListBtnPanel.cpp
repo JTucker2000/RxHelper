@@ -19,6 +19,11 @@ PatientListBtnPanel::PatientListBtnPanel(wxWindow* parent) : wxPanel(parent, wxI
 		new wxButton(this, wxID_ANY, "Add Patient", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
 		wxSizerFlags(1).Expand().Border(wxALL, 5)
 	);
+	button_sizer->Add
+	(
+		new wxButton(this, wxID_ANY, "Remove Patient", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		wxSizerFlags(1).Expand().Border(wxALL, 5)
+	);
 
 	SetSizer(button_sizer);
 }

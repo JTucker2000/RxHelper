@@ -1,5 +1,4 @@
-﻿  PatientListUIPanel.cpp
-  PrimaryFrame.cpp
-  RxHelperMain.cpp
+﻿  PatientListBtnPanel.cpp
+  PatientListUIPanel.cpp
   Generating Code...
   RxHelper.vcxproj -> D:\Programs\RxHelper\RxHelper\Debug\RxHelper.exe

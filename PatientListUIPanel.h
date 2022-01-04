@@ -22,6 +22,9 @@ private:
 
 	// Adds the patient to the listctrl.
 	void addPatient(Patient* p);
+
+	// Removes the patient at index from the listctrl.
+	void removePatient(int index);
 };
 
 #endif // PATIENTLISTUIPANEL_H

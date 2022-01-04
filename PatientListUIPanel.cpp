@@ -67,6 +67,11 @@ void PatientListUIPanel::addPatient(Patient* p)
 	resizeColumns();
 }
 
+void PatientListUIPanel::removePatient(int index)
+{
+	patient_listctrl->DeleteItem(index);
+}
+
 PatientListUIPanel::~PatientListUIPanel()
 {
 	

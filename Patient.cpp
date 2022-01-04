@@ -10,13 +10,13 @@ Patient::Patient()
 	phone_number = "";
 	insurance_name = "";
 	phone_type = PhoneTypeEnum::Other;
-	state = StateEnum::AL;
+	state = "";
 	med_list = {};
 }
 
 Patient::Patient(std::string fname, std::string lname,
 	std::string addr, std::string cty, std::string zip, std::string phnum,
-	std::string insname, PhoneTypeEnum phtype, StateEnum st, std::vector<Medication>* medlist)
+	std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication>* medlist)
 {
 	// TODO: Sanitize these before putting them in the container.
 	first_name = fname;
@@ -30,6 +30,17 @@ Patient::Patient(std::string fname, std::string lname,
 	state = st;
 	if(medlist) med_list = *medlist;
 }
+
+std::string Patient::getFirstName() { return first_name; }
+std::string Patient::getLastName() { return last_name; }
+std::string Patient::getStreetAddr() { return street_addr; }
+std::string Patient::getCity() { return city; }
+std::string Patient::getZipCode() { return zip_code; }
+std::string Patient::getPhoneNum() { return phone_number; }
+std::string Patient::getInsuranceName() { return insurance_name; }
+PhoneTypeEnum Patient::getPhoneType() { return phone_type; }
+std::string Patient::getState() { return state; }
+std::vector<Medication>* Patient::getMedList() { return &med_list; }
 
 Patient::~Patient()
 {

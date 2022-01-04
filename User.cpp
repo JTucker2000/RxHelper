@@ -12,12 +12,12 @@ User::User()
 	job_title = "";
 	phone_number = "";
 	phone_type = PhoneTypeEnum::Other;
-	state = StateEnum::AL;
+	state = "";
 }
 
 User::User(std::string user, std::string pass, std::string fname, std::string lname,
 	std::string addr, std::string cty, std::string zip, std::string job, std::string phnum,
-	PhoneTypeEnum phtype, StateEnum st)
+	PhoneTypeEnum phtype, std::string st)
 {
 	// TODO: Sanitize these before putting them in the container.
 	username = user;

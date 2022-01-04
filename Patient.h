@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <string>
-#include "StateEnum.h"
 #include "PhoneTypeEnum.h"
 #include "Medication.h"
 
@@ -13,7 +12,17 @@ public:
 	Patient();
 	Patient(std::string fname, std::string lname,
 		std::string addr, std::string cty, std::string zip, std::string phnum,
-		std::string insname, PhoneTypeEnum phtype, StateEnum st, std::vector<Medication>* medlist);
+		std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication>* medlist);
+	std::string getFirstName();
+	std::string getLastName();
+	std::string getStreetAddr();
+	std::string getCity();
+	std::string getZipCode();
+	std::string getPhoneNum();
+	std::string getInsuranceName();
+	PhoneTypeEnum getPhoneType();
+	std::string getState();
+	std::vector<Medication>* getMedList();
 	~Patient();
 
 private:
@@ -25,7 +34,7 @@ private:
 	std::string phone_number;
 	std::string insurance_name;
 	PhoneTypeEnum phone_type;
-	StateEnum state;
+	std::string state;
 	std::vector<Medication> med_list;
 };
 

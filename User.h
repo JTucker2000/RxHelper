@@ -2,7 +2,6 @@
 #define USER_H
 
 #include <string>
-#include "StateEnum.h"
 #include "PhoneTypeEnum.h"
 
 class User
@@ -11,7 +10,7 @@ public:
 	User();
 	User(std::string user, std::string pass, std::string fname, std::string lname,
 		std::string addr, std::string cty, std::string zip, std::string job, std::string phnum,
-		PhoneTypeEnum phtype, StateEnum st);
+		PhoneTypeEnum phtype, std::string st);
 	~User();
 
 private:
@@ -26,7 +25,7 @@ private:
 	std::string job_title;
 	std::string phone_number;
 	PhoneTypeEnum phone_type;
-	StateEnum state;
+	std::string state;
 };
 
 #endif // USER_H

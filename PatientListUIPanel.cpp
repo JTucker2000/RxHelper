@@ -25,12 +25,9 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	patient_listctrl->InsertColumn(4, "Phone");
 	patient_listctrl->InsertColumn(5, "# of Medications");
 
-	patient_listctrl->InsertItem(0, "Tucker, Jonathan"); // Add dummy patient for now.
-	patient_listctrl->SetItem(0, 1, "123 Monopoly Road");
-	patient_listctrl->SetItem(0, 2, "12345");
-	patient_listctrl->SetItem(0, 3, "ME");
-	patient_listctrl->SetItem(0, 4, "123-456-7890");
-	patient_listctrl->SetItem(0, 5, "2");
+	Patient* p = new Patient("Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {}); // Add dummy patient for now.
+	addPatient(p);
+	delete(p);
 
 	patient_listctrl->SetColumnWidth(0, wxLIST_AUTOSIZE_USEHEADER); // Resize columns
 	patient_listctrl->SetColumnWidth(1, wxLIST_AUTOSIZE_USEHEADER);
@@ -53,6 +50,20 @@ void PatientListUIPanel::resizeColumns(wxSizeEvent& event)
 	patient_listctrl->SetColumnWidth(3, wxLIST_AUTOSIZE_USEHEADER);
 	patient_listctrl->SetColumnWidth(4, wxLIST_AUTOSIZE_USEHEADER);
 	patient_listctrl->SetColumnWidth(5, wxLIST_AUTOSIZE_USEHEADER);
+}
+
+void PatientListUIPanel::addPatient(Patient* p) 
+{
+	std::string pname = p->getLastName() + ", " + p->getFirstName();
+	std::string num_meds = std::to_string(p->getMedList()->size());
+	int cur_index = patient_listctrl->GetItemCount();
+
+	patient_listctrl->InsertItem(cur_index, pname);
+	patient_listctrl->SetItem(cur_index, 1, p->getStreetAddr());
+	patient_listctrl->SetItem(cur_index, 2, p->getZipCode());
+	patient_listctrl->SetItem(cur_index, 3, p->getState());
+	patient_listctrl->SetItem(cur_index, 4, p->getPhoneNum());
+	patient_listctrl->SetItem(cur_index, 5, num_meds);
 }
 
 PatientListUIPanel::~PatientListUIPanel()

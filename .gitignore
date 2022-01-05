@@ -35,3 +35,12 @@
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+*.log
+*.tlog
+*.lastbuildstate
+*.exe.recipe
+*.ilk
+*.idb
+*.pdb
+*.iobj
+*.ipdb

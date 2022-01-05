@@ -2,6 +2,7 @@
 #define PATIENTLISTBTNPANEL_H
 
 #include "wx/wx.h"
+#include "ObjectIDs.h"
 
 class PatientListBtnPanel : public wxPanel
 {

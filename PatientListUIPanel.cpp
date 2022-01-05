@@ -4,9 +4,10 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 {
 	// Sizer for listctrl and its buttons.
 	wxBoxSizer* lc_sizer = new wxBoxSizer(wxVERTICAL);
+	PatientListBtnPanel* lc_btn_panel = new PatientListBtnPanel(this);
 	lc_sizer->Add
 	(
-		new PatientListBtnPanel(this),
+		lc_btn_panel,
 		wxSizerFlags(1).Expand()
 	);
 	patient_listctrl = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT);
@@ -26,12 +27,18 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	patient_listctrl->InsertColumn(5, "# of Medications");
 
 	Patient* p = new Patient("Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {}); // Add dummy patient for now.
+	Patient* x = new Patient("John", "Doe", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {});
 	addPatient(p);
+	addPatient(x);
+	addPatient(p);
+	addPatient(x);
 	delete(p);
+	delete(x);
 
 	resizeColumns();
 
 	patient_listctrl->Bind(wxEVT_SIZE, &PatientListUIPanel::resizeColumnsEvt, this); // Automatically resize columns.
+	lc_btn_panel->Bind(wxEVT_BUTTON, &PatientListUIPanel::removePatientEvt, this, REMOVEPATIENTBTN_ID); // Remove patient button click.
 
 	SetSizer(lc_sizer);
 }
@@ -70,6 +77,12 @@ void PatientListUIPanel::addPatient(Patient* p)
 void PatientListUIPanel::removePatient(int index)
 {
 	patient_listctrl->DeleteItem(index);
+}
+
+void PatientListUIPanel::removePatientEvt(wxCommandEvent& event)
+{
+	long selected_item = patient_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
+	removePatient(selected_item);
 }
 
 PatientListUIPanel::~PatientListUIPanel()

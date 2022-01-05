@@ -1,6 +1,6 @@
 #include "PrimaryFrame.h"
 
-PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,0) , wxSize(1280, 720))
+PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,0) , wxSize(1920, 1000))
 {
 	// Create the login UI.
 	initializeLoginUI();

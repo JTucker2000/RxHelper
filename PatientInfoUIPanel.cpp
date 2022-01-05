@@ -2,7 +2,7 @@
 
 PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2621440L, wxPanelNameStr)
 {
-	wxBoxSizer* pinfo_sizer = new wxBoxSizer(wxVERTICAL);
+	wxBoxSizer* pinfo_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for the patient info panel.
 	patient_info_top = new PatientInfoTopPanel(this);
 	pinfo_sizer->Add
 	(

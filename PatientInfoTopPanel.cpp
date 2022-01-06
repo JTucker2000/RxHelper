@@ -7,9 +7,9 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	tempf.SetPointSize(14);
 	pinfo_txt->SetFont(tempf);
 
-	wxBoxSizer* middle_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for the top middle of this panel.
-	wxBoxSizer* left_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for left side of top middle.
-	wxBoxSizer* right_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for right side of top middle.
+	wxBoxSizer* middle_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for the middle of this panel.
+	wxBoxSizer* left_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for left side of middle.
+	wxBoxSizer* right_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for right side of middle.
 	middle_sizer->Add
 	(
 		left_middle_sizer,

@@ -13,6 +13,8 @@ PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,
 	initializeMainPageUI();
 
 	Center();
+	Refresh();
+	Update();
 }
 
 void PrimaryFrame::initializeLoginUI() 
@@ -73,6 +75,8 @@ void PrimaryFrame::loginButtonPress(wxCommandEvent& event)
 	patient_list_ui_panel->Show();
 	SetSizer(main_page_sizer);
 	Layout();
+	Refresh();
+	Update();
 }
 
 PrimaryFrame::~PrimaryFrame()

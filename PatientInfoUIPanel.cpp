@@ -9,6 +9,12 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 		patient_info_top,
 		wxSizerFlags(1).Expand().Border(wxALL, 5)
 	);
+	patient_info_middle = new PatientInfoMiddlePanel(this);
+	pinfo_sizer->Add
+	(
+		patient_info_middle,
+		wxSizerFlags(1).Expand().Border(wxALL, 5)
+	);
 	medication_listctrl = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT);
 	pinfo_sizer->Add
 	(

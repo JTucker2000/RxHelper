@@ -14,6 +14,10 @@ public:
 private:
 	wxListCtrl* medication_listctrl = nullptr;
 	PatientInfoTopPanel* patient_info_top = nullptr;
+
+	// Resizes columns in listctrl. Evt version runs after window resize event.
+	void resizeColumns();
+	void resizeColumnsEvt(wxSizeEvent& event);
 };
 
 #endif // PATIENTINFOUIPANEL_H

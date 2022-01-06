@@ -3,18 +3,23 @@
 
 #include <string>
 #include "DoseUnitEnum.h"
+#include "TimeUnitEnum.h"
 
 class Medication
 {
 public:
 	Medication();
-	Medication(std::string drugname, unsigned int dose, DoseUnitEnum doseunit, unsigned int priced, unsigned int pricec);
+	Medication(std::string drugname, std::string desc, unsigned int dose, DoseUnitEnum doseunit, 
+		unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec);
 	~Medication();
 
 private:
 	std::string drug_name;
+	std::string description;
 	unsigned int dosage;
 	DoseUnitEnum dosage_unit;
+	unsigned int time_num;
+	TimeUnitEnum time_unit;
 	unsigned int price_dollars; // All prices are in USD for now.
 	unsigned int price_cents;
 };

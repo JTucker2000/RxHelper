@@ -141,21 +141,21 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 		wxSizerFlags(3).Expand()
 	);
 
-	wxBoxSizer* insname_sizer = new wxBoxSizer(wxHORIZONTAL); // Insurance name sizer.
-	wxStaticText* insname_txt = new wxStaticText(this, wxID_ANY, "Ins. Name:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
-	insname_txt->SetFont(tempf);
-	insname_sizer->Add
+	wxBoxSizer* phtype_sizer = new wxBoxSizer(wxHORIZONTAL); // Phone type sizer.
+	wxStaticText* phtype_txt = new wxStaticText(this, wxID_ANY, "Type:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	phtype_txt->SetFont(tempf);
+	phtype_sizer->Add
 	(
-		insname_txt,
+		phtype_txt,
 		wxSizerFlags(1).Border(wxRIGHT, 5)
 	);
-	insname_sizer->Add
+	phtype_sizer->Add
 	(
 		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
 		wxSizerFlags(3).Expand()
 	);
 
-	// Add last name, city, state, and insurance name to right middle sizer.
+	// Add last name, city, state, and phone type to right middle sizer.
 	right_middle_sizer->Add
 	(
 		lname_sizer,
@@ -173,8 +173,22 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	);
 	right_middle_sizer->Add
 	(
-		insname_sizer,
+		phtype_sizer,
 		wxSizerFlags(1).Expand().Border(wxDOWN, 10)
+	);
+
+	wxBoxSizer* insname_sizer = new wxBoxSizer(wxHORIZONTAL); // Insurance name sizer.
+	wxStaticText* insname_txt = new wxStaticText(this, wxID_ANY, "Ins. Name:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	insname_txt->SetFont(tempf);
+	insname_sizer->Add
+	(
+		insname_txt,
+		wxSizerFlags().Border(wxRIGHT, 10)
+	);
+	insname_sizer->Add
+	(
+		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		wxSizerFlags(5).Expand()
 	);
 
 	wxBoxSizer* top_sizer = new wxBoxSizer(wxVERTICAL); // Main sizer for this panel.
@@ -187,6 +201,11 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	(
 		middle_sizer,
 		wxSizerFlags().Center().Border(wxALL, 5)
+	);
+	top_sizer->Add
+	(
+		insname_sizer,
+		wxSizerFlags().Expand().Border(wxLEFT | wxRIGHT | wxDOWN, 10)
 	);
 
 	SetSizer(top_sizer);

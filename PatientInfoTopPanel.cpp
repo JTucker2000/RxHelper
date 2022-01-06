@@ -7,9 +7,9 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	tempf.SetPointSize(14);
 	pinfo_txt->SetFont(tempf);
 
-	wxBoxSizer* middle_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for the middle of this panel.
-	wxBoxSizer* left_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for left side of middle.
-	wxBoxSizer* right_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for right side of middle.
+	wxBoxSizer* middle_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for the top middle of this panel.
+	wxBoxSizer* left_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for left side of top middle.
+	wxBoxSizer* right_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for right side of top middle.
 	middle_sizer->Add
 	(
 		left_middle_sizer,
@@ -191,6 +191,13 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 		wxSizerFlags(5).Expand()
 	);
 
+	wxBoxSizer* patient_button_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for the patient buttons.
+	patient_button_sizer->Add
+	(
+		new wxButton(this, wxID_ANY, "Create Patient", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		wxSizerFlags(1).Expand().Border(wxALL, 5)
+	);
+
 	wxBoxSizer* top_sizer = new wxBoxSizer(wxVERTICAL); // Main sizer for this panel.
 	top_sizer->Add
 	(
@@ -206,6 +213,11 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	(
 		insname_sizer,
 		wxSizerFlags().Expand().Border(wxLEFT | wxRIGHT | wxDOWN, 10)
+	);
+	top_sizer->Add
+	(
+		patient_button_sizer,
+		wxSizerFlags().Expand()
 	);
 
 	SetSizer(top_sizer);

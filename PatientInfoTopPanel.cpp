@@ -144,6 +144,10 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	wxBoxSizer* phtype_sizer = new wxBoxSizer(wxHORIZONTAL); // Phone type sizer.
 	wxStaticText* phtype_txt = new wxStaticText(this, wxID_ANY, "Type:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	phtype_txt->SetFont(tempf);
+	wxArrayString* phtype_choices = new wxArrayString();
+	phtype_choices->Add("Home");
+	phtype_choices->Add("Mobile");
+	phtype_choices->Add("Other");
 	phtype_sizer->Add
 	(
 		phtype_txt,
@@ -151,9 +155,10 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	);
 	phtype_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		new wxComboBox(this, wxID_ANY, "Phone Type", wxDefaultPosition, wxDefaultSize, *phtype_choices, 0L, wxDefaultValidator, wxComboBoxNameStr),
 		wxSizerFlags(3).Expand()
 	);
+	delete(phtype_choices);
 
 	// Add last name, city, state, and phone type to right middle sizer.
 	right_middle_sizer->Add

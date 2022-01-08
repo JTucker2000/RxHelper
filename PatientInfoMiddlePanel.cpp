@@ -97,6 +97,9 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	wxBoxSizer* dunit_sizer = new wxBoxSizer(wxHORIZONTAL); // Dosage unit sizer.
 	wxStaticText* dunit_txt = new wxStaticText(this, wxID_ANY, "Dose Unit:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	dunit_txt->SetFont(tempf);
+	wxArrayString* dunit_choices = new wxArrayString();
+	dunit_choices->Add("Milligrams");
+	dunit_choices->Add("Milliliters");
 	dunit_sizer->Add
 	(
 		dunit_txt,
@@ -104,13 +107,18 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	);
 	dunit_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		new wxComboBox(this, wxID_ANY, "Dose Unit", wxDefaultPosition, wxDefaultSize, *dunit_choices, 0L, wxDefaultValidator, wxComboBoxNameStr),
 		wxSizerFlags(3).Expand()
 	);
+	delete(dunit_choices);
 
 	wxBoxSizer* tunit_sizer = new wxBoxSizer(wxHORIZONTAL); // Time unit sizer.
 	wxStaticText* tunit_txt = new wxStaticText(this, wxID_ANY, "Time Unit:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	tunit_txt->SetFont(tempf);
+	wxArrayString* tunit_choices = new wxArrayString();
+	tunit_choices->Add("Minutes");
+	tunit_choices->Add("Hours");
+	tunit_choices->Add("Days");
 	tunit_sizer->Add
 	(
 		tunit_txt,
@@ -118,9 +126,10 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	);
 	tunit_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		new wxComboBox(this, wxID_ANY, "Time Unit", wxDefaultPosition, wxDefaultSize, *tunit_choices, 0L, wxDefaultValidator, wxComboBoxNameStr),
 		wxSizerFlags(3).Expand()
 	);
+	delete(tunit_choices);
 
 	// Add price, dosage unit, and time unit to right middle sizer.
 	right_middle_sizer->Add

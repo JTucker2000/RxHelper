@@ -191,13 +191,6 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 		wxSizerFlags(5).Expand()
 	);
 
-	wxBoxSizer* patient_button_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for the patient buttons.
-	patient_button_sizer->Add
-	(
-		new wxButton(this, wxID_ANY, "Create Patient", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
-		wxSizerFlags(1).Expand().Border(wxALL, 5)
-	);
-
 	wxBoxSizer* top_sizer = new wxBoxSizer(wxVERTICAL); // Main sizer for this panel.
 	top_sizer->Add
 	(
@@ -213,11 +206,6 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	(
 		insname_sizer,
 		wxSizerFlags().Expand().Border(wxLEFT | wxRIGHT | wxDOWN, 10)
-	);
-	top_sizer->Add
-	(
-		patient_button_sizer,
-		wxSizerFlags().Expand()
 	);
 
 	SetSizer(top_sizer);

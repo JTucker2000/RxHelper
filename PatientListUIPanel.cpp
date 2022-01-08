@@ -8,13 +8,13 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	lc_sizer->Add
 	(
 		lc_btn_panel,
-		wxSizerFlags(1).Expand()
+		wxSizerFlags().Expand()
 	);
 	patient_listctrl = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT);
 	lc_sizer->Add
 	(
 		patient_listctrl,
-		wxSizerFlags(8).Expand().Border(wxLEFT | wxRIGHT | wxDOWN, 5)
+		wxSizerFlags(1).Expand().Border(wxLEFT | wxRIGHT | wxDOWN, 5)
 	);
 	wxFont tempf = patient_listctrl->GetFont(); // Make listctrl font bigger.
 	tempf.SetPointSize(12);

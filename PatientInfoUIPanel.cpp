@@ -13,13 +13,13 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	pinfo_sizer->Add
 	(
 		patient_info_middle,
-		wxSizerFlags().Expand().Border(wxALL, 5)
+		wxSizerFlags().Expand().Border(wxLEFT | wxRIGHT | wxUP, 5)
 	);
 	medication_listctrl = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT);
 	pinfo_sizer->Add
 	(
 		medication_listctrl,
-		wxSizerFlags(1).Expand().Border(wxALL, 5)
+		wxSizerFlags(2).Expand().Border(wxLEFT | wxRIGHT | wxDOWN, 5)
 	);
 	wxFont tempf = medication_listctrl->GetFont(); // Make listctrl font bigger.
 	tempf.SetPointSize(12);

@@ -3,6 +3,7 @@
 
 #include "wx/wx.h"
 #include "wx/listctrl.h"
+#include "ObjectIDs.h"
 #include "PatientInfoTopPanel.h"
 #include "PatientInfoMiddlePanel.h"
 
@@ -20,6 +21,10 @@ private:
 	// Resizes columns in listctrl. Evt version runs after window resize event.
 	void resizeColumns();
 	void resizeColumnsEvt(wxSizeEvent& event);
+
+	// Removes the medication at index from the listctrl. Evt version runs after remove button click.
+	void removeMedication(int index);
+	void removeMedicationEvt(wxCommandEvent& event);
 };
 
 #endif // PATIENTINFOUIPANEL_H

@@ -180,7 +180,7 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	);
 	med_button_sizer->Add
 	(
-		new wxButton(this, wxID_ANY, "Remove Medication", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		new wxButton(this, REMOVEMEDICATIONBTN_ID, "Remove Medication", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
 		wxSizerFlags(1).Expand().Border(wxLEFT | wxUP | wxDOWN, 5)
 	);
 

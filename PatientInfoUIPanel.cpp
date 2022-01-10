@@ -34,9 +34,15 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	medication_listctrl->SetItem(0, 2, "$10.00");
 	medication_listctrl->SetItem(0, 3, "A mild pain reliever");
 
+	medication_listctrl->InsertItem(1, "Pepto");
+	medication_listctrl->SetItem(1, 1, "10 mL when needed");
+	medication_listctrl->SetItem(1, 2, "$15.00");
+	medication_listctrl->SetItem(1, 3, "Reduces nausea and heartburn");
+
 	resizeColumns();
 
 	medication_listctrl->Bind(wxEVT_SIZE, &PatientInfoUIPanel::resizeColumnsEvt, this); // Automatically resize columns.
+	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::removeMedicationEvt, this, REMOVEMEDICATIONBTN_ID); // Remove medication button click.
 
 	SetSizer(pinfo_sizer);
 }
@@ -53,6 +59,17 @@ void PatientInfoUIPanel::resizeColumns()
 void PatientInfoUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 {
 	resizeColumns();
+}
+
+void PatientInfoUIPanel::removeMedication(int index)
+{
+	medication_listctrl->DeleteItem(index);
+}
+
+void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
+{
+	long selected_item = medication_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
+	removeMedication(selected_item);
 }
 
 PatientInfoUIPanel::~PatientInfoUIPanel()

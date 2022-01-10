@@ -2,6 +2,7 @@
 #define PATIENTINFOMIDDLEPANEL_H
 
 #include "wx/wx.h"
+#include "ObjectIDs.h"
 
 class PatientInfoMiddlePanel : public wxPanel
 {

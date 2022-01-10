@@ -7,6 +7,8 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	tempf.SetPointSize(14);
 	psearch_txt->SetFont(tempf);
 
+	wxStaticText* search_info_txt = new wxStaticText(this, wxID_ANY, "Patients are filtered by all non empty boxes", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr); // Create search info static text.
+
 	wxBoxSizer* middle_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for the middle of this panel.
 	wxBoxSizer* left_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for left side of middle.
 	wxBoxSizer* right_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for right side of middle.
@@ -196,11 +198,28 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 		wxSizerFlags(5).Expand()
 	);
 
+	wxBoxSizer* search_button_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for this panel's buttons.
+	search_button_sizer->Add
+	(
+		new wxButton(this, wxID_ANY, "Apply Search", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		wxSizerFlags(1).Expand().Border(wxALL, 10)
+	);
+	search_button_sizer->Add
+	(
+		new wxButton(this, wxID_ANY, "Clear Search", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		wxSizerFlags(1).Expand().Border(wxALL, 10)
+	);
+
 	wxBoxSizer* main_search_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for the main search panel.
 	main_search_sizer->Add
 	(
 		psearch_txt,
-		wxSizerFlags().Center().Border(wxALL, 10)
+		wxSizerFlags().Center().Border(wxLEFT | wxRIGHT | wxUP, 10)
+	);
+	main_search_sizer->Add
+	(
+		search_info_txt,
+		wxSizerFlags().Center().Border(wxALL, 5)
 	);
 	main_search_sizer->Add
 	(
@@ -211,6 +230,11 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	(
 		insname_sizer,
 		wxSizerFlags().Expand().Border(wxLEFT | wxRIGHT | wxDOWN, 10)
+	);
+	main_search_sizer->Add
+	(
+		search_button_sizer,
+		wxSizerFlags().Center()
 	);
 
 	SetSizer(main_search_sizer);

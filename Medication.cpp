@@ -25,6 +25,8 @@ Medication::Medication(unsigned int id, std::string drugname, std::string desc, 
 	price_cents = pricec;
 }
 
+const unsigned int Medication::getUniqueID() { return unique_id; }
+
 Medication::~Medication()
 {
 

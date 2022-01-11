@@ -13,6 +13,8 @@ public:
 	Patient(unsigned int id, std::string fname, std::string lname,
 		std::string addr, std::string cty, std::string zip, std::string phnum,
 		std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist);
+
+	const unsigned int getUniqueID();
 	std::string getFirstName();
 	std::string getLastName();
 	std::string getStreetAddr();
@@ -23,6 +25,7 @@ public:
 	PhoneTypeEnum getPhoneType();
 	std::string getState();
 	std::vector<Medication*>* getMedList();
+
 	~Patient();
 
 private:

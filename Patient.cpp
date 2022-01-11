@@ -31,6 +31,7 @@ Patient::Patient(unsigned int id, std::string fname, std::string lname,
 	if(medlist) med_list = *medlist;
 }
 
+const unsigned int Patient::getUniqueID() { return unique_id; }
 std::string Patient::getFirstName() { return first_name; }
 std::string Patient::getLastName() { return last_name; }
 std::string Patient::getStreetAddr() { return street_addr; }

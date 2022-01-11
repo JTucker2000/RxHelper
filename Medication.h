@@ -11,6 +11,9 @@ public:
 	Medication();
 	Medication(unsigned int id, std::string drugname, std::string desc, unsigned int dose, DoseUnitEnum doseunit,
 		unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec);
+
+	const unsigned int getUniqueID();
+
 	~Medication();
 
 private:

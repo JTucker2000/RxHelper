@@ -33,6 +33,8 @@ User::User(unsigned int id, std::string user, std::string pass, std::string fnam
 	state = st;
 }
 
+const unsigned int User::getUniqueID() { return unique_id; }
+
 User::~User()
 {
 

@@ -11,6 +11,9 @@ public:
 	User(unsigned int id, std::string user, std::string pass, std::string fname, std::string lname,
 		std::string addr, std::string cty, std::string zip, std::string job, std::string phnum,
 		PhoneTypeEnum phtype, std::string st);
+
+	const unsigned int getUniqueID();
+
 	~User();
 
 private:

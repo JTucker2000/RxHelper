@@ -2,6 +2,7 @@
 #define MAINSEARCHUIPANEL_H
 
 #include "wx/wx.h"
+#include "ObjectIDs.h"
 
 class MainSearchUIPanel : public wxPanel
 {

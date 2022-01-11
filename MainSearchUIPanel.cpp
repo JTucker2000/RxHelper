@@ -25,6 +25,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 
 	wxBoxSizer* fname_sizer = new wxBoxSizer(wxHORIZONTAL); // First name sizer.
 	wxStaticText* fname_txt = new wxStaticText(this, wxID_ANY, "First Name:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	wxTextCtrl* fname_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
 	fname_txt->SetFont(tempf);
 	fname_sizer->Add
 	(
@@ -33,12 +34,13 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	fname_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		fname_txtctrl,
 		wxSizerFlags(3).Expand()
 	);
 
 	wxBoxSizer* addr_sizer = new wxBoxSizer(wxHORIZONTAL); // Address sizer.
 	wxStaticText* addr_txt = new wxStaticText(this, wxID_ANY, "Street Addr:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	wxTextCtrl* addr_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
 	addr_txt->SetFont(tempf);
 	addr_sizer->Add
 	(
@@ -47,12 +49,13 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	addr_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		addr_txtctrl,
 		wxSizerFlags(3).Expand()
 	);
 
 	wxBoxSizer* zip_sizer = new wxBoxSizer(wxHORIZONTAL); // Zipcode sizer.
 	wxStaticText* zip_txt = new wxStaticText(this, wxID_ANY, "Zip Code:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	wxTextCtrl* zip_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
 	zip_txt->SetFont(tempf);
 	zip_sizer->Add
 	(
@@ -61,12 +64,13 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	zip_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		zip_txtctrl,
 		wxSizerFlags(3).Expand()
 	);
 
 	wxBoxSizer* phnum_sizer = new wxBoxSizer(wxHORIZONTAL); // Phone Number sizer.
 	wxStaticText* phnum_txt = new wxStaticText(this, wxID_ANY, "Phone Num:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	wxTextCtrl* phnum_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
 	phnum_txt->SetFont(tempf);
 	phnum_sizer->Add
 	(
@@ -75,7 +79,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	phnum_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		phnum_txtctrl,
 		wxSizerFlags(3).Expand()
 	);
 
@@ -103,6 +107,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 
 	wxBoxSizer* lname_sizer = new wxBoxSizer(wxHORIZONTAL); // Last name sizer.
 	wxStaticText* lname_txt = new wxStaticText(this, wxID_ANY, "Last Name:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	wxTextCtrl* lname_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
 	lname_txt->SetFont(tempf);
 	lname_sizer->Add
 	(
@@ -111,12 +116,13 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	lname_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		lname_txtctrl,
 		wxSizerFlags(3).Expand()
 	);
 
 	wxBoxSizer* city_sizer = new wxBoxSizer(wxHORIZONTAL); // City sizer.
 	wxStaticText* city_txt = new wxStaticText(this, wxID_ANY, "City:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	wxTextCtrl* city_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
 	city_txt->SetFont(tempf);
 	city_sizer->Add
 	(
@@ -125,12 +131,13 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	city_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		city_txtctrl,
 		wxSizerFlags(3).Expand()
 	);
 
 	wxBoxSizer* state_sizer = new wxBoxSizer(wxHORIZONTAL); // State sizer.
 	wxStaticText* state_txt = new wxStaticText(this, wxID_ANY, "State:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	wxTextCtrl* state_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
 	state_txt->SetFont(tempf);
 	state_sizer->Add
 	(
@@ -139,17 +146,19 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	state_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		state_txtctrl,
 		wxSizerFlags(3).Expand()
 	);
 
 	wxBoxSizer* phtype_sizer = new wxBoxSizer(wxHORIZONTAL); // Phone type sizer.
-	wxStaticText* phtype_txt = new wxStaticText(this, wxID_ANY, "Type:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
-	phtype_txt->SetFont(tempf);
 	wxArrayString* phtype_choices = new wxArrayString();
 	phtype_choices->Add("Home");
 	phtype_choices->Add("Mobile");
 	phtype_choices->Add("Other");
+	wxComboBox* phtype_cmbox = new wxComboBox(this, wxID_ANY, "Phone Type", wxDefaultPosition, wxDefaultSize, *phtype_choices, 0L, wxDefaultValidator, wxComboBoxNameStr);
+	wxStaticText* phtype_txt = new wxStaticText(this, wxID_ANY, "Type:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	phtype_txt->SetFont(tempf);
+
 	phtype_sizer->Add
 	(
 		phtype_txt,
@@ -157,7 +166,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	phtype_sizer->Add
 	(
-		new wxComboBox(this, wxID_ANY, "Phone Type", wxDefaultPosition, wxDefaultSize, *phtype_choices, 0L, wxDefaultValidator, wxComboBoxNameStr),
+		phtype_cmbox,
 		wxSizerFlags(3).Expand()
 	);
 	delete(phtype_choices);
@@ -186,6 +195,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 
 	wxBoxSizer* insname_sizer = new wxBoxSizer(wxHORIZONTAL); // Insurance name sizer.
 	wxStaticText* insname_txt = new wxStaticText(this, wxID_ANY, "Ins. Name:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	wxTextCtrl* insname_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
 	insname_txt->SetFont(tempf);
 	insname_sizer->Add
 	(
@@ -194,7 +204,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	insname_sizer->Add
 	(
-		new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr),
+		insname_txtctrl,
 		wxSizerFlags(5).Expand()
 	);
 
@@ -206,7 +216,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	search_button_sizer->Add
 	(
-		new wxButton(this, wxID_ANY, "Clear Search", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		new wxButton(this, CLEARSEARCHBTN_ID, "Clear Search", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
 		wxSizerFlags(1).Expand().Border(wxALL, 10)
 	);
 

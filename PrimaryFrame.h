@@ -15,8 +15,11 @@ public:
 	~PrimaryFrame();
 
 private:
+	// Login screen
 	wxPanel* login_ui_panel = nullptr;
 	wxBoxSizer* login_sizer = nullptr;
+
+	// Main screen
 	wxPanel* main_search_ui_panel = nullptr;
 	wxPanel* patient_info_ui_panel = nullptr;
 	wxPanel* patient_list_ui_panel = nullptr;
@@ -25,6 +28,7 @@ private:
 	void initializeLoginUI();
 	void initializeMainPageUI();
 	void loginButtonPress(wxCommandEvent& event);
+	void viewPatientButtonPress(wxCommandEvent& event);
 };
 
 #endif // PRIMARYFRAME_H

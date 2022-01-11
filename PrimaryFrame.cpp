@@ -38,9 +38,13 @@ void PrimaryFrame::initializeMainPageUI()
 	main_search_ui_panel = new MainSearchUIPanel(this);
 	patient_info_ui_panel = new PatientInfoUIPanel(this);
 	patient_list_ui_panel = new PatientListUIPanel(this);
-	main_search_ui_panel->Hide();
+
+	patient_list_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::viewPatientButtonPress, this, VIEWPATIENTBTN_ID); // Handle main page UI events.
+
+	main_search_ui_panel->Hide(); // Hidden on program start.
 	patient_info_ui_panel->Hide();
 	patient_list_ui_panel->Hide();
+
 	main_page_sizer = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer* left_main_sizer = new wxBoxSizer(wxVERTICAL);
 	left_main_sizer->Add
@@ -77,6 +81,11 @@ void PrimaryFrame::loginButtonPress(wxCommandEvent& event)
 	Layout();
 	Refresh();
 	Update();
+}
+
+void PrimaryFrame::viewPatientButtonPress(wxCommandEvent& event)
+{
+	
 }
 
 PrimaryFrame::~PrimaryFrame()

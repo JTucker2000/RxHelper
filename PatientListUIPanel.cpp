@@ -26,8 +26,8 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	patient_listctrl->InsertColumn(4, "Phone");
 	patient_listctrl->InsertColumn(5, "# of Medications");
 
-	Patient* p = new Patient("Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {}); // Add dummy patient for now.
-	Patient* x = new Patient("John", "Doe", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {});
+	Patient* p = new Patient(1, "Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {}); // Add dummy patient for now.
+	Patient* x = new Patient(2, "John", "Doe", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {});
 	addPatient(p);
 	addPatient(x);
 	addPatient(p);

@@ -1,6 +1,6 @@
 #include "Patient.h"
 
-Patient::Patient()
+Patient::Patient() : unique_id(-1)
 {
 	first_name = "";
 	last_name = "";
@@ -14,9 +14,9 @@ Patient::Patient()
 	med_list = {};
 }
 
-Patient::Patient(std::string fname, std::string lname,
+Patient::Patient(unsigned int id, std::string fname, std::string lname,
 	std::string addr, std::string cty, std::string zip, std::string phnum,
-	std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication>* medlist)
+	std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist) : unique_id(id) // TODO: Generate unique IDs for each medication, patient, and user. Hardcoded for now.
 {
 	// TODO: Sanitize these before putting them in the container.
 	first_name = fname;
@@ -40,7 +40,7 @@ std::string Patient::getPhoneNum() { return phone_number; }
 std::string Patient::getInsuranceName() { return insurance_name; }
 PhoneTypeEnum Patient::getPhoneType() { return phone_type; }
 std::string Patient::getState() { return state; }
-std::vector<Medication>* Patient::getMedList() { return &med_list; }
+std::vector<Medication*>* Patient::getMedList() { return &med_list; }
 
 Patient::~Patient()
 {

@@ -8,12 +8,13 @@ class User
 {
 public:
 	User();
-	User(std::string user, std::string pass, std::string fname, std::string lname,
+	User(unsigned int id, std::string user, std::string pass, std::string fname, std::string lname,
 		std::string addr, std::string cty, std::string zip, std::string job, std::string phnum,
 		PhoneTypeEnum phtype, std::string st);
 	~User();
 
 private:
+	const unsigned int unique_id;
 	std::string username;
 	// plaintext password for now, can add encryption later.
 	std::string password;

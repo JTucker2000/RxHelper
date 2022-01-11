@@ -46,7 +46,7 @@ void PrimaryFrame::initializeMainPageUI()
 	left_main_sizer->Add
 	(
 		main_search_ui_panel,
-		wxSizerFlags(1).Expand().Border(wxLEFT | wxUP, 10)
+		wxSizerFlags().Expand().Border(wxLEFT | wxUP, 10)
 	);
 	left_main_sizer->Add
 	(

@@ -43,7 +43,16 @@ PhoneTypeEnum Patient::getPhoneType() { return phone_type; }
 std::string Patient::getState() { return state; }
 std::vector<Medication*>* Patient::getMedList() { return &med_list; }
 
+void Patient::deleteMedList()
+{
+	for (int i = 0; i < med_list.size(); i++)
+	{
+		delete(med_list[i]);
+	}
+	med_list.clear();
+}
+
 Patient::~Patient()
 {
-
+	deleteMedList();
 }

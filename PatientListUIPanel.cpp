@@ -27,12 +27,48 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	patient_listctrl->InsertColumn(5, "Phone");
 	patient_listctrl->InsertColumn(6, "# of Medications");
 
-	Patient* p = new Patient(1, "Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {}); // Add dummy patient for now.
-	Patient* x = new Patient(2, "John", "Doe", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {});
+	// Patients and medications for UI testing.
+	Medication* testmed1 = new Medication(1, "Advil", "Pain Reliever", 5, DoseUnitEnum::milligrams, 6, TimeUnitEnum::hours, 5, 0);
+	Medication* testmed2 = new Medication(2, "Atorvastatin", "Reduces high cholesterol", 10, DoseUnitEnum::milligrams, 1, TimeUnitEnum::days, 20, 0);
+	Medication* testmed3 = new Medication(3, "Pepto", "Relieves indigestion", 20, DoseUnitEnum::milliliters, 6, TimeUnitEnum::hours, 12, 0);
+	Medication* testmed4 = new Medication(4, "Metformin", "Antidiabetic medication", 10, DoseUnitEnum::milligrams, 5, TimeUnitEnum::hours, 50, 0);
+	Medication* testmed5 = new Medication(5, "Duloxetine", "Antidepressant medication", 15, DoseUnitEnum::milliliters, 30, TimeUnitEnum::minutes, 46, 50);
+	Medication* testmed6 = new Medication(6, "Advil", "Pain Reliever", 10, DoseUnitEnum::milligrams, 3, TimeUnitEnum::hours, 5, 0);
+	Medication* testmed7 = new Medication(7, "Atorvastatin", "Reduces high cholesterol", 20, DoseUnitEnum::milligrams, 1, TimeUnitEnum::days, 30, 0);
+	Medication* testmed8 = new Medication(8, "Pepto", "Relieves indigestion", 20, DoseUnitEnum::milliliters, 6, TimeUnitEnum::hours, 12, 0);
+	Medication* testmed9 = new Medication(9, "Metformin", "Antidiabetic medication", 10, DoseUnitEnum::milligrams, 5, TimeUnitEnum::hours, 50, 0);
+	Medication* testmed10 = new Medication(10, "Duloxetine", "Antidepressant medication", 15, DoseUnitEnum::milliliters, 30, TimeUnitEnum::minutes, 55, 99);
+	std::vector<Medication*> pmedlist;
+	pmedlist.push_back(testmed1);
+	pmedlist.push_back(testmed10);
+	std::vector<Medication*> xmedlist;
+	xmedlist.push_back(testmed2);
+	xmedlist.push_back(testmed9);
+	std::vector<Medication*> dmedlist;
+	dmedlist.push_back(testmed3);
+	dmedlist.push_back(testmed8);
+	std::vector<Medication*> ymedlist;
+	ymedlist.push_back(testmed4);
+	ymedlist.push_back(testmed7);
+	std::vector<Medication*> amedlist;
+	amedlist.push_back(testmed5);
+	amedlist.push_back(testmed6);
+	Patient* p = new Patient(1, "Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", &pmedlist);
+	Patient* x = new Patient(2, "David", "Doe", "567 Washington Street", "Newton", "63290", "123-674-1649", "Blue Cross Blue Shield", PhoneTypeEnum::Mobile, "DE", &xmedlist);
+	Patient* d = new Patient(3, "Samantha", "Garth", "66 Rifton Road", "Jard", "12397", "926-548-5395", "None", PhoneTypeEnum::Mobile, "NH", &dmedlist);
+	Patient* y = new Patient(4, "Guy", "Harmouth", "5432 Temple Lane", "Marshfield", "59345", "124-862-1548", "Blue Cross Blue Shield", PhoneTypeEnum::Other, "OH", &ymedlist);
+	Patient* a = new Patient(5, "Julie", "Carlson", "4 Tennis Road", "Denham", "54823", "361-578-7835", "Cigna", PhoneTypeEnum::Mobile, "ME", &amedlist);
 	patient_list.push_back(p);
 	patient_list.push_back(x);
+	patient_list.push_back(d);
+	patient_list.push_back(y);
+	patient_list.push_back(a);
 	addPatientToList(patient_list[0]);
 	addPatientToList(patient_list[1]);
+	addPatientToList(patient_list[2]);
+	addPatientToList(patient_list[3]);
+	addPatientToList(patient_list[4]);
+	// End of testing block.
 
 	resizeColumns();
 

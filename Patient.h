@@ -40,6 +40,9 @@ private:
 	PhoneTypeEnum phone_type;
 	std::string state;
 	std::vector<Medication*> med_list;
+
+	// Clears all memory associated with med_list.
+	void deleteMedList();
 };
 
 #endif // PATIENT_H

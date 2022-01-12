@@ -85,7 +85,7 @@ void PrimaryFrame::loginButtonPress(wxCommandEvent& event)
 
 void PrimaryFrame::viewPatientButtonPress(wxCommandEvent& event)
 {
-	
+	patient_list_ui_panel->getSelectedPatient();
 }
 
 PrimaryFrame::~PrimaryFrame()

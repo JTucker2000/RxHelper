@@ -13,6 +13,9 @@ public:
 	PatientListUIPanel(wxWindow* parent);
 	~PatientListUIPanel();
 
+	// Returns a pointer to the currently selected patient in the listctrl.
+	Patient* getSelectedPatient();
+
 private:
 	wxListCtrl* patient_listctrl = nullptr;
 
@@ -26,6 +29,8 @@ private:
 	// Removes the patient at index from the listctrl. Evt version runs after remove button click.
 	void removePatient(int index);
 	void removePatientEvt(wxCommandEvent& event);
+
+
 };
 
 #endif // PATIENTLISTUIPANEL_H

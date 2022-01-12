@@ -42,6 +42,24 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	SetSizer(lc_sizer);
 }
 
+Patient* PatientListUIPanel::getSelectedPatient()
+{
+	long selected_item = patient_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED); // Get selected item.
+	if (selected_item == -1) return nullptr;
+
+	wxListItem* rowinfo = new wxListItem(); // Get patient ID of selected item.
+	rowinfo->SetMask(wxLIST_MASK_TEXT);
+	rowinfo->SetId(selected_item);
+	rowinfo->SetColumn(0);
+	patient_listctrl->GetItem(*rowinfo);
+	std::string patient_id_string(rowinfo->GetText());
+	delete(rowinfo);
+
+	wxMessageBox(patient_id_string); // Output ID for testing for now.
+
+	return nullptr;
+}
+
 void PatientListUIPanel::resizeColumns()
 {
 	if (!patient_listctrl) return;

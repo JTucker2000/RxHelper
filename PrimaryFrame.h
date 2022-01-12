@@ -16,13 +16,13 @@ public:
 
 private:
 	// Login screen
-	wxPanel* login_ui_panel = nullptr;
+	LoginUIPanel* login_ui_panel = nullptr;
 	wxBoxSizer* login_sizer = nullptr;
 
 	// Main screen
-	wxPanel* main_search_ui_panel = nullptr;
-	wxPanel* patient_info_ui_panel = nullptr;
-	wxPanel* patient_list_ui_panel = nullptr;
+	MainSearchUIPanel* main_search_ui_panel = nullptr;
+	PatientInfoUIPanel* patient_info_ui_panel = nullptr;
+	PatientListUIPanel* patient_list_ui_panel = nullptr;
 	wxBoxSizer* main_page_sizer = nullptr;
 
 	void initializeLoginUI();

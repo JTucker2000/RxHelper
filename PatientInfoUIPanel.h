@@ -4,6 +4,7 @@
 #include "wx/wx.h"
 #include "wx/listctrl.h"
 #include "ObjectIDs.h"
+#include "Patient.h"
 #include "PatientInfoTopPanel.h"
 #include "PatientInfoMiddlePanel.h"
 
@@ -11,6 +12,10 @@ class PatientInfoUIPanel : public wxPanel
 {
 public:
 	PatientInfoUIPanel(wxWindow* parent);
+
+	// Fills the patient info UI panel with the given patient's information.
+	void fillInfo(Patient* p);
+
 	~PatientInfoUIPanel();
 
 private:

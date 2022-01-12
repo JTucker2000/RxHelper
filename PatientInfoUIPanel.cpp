@@ -57,6 +57,8 @@ void PatientInfoUIPanel::fillInfo(Patient* p)
 	patient_info_middle->clearPanel(); // 2. Clear Middle Panel Info
 	medication_listctrl->DeleteAllItems(); // 3. Clear Medication listctrl
 	// 4. Fill information for Top panel and medication listctrl (Middle panel info not needed until user makes a selection)
+	patient_info_top->fillPanel(p); // a. Fill top panel
+	// b. Fill listctrl
 }
 
 void PatientInfoUIPanel::resizeColumns()

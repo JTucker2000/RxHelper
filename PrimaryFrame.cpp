@@ -89,8 +89,6 @@ void PrimaryFrame::viewPatientButtonPress(wxCommandEvent& event)
 	if (selected_patient == nullptr) { return; }
 
 	patient_info_ui_panel->fillInfo(selected_patient); // Fill patient info UI with patient information.
-
-	wxMessageBox(selected_patient->getLastName()); // For testing.
 }
 
 PrimaryFrame::~PrimaryFrame()

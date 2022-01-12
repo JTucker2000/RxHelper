@@ -240,6 +240,35 @@ void PatientInfoTopPanel::clearPanel()
 	phtype_cmbox->SetLabelText("Phone Type");
 }
 
+void PatientInfoTopPanel::fillPanel(Patient* p)
+{
+	fname_txtctrl->SetValue(p->getFirstName());
+	addr_txtctrl->SetValue(p->getStreetAddr());
+	zip_txtctrl->SetValue(p->getZipCode());
+	phnum_txtctrl->SetValue(p->getPhoneNum());
+	lname_txtctrl->SetValue(p->getLastName());
+	city_txtctrl->SetValue(p->getCity());
+	state_txtctrl->SetValue(p->getState());
+	insname_txtctrl->SetValue(p->getInsuranceName());
+	
+	switch (p->getPhoneType()) 
+	{
+	case PhoneTypeEnum::Home:
+		phtype_cmbox->SetSelection(0);
+		break;
+	case PhoneTypeEnum::Mobile:
+		phtype_cmbox->SetSelection(1);
+		break;
+	case PhoneTypeEnum::Other:
+		phtype_cmbox->SetSelection(2);
+		break;
+	default:
+		std::cout << "Error, invalid PhoneTypeEnum in fillPanel() in PatientInfoTopPanel. Exiting." << std::endl;
+		exit(-1);
+		break;
+	}
+}
+
 PatientInfoTopPanel::~PatientInfoTopPanel()
 {
 

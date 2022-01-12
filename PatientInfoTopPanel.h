@@ -2,6 +2,8 @@
 #define PATIENTINFOTOPPANEL_H
 
 #include "wx/wx.h"
+#include "Patient.h"
+#include "PhoneTypeEnum.h"
 
 class PatientInfoTopPanel : public wxPanel
 {
@@ -10,6 +12,9 @@ public:
 
 	// Resets all textctrls and comboboxes back to their default state.
 	void clearPanel();
+
+	// Fills the top panel with patient information.
+	void fillPanel(Patient* p);
 
 	~PatientInfoTopPanel();
 

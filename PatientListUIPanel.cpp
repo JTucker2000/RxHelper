@@ -19,17 +19,16 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	wxFont tempf = patient_listctrl->GetFont(); // Make listctrl font bigger.
 	tempf.SetPointSize(12);
 	patient_listctrl->SetFont(tempf);
-	patient_listctrl->InsertColumn(0, "Name"); // Add columns to listctrl.
-	patient_listctrl->InsertColumn(1, "Address");
-	patient_listctrl->InsertColumn(2, "Zip");
-	patient_listctrl->InsertColumn(3, "State");
-	patient_listctrl->InsertColumn(4, "Phone");
-	patient_listctrl->InsertColumn(5, "# of Medications");
+	patient_listctrl->InsertColumn(0, "ID Number"); // Add columns to listctrl.
+	patient_listctrl->InsertColumn(1, "Name"); 
+	patient_listctrl->InsertColumn(2, "Address");
+	patient_listctrl->InsertColumn(3, "Zip");
+	patient_listctrl->InsertColumn(4, "State");
+	patient_listctrl->InsertColumn(5, "Phone");
+	patient_listctrl->InsertColumn(6, "# of Medications");
 
 	Patient* p = new Patient(1, "Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {}); // Add dummy patient for now.
 	Patient* x = new Patient(2, "John", "Doe", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {});
-	addPatient(p);
-	addPatient(x);
 	addPatient(p);
 	addPatient(x);
 	delete(p);
@@ -52,6 +51,7 @@ void PatientListUIPanel::resizeColumns()
 	patient_listctrl->SetColumnWidth(3, wxLIST_AUTOSIZE_USEHEADER);
 	patient_listctrl->SetColumnWidth(4, wxLIST_AUTOSIZE_USEHEADER);
 	patient_listctrl->SetColumnWidth(5, wxLIST_AUTOSIZE_USEHEADER);
+	patient_listctrl->SetColumnWidth(6, wxLIST_AUTOSIZE_USEHEADER);
 }
 
 void PatientListUIPanel::resizeColumnsEvt(wxSizeEvent& event)
@@ -63,14 +63,16 @@ void PatientListUIPanel::addPatient(Patient* p)
 {
 	std::string pname = p->getLastName() + ", " + p->getFirstName();
 	std::string num_meds = std::to_string(p->getMedList()->size());
+	std::string id_num = std::to_string(p->getUniqueID());
 	int cur_index = patient_listctrl->GetItemCount();
 
-	patient_listctrl->InsertItem(cur_index, pname);
-	patient_listctrl->SetItem(cur_index, 1, p->getStreetAddr());
-	patient_listctrl->SetItem(cur_index, 2, p->getZipCode());
-	patient_listctrl->SetItem(cur_index, 3, p->getState());
-	patient_listctrl->SetItem(cur_index, 4, p->getPhoneNum());
-	patient_listctrl->SetItem(cur_index, 5, num_meds);
+	patient_listctrl->InsertItem(cur_index, id_num);
+	patient_listctrl->SetItem(cur_index, 1, pname);
+	patient_listctrl->SetItem(cur_index, 2, p->getStreetAddr());
+	patient_listctrl->SetItem(cur_index, 3, p->getZipCode());
+	patient_listctrl->SetItem(cur_index, 4, p->getState());
+	patient_listctrl->SetItem(cur_index, 5, p->getPhoneNum());
+	patient_listctrl->SetItem(cur_index, 6, num_meds);
 	resizeColumns();
 }
 

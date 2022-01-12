@@ -24,20 +24,23 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	wxFont tempf = medication_listctrl->GetFont(); // Make listctrl font bigger.
 	tempf.SetPointSize(12);
 	medication_listctrl->SetFont(tempf);
-	medication_listctrl->InsertColumn(0, "Drug Name"); // Add columns to listctrl.
-	medication_listctrl->InsertColumn(1, "Dosage");
-	medication_listctrl->InsertColumn(2, "Price");
-	medication_listctrl->InsertColumn(3, "Description");
+	medication_listctrl->InsertColumn(0, "ID Number"); // Add columns to listctrl.
+	medication_listctrl->InsertColumn(1, "Drug Name"); 
+	medication_listctrl->InsertColumn(2, "Dosage");
+	medication_listctrl->InsertColumn(3, "Price");
+	medication_listctrl->InsertColumn(4, "Description");
 
-	medication_listctrl->InsertItem(0, "Advil"); // Insert example medication.
-	medication_listctrl->SetItem(0, 1, "2 Pills every 6 hours");
-	medication_listctrl->SetItem(0, 2, "$10.00");
-	medication_listctrl->SetItem(0, 3, "A mild pain reliever");
+	medication_listctrl->InsertItem(0, "1"); // Insert example medication.
+	medication_listctrl->SetItem(0, 1, "Advil");
+	medication_listctrl->SetItem(0, 2, "2 Pills every 6 hours");
+	medication_listctrl->SetItem(0, 3, "$10.00");
+	medication_listctrl->SetItem(0, 4, "A mild pain reliever");
 
-	medication_listctrl->InsertItem(1, "Pepto");
-	medication_listctrl->SetItem(1, 1, "10 mL when needed");
-	medication_listctrl->SetItem(1, 2, "$15.00");
-	medication_listctrl->SetItem(1, 3, "Reduces nausea and heartburn");
+	medication_listctrl->InsertItem(1, "2");
+	medication_listctrl->SetItem(1, 1, "Pepto");
+	medication_listctrl->SetItem(1, 2, "10 mL when needed");
+	medication_listctrl->SetItem(1, 3, "$15.00");
+	medication_listctrl->SetItem(1, 4, "Reduces nausea and heartburn");
 
 	resizeColumns();
 
@@ -54,6 +57,7 @@ void PatientInfoUIPanel::resizeColumns()
 	medication_listctrl->SetColumnWidth(1, wxLIST_AUTOSIZE_USEHEADER);
 	medication_listctrl->SetColumnWidth(2, wxLIST_AUTOSIZE_USEHEADER);
 	medication_listctrl->SetColumnWidth(3, wxLIST_AUTOSIZE_USEHEADER);
+	medication_listctrl->SetColumnWidth(4, wxLIST_AUTOSIZE_USEHEADER);
 }
 
 void PatientInfoUIPanel::resizeColumnsEvt(wxSizeEvent& event)

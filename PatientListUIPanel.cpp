@@ -55,9 +55,9 @@ Patient* PatientListUIPanel::getSelectedPatient()
 	std::string patient_id_string(rowinfo->GetText());
 	delete(rowinfo);
 
-	wxMessageBox(patient_id_string); // Output ID for testing for now.
+	unsigned int patient_id = HelperFunctions::stoui(patient_id_string); // Convert ID to unsigned int.
 
-	return nullptr;
+	return getPatientByID(patient_id); // Return patient associated with that ID.
 }
 
 Patient* PatientListUIPanel::getPatientByID(unsigned int id)

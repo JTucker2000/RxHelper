@@ -7,6 +7,7 @@
 #include "wx/listctrl.h"
 #include "Patient.h"
 #include "PatientListBtnPanel.h"
+#include "HelperFunctions.h"
 
 class PatientListUIPanel : public wxPanel
 {

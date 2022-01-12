@@ -29,10 +29,10 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 
 	Patient* p = new Patient(1, "Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {}); // Add dummy patient for now.
 	Patient* x = new Patient(2, "John", "Doe", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {});
-	addPatient(p);
-	addPatient(x);
-	delete(p);
-	delete(x);
+	patient_list.push_back(p);
+	patient_list.push_back(x);
+	addPatient(patient_list[0]);
+	addPatient(patient_list[1]);
 
 	resizeColumns();
 
@@ -105,7 +105,16 @@ void PatientListUIPanel::removePatientEvt(wxCommandEvent& event)
 	removePatient(selected_item);
 }
 
+void PatientListUIPanel::deletePatientList()
+{
+	for (int i = 0; i < patient_list.size(); i++) 
+	{
+		delete(patient_list[i]);
+	}
+	patient_list.clear();
+}
+
 PatientListUIPanel::~PatientListUIPanel()
 {
-	
+	deletePatientList();
 }

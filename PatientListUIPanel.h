@@ -2,6 +2,7 @@
 #define PATIENTLISTUIPANEL_H
 
 #include <string>
+#include <vector>
 #include "wx/wx.h"
 #include "wx/listctrl.h"
 #include "Patient.h"
@@ -17,6 +18,8 @@ public:
 	Patient* getSelectedPatient();
 
 private:
+	std::vector<Patient*> patient_list;
+
 	wxListCtrl* patient_listctrl = nullptr;
 
 	// Resizes columns in listctrl. Evt version runs after window resize event.
@@ -30,7 +33,8 @@ private:
 	void removePatient(int index);
 	void removePatientEvt(wxCommandEvent& event);
 
-
+	// Frees all memory associated with the patient list.
+	void deletePatientList();
 };
 
 #endif // PATIENTLISTUIPANEL_H

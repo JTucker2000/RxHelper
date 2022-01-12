@@ -31,8 +31,8 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	Patient* x = new Patient(2, "John", "Doe", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", {});
 	patient_list.push_back(p);
 	patient_list.push_back(x);
-	addPatient(patient_list[0]);
-	addPatient(patient_list[1]);
+	addPatientToList(patient_list[0]);
+	addPatientToList(patient_list[1]);
 
 	resizeColumns();
 
@@ -60,6 +60,16 @@ Patient* PatientListUIPanel::getSelectedPatient()
 	return nullptr;
 }
 
+Patient* PatientListUIPanel::getPatientByID(unsigned int id)
+{
+	for (int i = 0; i < patient_list.size(); i++) 
+	{
+		if (patient_list[i]->getUniqueID() == id) return patient_list[i];
+	}
+
+	return nullptr;
+}
+
 void PatientListUIPanel::resizeColumns()
 {
 	if (!patient_listctrl) return;
@@ -77,7 +87,7 @@ void PatientListUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 	resizeColumns();
 }
 
-void PatientListUIPanel::addPatient(Patient* p) 
+void PatientListUIPanel::addPatientToList(Patient* p)
 {
 	std::string pname = p->getLastName() + ", " + p->getFirstName();
 	std::string num_meds = std::to_string(p->getMedList()->size());

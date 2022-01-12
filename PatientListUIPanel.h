@@ -22,12 +22,16 @@ private:
 
 	wxListCtrl* patient_listctrl = nullptr;
 
+	// Returns pointer to patient in patient_list based on its ID.
+	// Returns nullptr if there is no patient with the ID.
+	Patient* getPatientByID(unsigned int id);
+
 	// Resizes columns in listctrl. Evt version runs after window resize event.
 	void resizeColumns();
 	void resizeColumnsEvt(wxSizeEvent& event);
 
 	// Adds the patient to the listctrl.
-	void addPatient(Patient* p);
+	void addPatientToList(Patient* p);
 
 	// Removes the patient at index from the listctrl. Evt version runs after remove button click.
 	void removePatient(int index);

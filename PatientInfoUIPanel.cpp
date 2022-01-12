@@ -53,7 +53,7 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 void PatientInfoUIPanel::fillInfo(Patient* p)
 {
 	// Steps to create this function
-	// 1. Clear Top Panel Info
+	patient_info_top->clearPanel(); // 1. Clear Top Panel Info
 	// 2. Clear Middle Panel Info
 	// 3. Clear Medication listctrl
 	// 4. Fill information for Top panel and medication listctrl (Middle panel info not needed until user makes a selection)

@@ -76,6 +76,16 @@ void PatientInfoUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 	resizeColumns();
 }
 
+void PatientInfoUIPanel::addMedicationToList(Medication* m)
+{
+	std::string id_num = std::to_string(m->getUniqueID());
+	int cur_index = medication_listctrl->GetItemCount();
+
+	medication_listctrl->InsertItem(cur_index, id_num);
+
+	resizeColumns();
+}
+
 void PatientInfoUIPanel::removeMedication(int index)
 {
 	medication_listctrl->DeleteItem(index);

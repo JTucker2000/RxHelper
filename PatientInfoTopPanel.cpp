@@ -237,7 +237,7 @@ void PatientInfoTopPanel::clearPanel()
 	state_txtctrl->Clear();
 	insname_txtctrl->Clear();
 	phtype_cmbox->SetSelection(wxNOT_FOUND);
-	phtype_cmbox->SetLabelText("Phone Type");
+	phtype_cmbox->SetLabelText("");
 }
 
 void PatientInfoTopPanel::fillPanel(Patient* p)

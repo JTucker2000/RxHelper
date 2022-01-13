@@ -227,8 +227,8 @@ void PatientInfoMiddlePanel::clearPanel()
 	desc_txtctrl->Clear();
 	dunit_cmbox->SetSelection(wxNOT_FOUND);
 	tunit_cmbox->SetSelection(wxNOT_FOUND);
-	dunit_cmbox->SetLabelText("Dose Unit");
-	tunit_cmbox->SetLabelText("Time Unit");
+	dunit_cmbox->SetLabelText("");
+	tunit_cmbox->SetLabelText("");
 }
 
 PatientInfoMiddlePanel::~PatientInfoMiddlePanel()

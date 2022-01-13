@@ -13,6 +13,14 @@ public:
 		unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec);
 
 	const unsigned int getUniqueID();
+	std::string getDrugName();
+	std::string getDescription();
+	unsigned int getDosage();
+	unsigned int getTimeNum();
+	unsigned int getPriceDollars();
+	unsigned int getPriceCents();
+	DoseUnitEnum getDosageUnit();
+	TimeUnitEnum getTimeUnit();
 
 	~Medication();
 

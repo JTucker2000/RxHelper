@@ -26,6 +26,14 @@ Medication::Medication(unsigned int id, std::string drugname, std::string desc, 
 }
 
 const unsigned int Medication::getUniqueID() { return unique_id; }
+std::string Medication::getDrugName() { return drug_name; }
+std::string Medication::getDescription() { return description; }
+unsigned int Medication::getDosage() { return dosage; }
+unsigned int Medication::getTimeNum() { return time_num; }
+unsigned int Medication::getPriceDollars() { return price_dollars; }
+unsigned int Medication::getPriceCents() { return price_cents; }
+DoseUnitEnum Medication::getDosageUnit() { return dosage_unit; }
+TimeUnitEnum Medication::getTimeUnit() { return time_unit; }
 
 Medication::~Medication()
 {

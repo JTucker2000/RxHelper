@@ -18,7 +18,7 @@ Medication::Medication(unsigned int id, std::string drugname, std::string desc, 
 	drug_name = drugname;
 	description = desc;
 	dosage = dose;
-	dosage_unit = dosage_unit;
+	dosage_unit = doseunit;
 	time_num = time;
 	time_unit = timeunit;
 	price_dollars = priced;

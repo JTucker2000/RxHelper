@@ -30,17 +30,15 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	medication_listctrl->InsertColumn(3, "Price");
 	medication_listctrl->InsertColumn(4, "Description");
 
-	medication_listctrl->InsertItem(0, "1"); // Insert example medication.
-	medication_listctrl->SetItem(0, 1, "Advil");
-	medication_listctrl->SetItem(0, 2, "2 Pills every 6 hours");
-	medication_listctrl->SetItem(0, 3, "$10.00");
-	medication_listctrl->SetItem(0, 4, "A mild pain reliever");
-
-	medication_listctrl->InsertItem(1, "2");
-	medication_listctrl->SetItem(1, 1, "Pepto");
-	medication_listctrl->SetItem(1, 2, "10 mL when needed");
-	medication_listctrl->SetItem(1, 3, "$15.00");
-	medication_listctrl->SetItem(1, 4, "Reduces nausea and heartburn");
+	Medication* med1 = new Medication(1, "Advil", "Pain reliever", 10, DoseUnitEnum::milligrams, 6, TimeUnitEnum::hours, 10, 99);
+	Medication* med2 = new Medication(2, "Morphine", "Pain reliever", 5, DoseUnitEnum::milligrams, 3, TimeUnitEnum::days, 500, 0);
+	Medication* med3 = new Medication(3, "Pepto", "Relieves indigestion", 50, DoseUnitEnum::milliliters, 6, TimeUnitEnum::hours, 15, 5);
+	addMedicationToList(med1);
+	addMedicationToList(med2);
+	addMedicationToList(med3);
+	delete(med1);
+	delete(med2);
+	delete(med3);
 
 	resizeColumns();
 
@@ -78,11 +76,60 @@ void PatientInfoUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 
 void PatientInfoUIPanel::addMedicationToList(Medication* m)
 {
+	if (m == nullptr) return;
+
+	std::string doseage_unit_str;
+	std::string time_unit_str;
+	DoseUnitEnum dose_unit = m->getDosageUnit();
+	TimeUnitEnum time_unit = m->getTimeUnit();
+	if (dose_unit == DoseUnitEnum::milligrams)
+	{
+		doseage_unit_str = "milligrams";
+	}
+	else if (dose_unit == DoseUnitEnum::milliliters)
+	{
+		doseage_unit_str = "milliliters";
+	}
+	else
+	{
+		doseage_unit_str = "Error, invalid dose_unit";
+	}
+	if (time_unit == TimeUnitEnum::days)
+	{
+		time_unit_str = "days";
+	}
+	else if (time_unit == TimeUnitEnum::hours)
+	{
+		time_unit_str = "hours";
+	}
+	else if (time_unit == TimeUnitEnum::minutes)
+	{
+		time_unit_str = "minutes";
+	}
+	else
+	{
+		time_unit_str = "Error, invalid time_unit";
+	}
+	std::string dosage_str = std::to_string(m->getDosage()) + " " + doseage_unit_str + " every " + std::to_string(m->getTimeNum()) + " " + time_unit_str;
+
 	std::string id_num = std::to_string(m->getUniqueID());
+	std::string cents_str;
+	if (m->getPriceCents() < 10)
+	{
+		cents_str = "0" + std::to_string(m->getPriceCents());
+	}
+	else
+	{
+		cents_str = std::to_string(m->getPriceCents());
+	}
+	std::string price_str = "$" + std::to_string(m->getPriceDollars()) + "." + cents_str;
 	int cur_index = medication_listctrl->GetItemCount();
 
 	medication_listctrl->InsertItem(cur_index, id_num);
-
+	medication_listctrl->SetItem(cur_index, 1, m->getDrugName());
+	medication_listctrl->SetItem(cur_index, 2, dosage_str);
+	medication_listctrl->SetItem(cur_index, 3, price_str);
+	medication_listctrl->SetItem(cur_index, 4, m->getDescription());
 	resizeColumns();
 }
 

@@ -30,6 +30,9 @@ private:
 	// Adds the medication to the listctrl.
 	void addMedicationToList(Medication* m);
 
+	// Fills the medication listctrl with all medications from a given patient.
+	void fillListFromPatient(Patient* p);
+
 	// Removes the medication at index from the listctrl. Evt version runs after remove button click.
 	void removeMedication(int index);
 	void removeMedicationEvt(wxCommandEvent& event);

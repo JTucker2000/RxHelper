@@ -30,16 +30,6 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	medication_listctrl->InsertColumn(3, "Price");
 	medication_listctrl->InsertColumn(4, "Description");
 
-	Medication* med1 = new Medication(1, "Advil", "Pain reliever", 10, DoseUnitEnum::milligrams, 6, TimeUnitEnum::hours, 10, 99);
-	Medication* med2 = new Medication(2, "Morphine", "Pain reliever", 5, DoseUnitEnum::milligrams, 3, TimeUnitEnum::days, 500, 0);
-	Medication* med3 = new Medication(3, "Pepto", "Relieves indigestion", 50, DoseUnitEnum::milliliters, 6, TimeUnitEnum::hours, 15, 5);
-	addMedicationToList(med1);
-	addMedicationToList(med2);
-	addMedicationToList(med3);
-	delete(med1);
-	delete(med2);
-	delete(med3);
-
 	resizeColumns();
 
 	medication_listctrl->Bind(wxEVT_SIZE, &PatientInfoUIPanel::resizeColumnsEvt, this); // Automatically resize columns.
@@ -50,13 +40,11 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 
 void PatientInfoUIPanel::fillInfo(Patient* p)
 {
-	// Steps to create this function
-	patient_info_top->clearPanel(); // 1. Clear Top Panel Info
-	patient_info_middle->clearPanel(); // 2. Clear Middle Panel Info
-	medication_listctrl->DeleteAllItems(); // 3. Clear Medication listctrl
-	// 4. Fill information for Top panel and medication listctrl (Middle panel info not needed until user makes a selection)
-	patient_info_top->fillPanel(p); // a. Fill top panel
-	// b. Fill listctrl
+	patient_info_top->clearPanel();
+	patient_info_middle->clearPanel();
+	medication_listctrl->DeleteAllItems();
+	patient_info_top->fillPanel(p);
+	fillListFromPatient(p);
 }
 
 void PatientInfoUIPanel::resizeColumns()
@@ -131,6 +119,17 @@ void PatientInfoUIPanel::addMedicationToList(Medication* m)
 	medication_listctrl->SetItem(cur_index, 3, price_str);
 	medication_listctrl->SetItem(cur_index, 4, m->getDescription());
 	resizeColumns();
+}
+
+void PatientInfoUIPanel::fillListFromPatient(Patient* p)
+{
+	std::vector<Medication*>* med_list_pointer = p->getMedList();
+	if (med_list_pointer == nullptr) return;
+
+	for (int i = 0; i < med_list_pointer->size(); i++)
+	{
+		addMedicationToList(med_list_pointer->at(i));
+	}
 }
 
 void PatientInfoUIPanel::removeMedication(int index)

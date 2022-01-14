@@ -23,6 +23,7 @@ private:
 	wxListCtrl* medication_listctrl = nullptr;
 	PatientInfoTopPanel* patient_info_top = nullptr;
 	PatientInfoMiddlePanel* patient_info_middle = nullptr;
+	Patient* cur_patient = nullptr;
 
 	// Resizes columns in listctrl. Evt version runs after window resize event.
 	void resizeColumns();
@@ -43,6 +44,9 @@ private:
 
 	// Returns a pointer to the currently selected medication in the listctrl.
 	Medication* getSelectedMedication();
+
+	// Returns pointer to medication in cur_patient based on its ID, nullptr if there is no medication with the ID or if cur_patient = nullptr.
+	Medication* getMedicationByID(unsigned int id);
 };
 
 #endif // PATIENTINFOUIPANEL_H

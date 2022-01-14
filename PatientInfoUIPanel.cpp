@@ -40,6 +40,7 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 
 void PatientInfoUIPanel::fillPatientInfo(Patient* p)
 {
+	cur_patient = p;
 	patient_info_top->clearPanel();
 	patient_info_middle->clearPanel();
 	medication_listctrl->DeleteAllItems();
@@ -104,14 +105,41 @@ void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 
 void PatientInfoUIPanel::viewMedicationButtonPress(wxCommandEvent& event)
 {
-	// Find medication associated with the listctrl selection.
-	patient_info_middle->clearPanel();
-	// Fill the middle panel with that medication's information.
+	Medication* selected_medication = getSelectedMedication(); // Get a pointer to the currently selected medication.
+	if (selected_medication == nullptr) { return; }
+
+	patient_info_middle->clearPanel(); // Fill medication info UI with medication information.
+	patient_info_middle->fillMedicationInfo(selected_medication);
 }
 
 Medication* PatientInfoUIPanel::getSelectedMedication()
 {
-	return nullptr; // Placeholder
+	long selected_item = medication_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED); // Get selected item.
+	if (selected_item == -1) return nullptr;
+
+	wxListItem* rowinfo = new wxListItem(); // Get medication ID of selected item.
+	rowinfo->SetMask(wxLIST_MASK_TEXT);
+	rowinfo->SetId(selected_item);
+	rowinfo->SetColumn(0);
+	medication_listctrl->GetItem(*rowinfo);
+	std::string medication_id_string(rowinfo->GetText());
+	delete(rowinfo);
+
+	unsigned int medication_id = HelperFunctions::stoui(medication_id_string); // Convert ID to unsigned int.
+
+	return getMedicationByID(medication_id); // Return patient associated with that ID.
+}
+
+Medication* PatientInfoUIPanel::getMedicationByID(unsigned int id)
+{
+	if (cur_patient == nullptr) return nullptr;
+
+	for (int i = 0; i < cur_patient->getMedList()->size(); i++)
+	{
+		if (cur_patient->getMedList()->at(i)->getUniqueID() == id) return cur_patient->getMedList()->at(i);
+	}
+
+	return nullptr;
 }
 
 PatientInfoUIPanel::~PatientInfoUIPanel()

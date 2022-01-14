@@ -61,3 +61,21 @@ std::string HelperFunctions::tuetostr(TimeUnitEnum t)
 		exit(-1);
 	}
 }
+
+std::string HelperFunctions::pricetostr(unsigned int dollars, unsigned int cents)
+{
+	if (cents > 99) return "Error: pricetostr cents value over 99.";
+
+	std::string cents_str;
+	if (cents < 10)
+	{
+		cents_str = "0" + std::to_string(cents);
+	}
+	else
+	{
+		cents_str = std::to_string(cents);
+	}
+	std::string price_str = "$" + std::to_string(dollars) + "." + cents_str;
+	
+	return price_str;
+}

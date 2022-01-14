@@ -70,22 +70,12 @@ void PatientInfoUIPanel::addMedicationToList(Medication* m)
 	std::string time_unit_str = HelperFunctions::tuetostr(m->getTimeUnit());
 	std::string dosage_str = std::to_string(m->getDosage()) + " " + doseage_unit_str + " every " + std::to_string(m->getTimeNum()) + " " + time_unit_str;
 	std::string id_num = std::to_string(m->getUniqueID());
-	std::string cents_str;
-	if (m->getPriceCents() < 10)
-	{
-		cents_str = "0" + std::to_string(m->getPriceCents());
-	}
-	else
-	{
-		cents_str = std::to_string(m->getPriceCents());
-	}
-	std::string price_str = "$" + std::to_string(m->getPriceDollars()) + "." + cents_str;
 	int cur_index = medication_listctrl->GetItemCount();
 
 	medication_listctrl->InsertItem(cur_index, id_num);
 	medication_listctrl->SetItem(cur_index, 1, m->getDrugName());
 	medication_listctrl->SetItem(cur_index, 2, dosage_str);
-	medication_listctrl->SetItem(cur_index, 3, price_str);
+	medication_listctrl->SetItem(cur_index, 3, HelperFunctions::pricetostr(m->getPriceDollars(), m->getPriceCents()));
 	medication_listctrl->SetItem(cur_index, 4, m->getDescription());
 	resizeColumns();
 }

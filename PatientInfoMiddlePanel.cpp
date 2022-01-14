@@ -174,7 +174,7 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	wxBoxSizer* med_button_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for this panel's buttons.
 	med_button_sizer->Add
 	(
-		new wxButton(this, wxID_ANY, "View Medication", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		new wxButton(this, VIEWMEDICATIONBTN_ID, "View Medication", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
 		wxSizerFlags(1).Expand().Border(wxRIGHT | wxUP | wxDOWN, 5)
 	);
 	med_button_sizer->Add
@@ -241,13 +241,13 @@ void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)
 	}
 	switch (m->getTimeUnit())
 	{
-	case TimeUnitEnum::days:
+	case TimeUnitEnum::minutes:
 		tunit_cmbox->SetSelection(0);
 		break;
 	case TimeUnitEnum::hours:
 		tunit_cmbox->SetSelection(1);
 		break;
-	case TimeUnitEnum::minutes:
+	case TimeUnitEnum::days:
 		tunit_cmbox->SetSelection(2);
 		break;
 	default:

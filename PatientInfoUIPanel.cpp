@@ -33,6 +33,7 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	resizeColumns();
 
 	medication_listctrl->Bind(wxEVT_SIZE, &PatientInfoUIPanel::resizeColumnsEvt, this); // Automatically resize columns.
+	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::viewMedicationButtonPress, this, VIEWMEDICATIONBTN_ID); // View medication button click.
 	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::removeMedicationEvt, this, REMOVEMEDICATIONBTN_ID); // Remove medication button click.
 
 	SetSizer(pinfo_sizer);
@@ -127,7 +128,7 @@ Medication* PatientInfoUIPanel::getSelectedMedication()
 
 	unsigned int medication_id = HelperFunctions::stoui(medication_id_string); // Convert ID to unsigned int.
 
-	return getMedicationByID(medication_id); // Return patient associated with that ID.
+	return getMedicationByID(medication_id); // Return medication associated with that ID.
 }
 
 Medication* PatientInfoUIPanel::getMedicationByID(unsigned int id)

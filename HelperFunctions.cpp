@@ -8,7 +8,7 @@ unsigned int HelperFunctions::stoui(std::string input)
 	{
 		if (input[i] >= '0' && input[i] <= '9') 
 		{
-			sum += (input[i] - '0');
+			sum += (input[i] - '0') * (int)std::pow((double)10, (double)((input.size() - i) - 1));
 		}
 		else 
 		{

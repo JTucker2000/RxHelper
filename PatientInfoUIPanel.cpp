@@ -66,40 +66,9 @@ void PatientInfoUIPanel::addMedicationToList(Medication* m)
 {
 	if (m == nullptr) return;
 
-	std::string doseage_unit_str;
-	std::string time_unit_str;
-	DoseUnitEnum dose_unit = m->getDosageUnit();
-	TimeUnitEnum time_unit = m->getTimeUnit();
-	if (dose_unit == DoseUnitEnum::milligrams)
-	{
-		doseage_unit_str = "milligrams";
-	}
-	else if (dose_unit == DoseUnitEnum::milliliters)
-	{
-		doseage_unit_str = "milliliters";
-	}
-	else
-	{
-		doseage_unit_str = "Error, invalid dose_unit";
-	}
-	if (time_unit == TimeUnitEnum::days)
-	{
-		time_unit_str = "days";
-	}
-	else if (time_unit == TimeUnitEnum::hours)
-	{
-		time_unit_str = "hours";
-	}
-	else if (time_unit == TimeUnitEnum::minutes)
-	{
-		time_unit_str = "minutes";
-	}
-	else
-	{
-		time_unit_str = "Error, invalid time_unit";
-	}
+	std::string doseage_unit_str = HelperFunctions::duetostr(m->getDosageUnit());
+	std::string time_unit_str = HelperFunctions::tuetostr(m->getTimeUnit());
 	std::string dosage_str = std::to_string(m->getDosage()) + " " + doseage_unit_str + " every " + std::to_string(m->getTimeNum()) + " " + time_unit_str;
-
 	std::string id_num = std::to_string(m->getUniqueID());
 	std::string cents_str;
 	if (m->getPriceCents() < 10)

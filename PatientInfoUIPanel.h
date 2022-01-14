@@ -5,6 +5,7 @@
 #include "wx/listctrl.h"
 #include "ObjectIDs.h"
 #include "Patient.h"
+#include "HelperFunctions.h"
 #include "PatientInfoTopPanel.h"
 #include "PatientInfoMiddlePanel.h"
 

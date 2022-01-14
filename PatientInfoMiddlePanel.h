@@ -2,12 +2,16 @@
 #define PATIENTINFOMIDDLEPANEL_H
 
 #include "wx/wx.h"
+#include "Medication.h"
 #include "ObjectIDs.h"
 
 class PatientInfoMiddlePanel : public wxPanel
 {
 public:
 	PatientInfoMiddlePanel(wxWindow* parent);
+
+	// Fills the medication info UI panel with the given medication's information.
+	void fillMedicationInfo(Medication* m);
 
 	// Resets all textctrls and comboboxes back to their default state.
 	void clearPanel();

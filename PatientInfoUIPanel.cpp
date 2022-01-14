@@ -38,7 +38,7 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	SetSizer(pinfo_sizer);
 }
 
-void PatientInfoUIPanel::fillInfo(Patient* p)
+void PatientInfoUIPanel::fillPatientInfo(Patient* p)
 {
 	patient_info_top->clearPanel();
 	patient_info_middle->clearPanel();

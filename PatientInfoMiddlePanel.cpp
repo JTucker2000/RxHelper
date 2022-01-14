@@ -218,6 +218,16 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	SetSizer(top_sizer);
 }
 
+void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)
+{
+	clearPanel();
+	dname_txtctrl->SetValue(m->getDrugName());
+	dosage_txtctrl->SetValue(std::to_string(m->getDosage()));
+	tnum_txtctrl->SetValue(std::to_string(m->getTimeNum()));
+	desc_txtctrl->SetValue(m->getDescription());
+	// TODO: Set price, dose unit and time unit.
+}
+
 void PatientInfoMiddlePanel::clearPanel()
 {
 	dname_txtctrl->Clear();

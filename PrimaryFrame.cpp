@@ -88,7 +88,7 @@ void PrimaryFrame::viewPatientButtonPress(wxCommandEvent& event)
 	Patient* selected_patient = patient_list_ui_panel->getSelectedPatient(); // Get a pointer to the currently selected patient.
 	if (selected_patient == nullptr) { return; }
 
-	patient_info_ui_panel->fillInfo(selected_patient); // Fill patient info UI with patient information.
+	patient_info_ui_panel->fillPatientInfo(selected_patient); // Fill patient info UI with patient information.
 }
 
 PrimaryFrame::~PrimaryFrame()

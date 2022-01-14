@@ -14,7 +14,7 @@ public:
 	PatientInfoUIPanel(wxWindow* parent);
 
 	// Fills the patient info UI panel with the given patient's information.
-	void fillInfo(Patient* p);
+	void fillPatientInfo(Patient* p);
 
 	~PatientInfoUIPanel();
 

@@ -220,12 +220,41 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 
 void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)
 {
-	clearPanel();
 	dname_txtctrl->SetValue(m->getDrugName());
 	dosage_txtctrl->SetValue(std::to_string(m->getDosage()));
 	tnum_txtctrl->SetValue(std::to_string(m->getTimeNum()));
 	desc_txtctrl->SetValue(m->getDescription());
-	// TODO: Set price, dose unit and time unit.
+	price_txtctrl->SetValue(HelperFunctions::pricetostr(m->getPriceDollars(), m->getPriceCents()));
+
+	switch (m->getDosageUnit())
+	{
+	case DoseUnitEnum::milligrams:
+		dunit_cmbox->SetSelection(0);
+		break;
+	case DoseUnitEnum::milliliters:
+		dunit_cmbox->SetSelection(1);
+		break;
+	default:
+		std::cout << "Error, invalid DoseUnitEnum in fillMedicationInfo() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		exit(-1);
+		break;
+	}
+	switch (m->getTimeUnit())
+	{
+	case TimeUnitEnum::days:
+		tunit_cmbox->SetSelection(0);
+		break;
+	case TimeUnitEnum::hours:
+		tunit_cmbox->SetSelection(1);
+		break;
+	case TimeUnitEnum::minutes:
+		tunit_cmbox->SetSelection(2);
+		break;
+	default:
+		std::cout << "Error, invalid TimeUnitEnum in fillMedicationInfo() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		exit(-1);
+		break;
+	}
 }
 
 void PatientInfoMiddlePanel::clearPanel()

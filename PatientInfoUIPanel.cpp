@@ -102,6 +102,18 @@ void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 	removeMedication(selected_item);
 }
 
+void PatientInfoUIPanel::viewMedicationButtonPress(wxCommandEvent& event)
+{
+	// Find medication associated with the listctrl selection.
+	patient_info_middle->clearPanel();
+	// Fill the middle panel with that medication's information.
+}
+
+Medication* PatientInfoUIPanel::getSelectedMedication()
+{
+	return nullptr; // Placeholder
+}
+
 PatientInfoUIPanel::~PatientInfoUIPanel()
 {
 

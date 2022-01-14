@@ -37,6 +37,12 @@ private:
 	// Removes the medication at index from the listctrl. Evt version runs after remove button click.
 	void removeMedication(int index);
 	void removeMedicationEvt(wxCommandEvent& event);
+
+	// Fills the medication info panel when the view medication button is pressed.
+	void viewMedicationButtonPress(wxCommandEvent& event);
+
+	// Returns a pointer to the currently selected medication in the listctrl.
+	Medication* getSelectedMedication();
 };
 
 #endif // PATIENTINFOUIPANEL_H

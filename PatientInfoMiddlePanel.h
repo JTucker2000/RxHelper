@@ -2,6 +2,7 @@
 #define PATIENTINFOMIDDLEPANEL_H
 
 #include "wx/wx.h"
+#include "HelperFunctions.h"
 #include "Medication.h"
 #include "ObjectIDs.h"
 

@@ -42,8 +42,8 @@ private:
 	void removeMedication(int index);
 	void removeMedicationEvt(wxCommandEvent& event);
 
-	// Fills the medication info panel when the view medication button is pressed.
-	void viewMedicationButtonPress(wxCommandEvent& event);
+	// Fills the medication info panel when an item is selected in the medication listctrl.
+	void medicationListctrlItemSelect(wxCommandEvent& event);
 
 	// Returns a pointer to the currently selected medication in the listctrl.
 	Medication* getSelectedMedication();

@@ -174,13 +174,8 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	wxBoxSizer* med_button_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for this panel's buttons.
 	med_button_sizer->Add
 	(
-		new wxButton(this, VIEWMEDICATIONBTN_ID, "View Medication", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
-		wxSizerFlags(1).Expand().Border(wxRIGHT | wxUP | wxDOWN, 5)
-	);
-	med_button_sizer->Add
-	(
 		new wxButton(this, wxID_ANY, "Save Medication", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
-		wxSizerFlags(1).Expand().Border(wxALL, 5)
+		wxSizerFlags(1).Expand().Border(wxRIGHT | wxUP | wxDOWN, 5)
 	);
 	med_button_sizer->Add
 	(

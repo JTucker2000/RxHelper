@@ -15,7 +15,7 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 		patient_info_middle,
 		wxSizerFlags().Expand().Border(wxLEFT | wxRIGHT | wxUP, 5)
 	);
-	medication_listctrl = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT);
+	medication_listctrl = new wxListCtrl(this, MEDICATIONLISTCTRL_ID, wxDefaultPosition, wxDefaultSize, wxLC_REPORT);
 	pinfo_sizer->Add
 	(
 		medication_listctrl,
@@ -33,8 +33,8 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	resizeColumns();
 
 	medication_listctrl->Bind(wxEVT_SIZE, &PatientInfoUIPanel::resizeColumnsEvt, this); // Automatically resize columns.
-	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::viewMedicationButtonPress, this, VIEWMEDICATIONBTN_ID); // View medication button click.
 	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::removeMedicationEvt, this, REMOVEMEDICATIONBTN_ID); // Remove medication button click.
+	Bind(wxEVT_LIST_ITEM_SELECTED, &PatientInfoUIPanel::medicationListctrlItemSelect, this, MEDICATIONLISTCTRL_ID); // Medication listctrl item select.
 
 	SetSizer(pinfo_sizer);
 }
@@ -109,7 +109,7 @@ void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 	removeMedication(selected_item);
 }
 
-void PatientInfoUIPanel::viewMedicationButtonPress(wxCommandEvent& event)
+void PatientInfoUIPanel::medicationListctrlItemSelect(wxCommandEvent& event)
 {
 	Medication* selected_medication = getSelectedMedication(); // Get a pointer to the currently selected medication.
 	if (selected_medication == nullptr) { return; }

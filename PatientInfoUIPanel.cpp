@@ -42,11 +42,16 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 void PatientInfoUIPanel::fillPatientInfo(Patient* p)
 {
 	cur_patient = p;
+	clearPanel();
+	patient_info_top->fillPanel(p);
+	fillListFromPatient(p);
+}
+
+void PatientInfoUIPanel::clearPanel()
+{
 	patient_info_top->clearPanel();
 	patient_info_middle->clearPanel();
 	medication_listctrl->DeleteAllItems();
-	patient_info_top->fillPanel(p);
-	fillListFromPatient(p);
 }
 
 void PatientInfoUIPanel::resizeColumns()

@@ -17,6 +17,9 @@ public:
 	// Fills the patient info UI panel with the given patient's information.
 	void fillPatientInfo(Patient* p);
 
+	// Resets all textctrls, listctrls, and comboboxes back to their default state.
+	void clearPanel();
+
 	~PatientInfoUIPanel();
 
 private:

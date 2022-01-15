@@ -10,7 +10,7 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 		lc_btn_panel,
 		wxSizerFlags().Expand()
 	);
-	patient_listctrl = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT);
+	patient_listctrl = new wxListCtrl(this, PATIENTLISTCTRL_ID, wxDefaultPosition, wxDefaultSize, wxLC_REPORT);
 	lc_sizer->Add
 	(
 		patient_listctrl,

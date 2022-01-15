@@ -39,7 +39,7 @@ void PrimaryFrame::initializeMainPageUI()
 	patient_info_ui_panel = new PatientInfoUIPanel(this);
 	patient_list_ui_panel = new PatientListUIPanel(this);
 
-	patient_list_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::viewPatientButtonPress, this, VIEWPATIENTBTN_ID); // Handle main page UI events.
+	patient_list_ui_panel->Bind(wxEVT_LIST_ITEM_SELECTED, &PrimaryFrame::patientListctrlItemSelect, this, PATIENTLISTCTRL_ID); // Handle main page UI events.
 
 	main_search_ui_panel->Hide(); // Hidden on program start.
 	patient_info_ui_panel->Hide();
@@ -83,7 +83,7 @@ void PrimaryFrame::loginButtonPress(wxCommandEvent& event)
 	Update();
 }
 
-void PrimaryFrame::viewPatientButtonPress(wxCommandEvent& event)
+void PrimaryFrame::patientListctrlItemSelect(wxCommandEvent& event)
 {
 	Patient* selected_patient = patient_list_ui_panel->getSelectedPatient(); // Get a pointer to the currently selected patient.
 	if (selected_patient == nullptr) { return; }

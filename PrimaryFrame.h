@@ -28,7 +28,7 @@ private:
 	void initializeLoginUI();
 	void initializeMainPageUI();
 	void loginButtonPress(wxCommandEvent& event);
-	void viewPatientButtonPress(wxCommandEvent& event);
+	void patientListctrlItemSelect(wxCommandEvent& event);
 };
 
 #endif // PRIMARYFRAME_H

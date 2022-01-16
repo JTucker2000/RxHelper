@@ -101,6 +101,7 @@ void PatientInfoUIPanel::fillListFromPatient(Patient* p)
 void PatientInfoUIPanel::removeMedication(int index)
 {
 	medication_listctrl->DeleteItem(index);
+	patient_info_middle->clearPanel();
 }
 
 void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)

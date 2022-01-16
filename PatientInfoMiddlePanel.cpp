@@ -3,9 +3,12 @@
 PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2621440L, wxPanelNameStr)
 {
 	wxStaticText* minfo_txt = new wxStaticText(this, wxID_ANY, "Medication Info", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr); // Create medication info static text.
-	wxFont tempf = minfo_txt->GetFont(); // Make font bigger.
-	tempf.SetPointSize(14);
-	minfo_txt->SetFont(tempf);
+	wxFont tempf1 = minfo_txt->GetFont(); // Make font bigger.
+	tempf1.SetPointSize(14);
+	minfo_txt->SetFont(tempf1);
+
+	wxFont tempf2 = tempf1; // Make slightly smaller font for textctrl and comboboxes.
+	tempf2.SetPointSize(12);
 
 	wxBoxSizer* middle_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for the middle of this panel.
 	wxBoxSizer* left_middle_sizer = new wxBoxSizer(wxVERTICAL); // Sizer for left side of middle.
@@ -24,7 +27,8 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	wxBoxSizer* dname_sizer = new wxBoxSizer(wxHORIZONTAL); // Drug name sizer.
 	wxStaticText* dname_txt = new wxStaticText(this, wxID_ANY, "Drug Name:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	dname_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
-	dname_txt->SetFont(tempf);
+	dname_txt->SetFont(tempf1);
+	dname_txtctrl->SetFont(tempf2);
 	dname_sizer->Add
 	(
 		dname_txt,
@@ -39,7 +43,8 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	wxBoxSizer* dosage_sizer = new wxBoxSizer(wxHORIZONTAL); // Dosage sizer.
 	wxStaticText* dosage_txt = new wxStaticText(this, wxID_ANY, "Dosage:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	dosage_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
-	dosage_txt->SetFont(tempf);
+	dosage_txt->SetFont(tempf1);
+	dosage_txtctrl->SetFont(tempf2);
 	dosage_sizer->Add
 	(
 		dosage_txt,
@@ -54,7 +59,8 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	wxBoxSizer* tnum_sizer = new wxBoxSizer(wxHORIZONTAL); // Time number sizer.
 	wxStaticText* tnum_txt = new wxStaticText(this, wxID_ANY, "Frequency:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	tnum_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
-	tnum_txt->SetFont(tempf);
+	tnum_txt->SetFont(tempf1);
+	tnum_txtctrl->SetFont(tempf2);
 	tnum_sizer->Add
 	(
 		tnum_txt,
@@ -86,7 +92,8 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	wxBoxSizer* price_sizer = new wxBoxSizer(wxHORIZONTAL); // Price sizer.
 	wxStaticText* price_txt = new wxStaticText(this, wxID_ANY, "Price:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	price_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
-	price_txt->SetFont(tempf);
+	price_txt->SetFont(tempf1);
+	price_txtctrl->SetFont(tempf2);
 	price_sizer->Add
 	(
 		price_txt,
@@ -100,11 +107,12 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 
 	wxBoxSizer* dunit_sizer = new wxBoxSizer(wxHORIZONTAL); // Dosage unit sizer.
 	wxStaticText* dunit_txt = new wxStaticText(this, wxID_ANY, "Dose Unit:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
-	dunit_txt->SetFont(tempf);
+	dunit_txt->SetFont(tempf1);
 	wxArrayString* dunit_choices = new wxArrayString();
 	dunit_choices->Add("Milligrams");
 	dunit_choices->Add("Milliliters");
 	dunit_cmbox = new wxComboBox(this, wxID_ANY, "Dose Unit", wxDefaultPosition, wxDefaultSize, *dunit_choices, 0L, wxDefaultValidator, wxComboBoxNameStr);
+	dunit_cmbox->SetFont(tempf2);
 
 	dunit_sizer->Add
 	(
@@ -120,12 +128,13 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 
 	wxBoxSizer* tunit_sizer = new wxBoxSizer(wxHORIZONTAL); // Time unit sizer.
 	wxStaticText* tunit_txt = new wxStaticText(this, wxID_ANY, "Time Unit:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
-	tunit_txt->SetFont(tempf);
+	tunit_txt->SetFont(tempf1);
 	wxArrayString* tunit_choices = new wxArrayString();
 	tunit_choices->Add("Minutes");
 	tunit_choices->Add("Hours");
 	tunit_choices->Add("Days");
 	tunit_cmbox = new wxComboBox(this, wxID_ANY, "Time Unit", wxDefaultPosition, wxDefaultSize, *tunit_choices, 0L, wxDefaultValidator, wxComboBoxNameStr);
+	tunit_cmbox->SetFont(tempf2);
 
 	tunit_sizer->Add
 	(
@@ -159,7 +168,8 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	wxBoxSizer* desc_sizer = new wxBoxSizer(wxHORIZONTAL); // Description sizer.
 	wxStaticText* desc_txt = new wxStaticText(this, wxID_ANY, "Description:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	desc_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
-	desc_txt->SetFont(tempf);
+	desc_txt->SetFont(tempf1);
+	desc_txtctrl->SetFont(tempf2);
 	desc_sizer->Add
 	(
 		desc_txt,

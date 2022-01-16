@@ -7,7 +7,7 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	tempf1.SetPointSize(14);
 	pinfo_txt->SetFont(tempf1);
 	
-	wxFont tempf2 = tempf1; // Make slightly bigger font for textctrl and comboboxes.
+	wxFont tempf2 = tempf1; // Make slightly smaller font for textctrl and comboboxes.
 	tempf2.SetPointSize(12);
 
 	wxBoxSizer* middle_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for the middle of this panel.

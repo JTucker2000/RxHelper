@@ -2,6 +2,8 @@
 
 Patient::Patient() : unique_id(-1)
 {
+	age = 0;
+	age_unit = TimeUnitEnum::days;
 	first_name = "";
 	last_name = "";
 	street_addr = "";
@@ -14,11 +16,13 @@ Patient::Patient() : unique_id(-1)
 	med_list = {};
 }
 
-Patient::Patient(unsigned int id, std::string fname, std::string lname,
+Patient::Patient(unsigned int id, unsigned int agenum, TimeUnitEnum ageunit, std::string fname, std::string lname,
 	std::string addr, std::string cty, std::string zip, std::string phnum,
 	std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist) : unique_id(id) // TODO: Generate unique IDs for each medication, patient, and user. Hardcoded for now.
 {
 	// TODO: Sanitize these before putting them in the container.
+	age = agenum;
+	age_unit = ageunit;
 	first_name = fname;
 	last_name = lname;
 	street_addr = addr;
@@ -32,6 +36,8 @@ Patient::Patient(unsigned int id, std::string fname, std::string lname,
 }
 
 const unsigned int Patient::getUniqueID() { return unique_id; }
+unsigned int Patient::getAge() { return age; }
+TimeUnitEnum Patient::getAgeUnit() { return age_unit; }
 std::string Patient::getFirstName() { return first_name; }
 std::string Patient::getLastName() { return last_name; }
 std::string Patient::getStreetAddr() { return street_addr; }

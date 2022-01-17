@@ -21,10 +21,12 @@ public:
 private:
 	// Textctrl pointers for this panel.
 	wxTextCtrl* fname_txtctrl = nullptr;
+	wxTextCtrl* age_txtctrl = nullptr;
 	wxTextCtrl* addr_txtctrl = nullptr;
 	wxTextCtrl* zip_txtctrl = nullptr;
 	wxTextCtrl* phnum_txtctrl = nullptr;
 	wxTextCtrl* lname_txtctrl = nullptr;
+	wxTextCtrl* age_unit_txtctrl = nullptr;
 	wxTextCtrl* city_txtctrl = nullptr;
 	wxTextCtrl* state_txtctrl = nullptr;
 	wxTextCtrl* insname_txtctrl = nullptr;

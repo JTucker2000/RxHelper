@@ -40,6 +40,22 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 		wxSizerFlags(3).Expand()
 	);
 
+	wxBoxSizer* age_sizer = new wxBoxSizer(wxHORIZONTAL); // Age sizer.
+	wxStaticText* age_txt = new wxStaticText(this, wxID_ANY, "Age:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	age_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
+	age_txt->SetFont(tempf1);
+	age_txtctrl->SetFont(tempf2);
+	age_sizer->Add
+	(
+		age_txt,
+		wxSizerFlags(1).Border(wxRIGHT, 5)
+	);
+	age_sizer->Add
+	(
+		age_txtctrl,
+		wxSizerFlags(3).Expand()
+	);
+
 	wxBoxSizer* addr_sizer = new wxBoxSizer(wxHORIZONTAL); // Address sizer.
 	wxStaticText* addr_txt = new wxStaticText(this, wxID_ANY, "Street Addr:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	addr_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
@@ -88,10 +104,15 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 		wxSizerFlags(3).Expand()
 	);
 
-	// Add first name, street address, zip code, and phone number to left middle sizer.
+	// Add first name, age, street address, zip code, and phone number to left middle sizer.
 	left_middle_sizer->Add
 	(
 		fname_sizer,
+		wxSizerFlags(1).Expand().Border(wxRIGHT | wxDOWN, 10)
+	);
+	left_middle_sizer->Add
+	(
+		age_sizer,
 		wxSizerFlags(1).Expand().Border(wxRIGHT | wxDOWN, 10)
 	);
 	left_middle_sizer->Add
@@ -123,6 +144,22 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	lname_sizer->Add
 	(
 		lname_txtctrl,
+		wxSizerFlags(3).Expand()
+	);
+
+	wxBoxSizer* age_unit_sizer = new wxBoxSizer(wxHORIZONTAL); // Age unit sizer.
+	wxStaticText* age_unit_txt = new wxStaticText(this, wxID_ANY, "Time Unit:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	age_unit_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
+	age_unit_txt->SetFont(tempf1);
+	age_unit_txtctrl->SetFont(tempf2);
+	age_unit_sizer->Add
+	(
+		age_unit_txt,
+		wxSizerFlags(1).Border(wxRIGHT, 5)
+	);
+	age_unit_sizer->Add
+	(
+		age_unit_txtctrl,
 		wxSizerFlags(3).Expand()
 	);
 
@@ -180,10 +217,15 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	);
 	delete(phtype_choices);
 
-	// Add last name, city, state, and phone type to right middle sizer.
+	// Add last name, age unit, city, state, and phone type to right middle sizer.
 	right_middle_sizer->Add
 	(
 		lname_sizer,
+		wxSizerFlags(1).Expand().Border(wxDOWN, 10)
+	);
+	right_middle_sizer->Add
+	(
+		age_unit_sizer,
 		wxSizerFlags(1).Expand().Border(wxDOWN, 10)
 	);
 	right_middle_sizer->Add

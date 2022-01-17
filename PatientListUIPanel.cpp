@@ -53,11 +53,11 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	std::vector<Medication*> amedlist;
 	amedlist.push_back(testmed5);
 	amedlist.push_back(testmed6);
-	Patient* p = new Patient(1, 20, TimeUnitEnum::days, "Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", &pmedlist);
-	Patient* x = new Patient(2, 20, TimeUnitEnum::days, "David", "Doe", "567 Washington Street", "Newton", "63290", "123-674-1649", "Blue Cross Blue Shield", PhoneTypeEnum::Mobile, "DE", &xmedlist);
-	Patient* d = new Patient(3, 20, TimeUnitEnum::days, "Samantha", "Garth", "66 Rifton Road", "Jard", "12397", "926-548-5395", "None", PhoneTypeEnum::Mobile, "NH", &dmedlist);
-	Patient* y = new Patient(4, 20, TimeUnitEnum::days, "Guy", "Harmouth", "5432 Temple Lane", "Marshfield", "59345", "124-862-1548", "Blue Cross Blue Shield", PhoneTypeEnum::Other, "OH", &ymedlist);
-	Patient* a = new Patient(5, 20, TimeUnitEnum::days, "Julie", "Carlson", "4 Tennis Road", "Denham", "54823", "361-578-7835", "Cigna", PhoneTypeEnum::Mobile, "ME", &amedlist);
+	Patient* p = new Patient(1, 21, TimeUnitEnum::years, "Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", &pmedlist);
+	Patient* x = new Patient(2, 54, TimeUnitEnum::years, "David", "Doe", "567 Washington Street", "Newton", "63290", "123-674-1649", "Blue Cross Blue Shield", PhoneTypeEnum::Mobile, "DE", &xmedlist);
+	Patient* d = new Patient(3, 16, TimeUnitEnum::years, "Samantha", "Garth", "66 Rifton Road", "Jard", "12397", "926-548-5395", "None", PhoneTypeEnum::Mobile, "NH", &dmedlist);
+	Patient* y = new Patient(4, 33, TimeUnitEnum::years, "Guy", "Harmouth", "5432 Temple Lane", "Marshfield", "59345", "124-862-1548", "Blue Cross Blue Shield", PhoneTypeEnum::Other, "OH", &ymedlist);
+	Patient* a = new Patient(5, 42, TimeUnitEnum::years, "Julie", "Carlson", "4 Tennis Road", "Denham", "54823", "361-578-7835", "Cigna", PhoneTypeEnum::Mobile, "ME", &amedlist);
 	patient_list.push_back(p);
 	patient_list.push_back(x);
 	patient_list.push_back(d);

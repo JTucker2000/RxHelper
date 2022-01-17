@@ -44,6 +44,18 @@ std::string HelperFunctions::tuetostr(TimeUnitEnum t)
 	std::string ans;
 	switch (t)
 	{
+	case TimeUnitEnum::years:
+		ans = "years";
+		return ans;
+		break;
+	case TimeUnitEnum::months:
+		ans = "months";
+		return ans;
+		break;
+	case TimeUnitEnum::weeks:
+		ans = "weeks";
+		return ans;
+		break;
 	case TimeUnitEnum::days:
 		ans = "days";
 		return ans;

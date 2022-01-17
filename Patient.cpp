@@ -3,7 +3,7 @@
 Patient::Patient() : unique_id(-1)
 {
 	age = 0;
-	age_unit = TimeUnitEnum::days;
+	age_unit = TimeUnitEnum::years;
 	first_name = "";
 	last_name = "";
 	street_addr = "";

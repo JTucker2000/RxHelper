@@ -151,6 +151,7 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	wxArrayString* aunit_choices = new wxArrayString();
 	aunit_choices->Add("Years");
 	aunit_choices->Add("Months");
+	aunit_choices->Add("Weeks");
 	aunit_choices->Add("Days");
 	wxStaticText* age_unit_txt = new wxStaticText(this, wxID_ANY, "Time Unit:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	age_unit_cmbox = new wxComboBox(this, wxID_ANY, "Time Unit", wxDefaultPosition, wxDefaultSize, *aunit_choices, 0L, wxDefaultValidator, wxComboBoxNameStr);
@@ -305,6 +306,7 @@ void PatientInfoTopPanel::clearPanel()
 void PatientInfoTopPanel::fillPanel(Patient* p)
 {
 	fname_txtctrl->SetValue(p->getFirstName());
+	age_txtctrl->SetValue(std::to_string(p->getAge()));
 	addr_txtctrl->SetValue(p->getStreetAddr());
 	zip_txtctrl->SetValue(p->getZipCode());
 	phnum_txtctrl->SetValue(p->getPhoneNum());
@@ -326,6 +328,25 @@ void PatientInfoTopPanel::fillPanel(Patient* p)
 		break;
 	default:
 		std::cout << "Error, invalid PhoneTypeEnum in fillPanel() in PatientInfoTopPanel. Exiting." << std::endl;
+		exit(-1);
+		break;
+	}
+	switch (p->getAgeUnit())
+	{
+	case TimeUnitEnum::years:
+		age_unit_cmbox->SetSelection(0);
+		break;
+	case TimeUnitEnum::months:
+		age_unit_cmbox->SetSelection(1);
+		break;
+	case TimeUnitEnum::weeks:
+		age_unit_cmbox->SetSelection(2);
+		break;
+	case TimeUnitEnum::days:
+		age_unit_cmbox->SetSelection(3);
+		break;
+	default:
+		std::cout << "Error, invalid TimeUnitEnum in fillPanel() in PatientInfoTopPanel. Exiting." << std::endl;
 		exit(-1);
 		break;
 	}

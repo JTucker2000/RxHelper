@@ -148,10 +148,14 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	);
 
 	wxBoxSizer* age_unit_sizer = new wxBoxSizer(wxHORIZONTAL); // Age unit sizer.
+	wxArrayString* aunit_choices = new wxArrayString();
+	aunit_choices->Add("Years");
+	aunit_choices->Add("Months");
+	aunit_choices->Add("Days");
 	wxStaticText* age_unit_txt = new wxStaticText(this, wxID_ANY, "Time Unit:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
-	age_unit_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
+	age_unit_cmbox = new wxComboBox(this, wxID_ANY, "Time Unit", wxDefaultPosition, wxDefaultSize, *aunit_choices, 0L, wxDefaultValidator, wxComboBoxNameStr);
 	age_unit_txt->SetFont(tempf1);
-	age_unit_txtctrl->SetFont(tempf2);
+	age_unit_cmbox->SetFont(tempf2);
 	age_unit_sizer->Add
 	(
 		age_unit_txt,
@@ -159,9 +163,10 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	);
 	age_unit_sizer->Add
 	(
-		age_unit_txtctrl,
+		age_unit_cmbox,
 		wxSizerFlags(3).Expand()
 	);
+	delete(aunit_choices);
 
 	wxBoxSizer* city_sizer = new wxBoxSizer(wxHORIZONTAL); // City sizer.
 	wxStaticText* city_txt = new wxStaticText(this, wxID_ANY, "City:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
@@ -283,6 +288,7 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 void PatientInfoTopPanel::clearPanel()
 {
 	fname_txtctrl->Clear();
+	age_txtctrl->Clear();
 	addr_txtctrl->Clear();
 	zip_txtctrl->Clear();
 	phnum_txtctrl->Clear();
@@ -292,6 +298,8 @@ void PatientInfoTopPanel::clearPanel()
 	insname_txtctrl->Clear();
 	phtype_cmbox->SetSelection(wxNOT_FOUND);
 	phtype_cmbox->SetLabelText("");
+	age_unit_cmbox->SetSelection(wxNOT_FOUND);
+	age_unit_cmbox->SetLabelText("");
 }
 
 void PatientInfoTopPanel::fillPanel(Patient* p)

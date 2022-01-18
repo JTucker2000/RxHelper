@@ -26,13 +26,13 @@ private:
 	wxTextCtrl* zip_txtctrl = nullptr;
 	wxTextCtrl* phnum_txtctrl = nullptr;
 	wxTextCtrl* lname_txtctrl = nullptr;
-	wxTextCtrl* age_unit_txtctrl = nullptr;
 	wxTextCtrl* city_txtctrl = nullptr;
 	wxTextCtrl* state_txtctrl = nullptr;
 	wxTextCtrl* insname_txtctrl = nullptr;
 
 	// Combobox pointers.
 	wxComboBox* phtype_cmbox = nullptr;
+	wxComboBox* age_unit_cmbox = nullptr;
 };
 
 #endif // PATIENTINFOTOPPANEL_H

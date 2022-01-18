@@ -13,6 +13,7 @@ public:
 private:
 	// Textctrl pointers for this panel.
 	wxTextCtrl* fname_txtctrl = nullptr;
+	wxTextCtrl* age_txtctrl = nullptr;
 	wxTextCtrl* addr_txtctrl = nullptr;
 	wxTextCtrl* zip_txtctrl = nullptr;
 	wxTextCtrl* phnum_txtctrl = nullptr;
@@ -23,6 +24,7 @@ private:
 
 	// Combobox pointers.
 	wxComboBox* phtype_cmbox = nullptr;
+	wxComboBox* age_unit_cmbox = nullptr;
 
 	// Resets all textctrls and comboboxes back to their default state.
 	void clearSearch(wxCommandEvent& event);

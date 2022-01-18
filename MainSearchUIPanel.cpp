@@ -42,6 +42,22 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 		wxSizerFlags(3).Expand()
 	);
 
+	wxBoxSizer* age_sizer = new wxBoxSizer(wxHORIZONTAL); // Age sizer.
+	wxStaticText* age_txt = new wxStaticText(this, wxID_ANY, "Age:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	age_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
+	age_txt->SetFont(tempf1);
+	age_txtctrl->SetFont(tempf2);
+	age_sizer->Add
+	(
+		age_txt,
+		wxSizerFlags(1).Border(wxRIGHT, 5)
+	);
+	age_sizer->Add
+	(
+		age_txtctrl,
+		wxSizerFlags(3).Expand()
+	);
+
 	wxBoxSizer* addr_sizer = new wxBoxSizer(wxHORIZONTAL); // Address sizer.
 	wxStaticText* addr_txt = new wxStaticText(this, wxID_ANY, "Street Addr:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	addr_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
@@ -90,10 +106,15 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 		wxSizerFlags(3).Expand()
 	);
 
-	// Add first name, street address, zip code, and phone number to left middle sizer.
+	// Add first name, age, street address, zip code, and phone number to left middle sizer.
 	left_middle_sizer->Add
 	(
 		fname_sizer,
+		wxSizerFlags(1).Expand().Border(wxRIGHT | wxDOWN, 10)
+	);
+	left_middle_sizer->Add
+	(
+		age_sizer,
 		wxSizerFlags(1).Expand().Border(wxRIGHT | wxDOWN, 10)
 	);
 	left_middle_sizer->Add
@@ -127,6 +148,28 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 		lname_txtctrl,
 		wxSizerFlags(3).Expand()
 	);
+
+	wxBoxSizer* age_unit_sizer = new wxBoxSizer(wxHORIZONTAL); // Age unit sizer.
+	wxArrayString* aunit_choices = new wxArrayString();
+	aunit_choices->Add("Years");
+	aunit_choices->Add("Months");
+	aunit_choices->Add("Weeks");
+	aunit_choices->Add("Days");
+	wxStaticText* age_unit_txt = new wxStaticText(this, wxID_ANY, "Time Unit:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	age_unit_cmbox = new wxComboBox(this, wxID_ANY, "Time Unit", wxDefaultPosition, wxDefaultSize, *aunit_choices, 0L, wxDefaultValidator, wxComboBoxNameStr);
+	age_unit_txt->SetFont(tempf1);
+	age_unit_cmbox->SetFont(tempf2);
+	age_unit_sizer->Add
+	(
+		age_unit_txt,
+		wxSizerFlags(1).Border(wxRIGHT, 5)
+	);
+	age_unit_sizer->Add
+	(
+		age_unit_cmbox,
+		wxSizerFlags(3).Expand()
+	);
+	delete(aunit_choices);
 
 	wxBoxSizer* city_sizer = new wxBoxSizer(wxHORIZONTAL); // City sizer.
 	wxStaticText* city_txt = new wxStaticText(this, wxID_ANY, "City:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
@@ -182,10 +225,15 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	);
 	delete(phtype_choices);
 
-	// Add last name, city, state, and phone type to right middle sizer.
+	// Add last name, age unit, city, state, and phone type to right middle sizer.
 	right_middle_sizer->Add
 	(
 		lname_sizer,
+		wxSizerFlags(1).Expand().Border(wxDOWN, 10)
+	);
+	right_middle_sizer->Add
+	(
+		age_unit_sizer,
 		wxSizerFlags(1).Expand().Border(wxDOWN, 10)
 	);
 	right_middle_sizer->Add
@@ -267,6 +315,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 void MainSearchUIPanel::clearSearch(wxCommandEvent& event)
 {
 	fname_txtctrl->Clear();
+	age_txtctrl->Clear();
 	addr_txtctrl->Clear();
 	zip_txtctrl->Clear();
 	phnum_txtctrl->Clear();
@@ -276,6 +325,8 @@ void MainSearchUIPanel::clearSearch(wxCommandEvent& event)
 	insname_txtctrl->Clear();
 	phtype_cmbox->SetSelection(wxNOT_FOUND);
 	phtype_cmbox->SetLabelText("Phone Type");
+	age_unit_cmbox->SetSelection(wxNOT_FOUND);
+	age_unit_cmbox->SetLabelText("Time Unit");
 }
 
 MainSearchUIPanel::~MainSearchUIPanel()

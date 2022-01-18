@@ -25,9 +25,16 @@ private:
 	PatientListUIPanel* patient_list_ui_panel = nullptr;
 	wxBoxSizer* main_page_sizer = nullptr;
 
+	// Creates and prepares everything needed for the Login UI.
 	void initializeLoginUI();
+
+	// Creates and prepares everything needed for the main page UI.
 	void initializeMainPageUI();
+
+	// Handles the event when the login button is pressed.
 	void loginButtonPress(wxCommandEvent& event);
+
+	// Handles the event when an item is selected in the patient listctrl.
 	void patientListctrlItemSelect(wxCommandEvent& event);
 };
 

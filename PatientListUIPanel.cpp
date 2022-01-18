@@ -149,6 +149,7 @@ void PatientListUIPanel::removePatientEvt(wxCommandEvent& event)
 {
 	long selected_item = patient_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
 	removePatient(selected_item);
+	event.Skip(true);
 }
 
 void PatientListUIPanel::deletePatientList()

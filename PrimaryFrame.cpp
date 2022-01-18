@@ -40,6 +40,7 @@ void PrimaryFrame::initializeMainPageUI()
 	patient_list_ui_panel = new PatientListUIPanel(this);
 
 	patient_list_ui_panel->Bind(wxEVT_LIST_ITEM_SELECTED, &PrimaryFrame::patientListctrlItemSelect, this, PATIENTLISTCTRL_ID); // Handle main page UI events.
+	patient_list_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::clearPatientInfoOnRemove, this, REMOVEPATIENTBTN_ID);
 
 	main_search_ui_panel->Hide(); // Hidden on program start.
 	patient_info_ui_panel->Hide();
@@ -89,6 +90,11 @@ void PrimaryFrame::patientListctrlItemSelect(wxCommandEvent& event)
 	if (selected_patient == nullptr) { return; }
 
 	patient_info_ui_panel->fillPatientInfo(selected_patient); // Fill patient info UI with patient information.
+}
+
+void PrimaryFrame::clearPatientInfoOnRemove(wxCommandEvent& event)
+{
+	patient_info_ui_panel->clearPanel();
 }
 
 PrimaryFrame::~PrimaryFrame()

@@ -41,6 +41,7 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 
 void PatientInfoUIPanel::fillPatientInfo(Patient* p)
 {
+	if (p == nullptr) return;
 	cur_patient = p;
 	clearPanel();
 	patient_info_top->fillPanel(p);
@@ -89,6 +90,7 @@ void PatientInfoUIPanel::addMedicationToList(Medication* m)
 
 void PatientInfoUIPanel::fillListFromPatient(Patient* p)
 {
+	if (p == nullptr) return;
 	std::vector<Medication*>* med_list_pointer = p->getMedList();
 	if (med_list_pointer == nullptr) return;
 

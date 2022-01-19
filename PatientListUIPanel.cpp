@@ -125,6 +125,8 @@ void PatientListUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 
 void PatientListUIPanel::addPatientToList(Patient* p)
 {
+	if (p == nullptr) return;
+
 	std::string pname = p->getLastName() + ", " + p->getFirstName();
 	std::string num_meds = std::to_string(p->getMedList()->size());
 	std::string id_num = std::to_string(p->getUniqueID());

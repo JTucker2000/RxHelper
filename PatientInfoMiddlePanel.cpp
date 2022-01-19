@@ -225,6 +225,7 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 
 void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)
 {
+	if (m == nullptr) return;
 	dname_txtctrl->SetValue(m->getDrugName());
 	dosage_txtctrl->SetValue(std::to_string(m->getDosage()));
 	tnum_txtctrl->SetValue(std::to_string(m->getTimeNum()));

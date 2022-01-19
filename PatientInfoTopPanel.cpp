@@ -305,6 +305,7 @@ void PatientInfoTopPanel::clearPanel()
 
 void PatientInfoTopPanel::fillPanel(Patient* p)
 {
+	if (p == nullptr) return;
 	fname_txtctrl->SetValue(p->getFirstName());
 	age_txtctrl->SetValue(std::to_string(p->getAge()));
 	addr_txtctrl->SetValue(p->getStreetAddr());

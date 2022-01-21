@@ -20,6 +20,10 @@ public:
 private:
 	std::vector<User*> user_list;
 
+	// Textctrl pointers for this panel.
+	wxTextCtrl* user_txtctrl = nullptr;
+	wxTextCtrl* pass_txtctrl = nullptr;
+
 	// Frees all memory associated with the user list.
 	void deleteUserList();
 };

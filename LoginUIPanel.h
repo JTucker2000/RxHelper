@@ -1,8 +1,10 @@
 #ifndef LOGINUIPANEL_H
 #define LOGINUIPANEL_H
 
+#include <vector>
 #include "wx/wx.h"
 #include "ObjectIDs.h"
+#include "User.h"
 
 class LoginUIPanel : public wxPanel
 {
@@ -14,6 +16,12 @@ public:
 	bool validateUser();
 
 	~LoginUIPanel();
+
+private:
+	std::vector<User*> user_list;
+
+	// Frees all memory associated with the user list.
+	void deleteUserList();
 };
 
 #endif // LOGINUIPANEL_H

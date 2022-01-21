@@ -72,16 +72,17 @@ void PrimaryFrame::initializeMainPageUI()
 
 void PrimaryFrame::loginButtonPress(wxCommandEvent& event)
 {
-	// For now, this function simply switches from the login UI
-	// to the main UI when the login button is pressed.
-	login_ui_panel->Hide();
-	main_search_ui_panel->Show();
-	patient_info_ui_panel->Show();
-	patient_list_ui_panel->Show();
-	SetSizer(main_page_sizer);
-	Layout();
-	Refresh();
-	Update();
+	if (login_ui_panel->validateUser()) 
+	{
+		login_ui_panel->Hide();
+		main_search_ui_panel->Show();
+		patient_info_ui_panel->Show();
+		patient_list_ui_panel->Show();
+		SetSizer(main_page_sizer);
+		Layout();
+		Refresh();
+		Update();
+	}
 }
 
 void PrimaryFrame::patientListctrlItemSelect(wxCommandEvent& event)

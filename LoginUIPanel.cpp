@@ -58,6 +58,11 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 	SetSizer(lpanel_sizer);
 }
 
+bool LoginUIPanel::validateUser()
+{
+	return true; // Placeholder
+}
+
 LoginUIPanel::~LoginUIPanel()
 {
 	

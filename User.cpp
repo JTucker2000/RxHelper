@@ -34,6 +34,17 @@ User::User(unsigned int id, std::string user, std::string pass, std::string fnam
 }
 
 const unsigned int User::getUniqueID() { return unique_id; }
+std::string User::getUsername() { return username; }
+std::string User::getPassword() { return password; }
+std::string User::getFirstName() { return first_name; }
+std::string User::getLastName() { return last_name; }
+std::string User::getStreetAddr() { return street_addr; }
+std::string User::getCity() { return city; }
+std::string User::getZipCode() { return zip_code; }
+std::string User::getJob() { return job_title; }
+std::string User::getPhoneNum() { return phone_number; }
+PhoneTypeEnum User::getPhoneType() { return phone_type; }
+std::string User::getState() { return state; }
 
 User::~User()
 {

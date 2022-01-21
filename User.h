@@ -13,6 +13,17 @@ public:
 		PhoneTypeEnum phtype, std::string st);
 
 	const unsigned int getUniqueID();
+	std::string getUsername();
+	std::string getPassword();
+	std::string getFirstName();
+	std::string getLastName();
+	std::string getStreetAddr();
+	std::string getCity();
+	std::string getZipCode();
+	std::string getJob();
+	std::string getPhoneNum();
+	PhoneTypeEnum getPhoneType();
+	std::string getState();
 
 	~User();
 

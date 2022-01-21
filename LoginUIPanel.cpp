@@ -70,7 +70,18 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 
 bool LoginUIPanel::validateUser()
 {
-	return true; // Placeholder
+	std::string user_input = user_txtctrl->GetValue().ToStdString();
+	std::string pass_input = pass_txtctrl->GetValue().ToStdString();
+
+	for (int i = 0; i < user_list.size(); i++)
+	{
+		if ((user_list[i]->getUsername().compare(user_input) == 0) && (user_list[i]->getPassword().compare(pass_input) == 0))
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void LoginUIPanel::deleteUserList()

@@ -18,7 +18,7 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 
 	// Sizer for Password.
 	wxBoxSizer* pass_sizer = new wxBoxSizer(wxVERTICAL);
-	pass_txtctrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxTextCtrlNameStr);
+	pass_txtctrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD, wxDefaultValidator, wxTextCtrlNameStr);
 	pass_sizer->Add
 	(
 		new wxStaticText(this, wxID_ANY, "Password:  ", wxDefaultPosition, wxDefaultSize, 0, wxStaticTextNameStr),

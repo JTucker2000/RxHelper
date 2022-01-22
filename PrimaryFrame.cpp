@@ -6,7 +6,7 @@ PrimaryFrame::PrimaryFrame() : wxFrame(nullptr, wxID_ANY, "RxHelper", wxPoint(0,
 	initializeLoginUI();
 	
 	// Set sizer to login sizer, login UI appears on program start.
-	SetSizer(login_sizer);
+	SetSizer(login_sizer, true);
 	SetMinSize(login_sizer->GetMinSize());
 
 	// Create the main page UI.
@@ -78,7 +78,7 @@ void PrimaryFrame::loginButtonPress(wxCommandEvent& event)
 		main_search_ui_panel->Show();
 		patient_info_ui_panel->Show();
 		patient_list_ui_panel->Show();
-		SetSizer(main_page_sizer);
+		SetSizer(main_page_sizer, false);
 		Layout();
 		Refresh();
 		Update();
@@ -100,8 +100,11 @@ void PrimaryFrame::clearPatientInfoOnRemove(wxCommandEvent& event)
 
 PrimaryFrame::~PrimaryFrame()
 {
+	SetSizer(nullptr, false);
 	delete(login_ui_panel);
+	delete(login_sizer);
 	delete(main_search_ui_panel);
 	delete(patient_info_ui_panel);
 	delete(patient_list_ui_panel);
+	delete(main_page_sizer);
 }

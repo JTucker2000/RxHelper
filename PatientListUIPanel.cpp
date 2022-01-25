@@ -96,6 +96,11 @@ Patient* PatientListUIPanel::getSelectedPatient()
 	return getPatientByID(patient_id); // Return patient associated with that ID.
 }
 
+void PatientListUIPanel::initPatientsFromDatabase()
+{
+	// stuff
+}
+
 Patient* PatientListUIPanel::getPatientByID(unsigned int id)
 {
 	for (int i = 0; i < patient_list.size(); i++) 

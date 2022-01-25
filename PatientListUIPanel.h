@@ -1,6 +1,7 @@
 #ifndef PATIENTLISTUIPANEL_H
 #define PATIENTLISTUIPANEL_H
 
+#include <mysql/jdbc.h>
 #include <string>
 #include <vector>
 #include "wx/wx.h"
@@ -22,6 +23,9 @@ private:
 	std::vector<Patient*> patient_list;
 
 	wxListCtrl* patient_listctrl = nullptr;
+
+	// Pulls all patient information from the database. Only happens once on program startup when this object is created.
+	void initPatientsFromDatabase();
 
 	// Returns pointer to patient in patient_list based on its ID, nullptr if there is no patient with the ID.
 	Patient* getPatientByID(unsigned int id);

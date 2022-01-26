@@ -35,7 +35,7 @@ private:
 	void resizeColumnsEvt(wxSizeEvent& event);
 
 	// Adds the patient to the listctrl.
-	void addPatientToList(Patient* p);
+	void addPatientToListCtrl(Patient* p);
 
 	// Removes the patient at index from the listctrl. Evt version runs after remove button click.
 	void removePatient(int index);

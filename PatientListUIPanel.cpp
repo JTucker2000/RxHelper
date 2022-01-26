@@ -63,11 +63,11 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	patient_list.push_back(d);
 	patient_list.push_back(y);
 	patient_list.push_back(a);
-	addPatientToList(patient_list[0]);
-	addPatientToList(patient_list[1]);
-	addPatientToList(patient_list[2]);
-	addPatientToList(patient_list[3]);
-	addPatientToList(patient_list[4]);
+	addPatientToListCtrl(patient_list[0]);
+	addPatientToListCtrl(patient_list[1]);
+	addPatientToListCtrl(patient_list[2]);
+	addPatientToListCtrl(patient_list[3]);
+	addPatientToListCtrl(patient_list[4]);
 
 	initPatientsFromDatabase();
 	// End of testing block.
@@ -165,7 +165,7 @@ void PatientListUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 	resizeColumns();
 }
 
-void PatientListUIPanel::addPatientToList(Patient* p)
+void PatientListUIPanel::addPatientToListCtrl(Patient* p)
 {
 	if (p == nullptr) return;
 

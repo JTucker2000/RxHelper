@@ -68,6 +68,8 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	addPatientToList(patient_list[2]);
 	addPatientToList(patient_list[3]);
 	addPatientToList(patient_list[4]);
+
+	initPatientsFromDatabase();
 	// End of testing block.
 
 	resizeColumns();
@@ -101,7 +103,8 @@ void PatientListUIPanel::initPatientsFromDatabase()
 	sql::Driver* driver = nullptr;
 	sql::Connection* con = nullptr;
 	sql::Statement* stmt = nullptr;
-	sql::ResultSet* res = nullptr;
+	sql::ResultSet* patient_res_tab = nullptr;
+	sql::ResultSet* med_res_tab = nullptr;
 
 	try 
 	{
@@ -109,18 +112,27 @@ void PatientListUIPanel::initPatientsFromDatabase()
 		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
 		con->setSchema("RxHelperDB");
 		stmt = con->createStatement();
-		res = stmt->executeQuery("SELECT * FROM patient");
+		patient_res_tab = stmt->executeQuery("SELECT * FROM patient");
 
-		res->next();
-		wxMessageBox(res->getString(4).asStdString());
+		// For each patient in the database.
+		while (patient_res_tab->next())
+		{
+			// 1. Put patient information into approprate variables.
+			// 2. Grab medications for that specific patient (based on the patient's ID) and put them into a vector of Medication object pointers.
+			// 3. Use both of the previous steps to create a Patient object.
+			// 4. Add the Patient to patient_list.
+			// 5. Add the Patient to the listctrl with addPatientToList
+		}
 		
-		delete res;
+		delete patient_res_tab;
+		delete med_res_tab;
 		delete stmt;
 		delete con;
 	}
 	catch (sql::SQLException& e) {
 		wxLogDebug(e.what());
-		delete res;
+		delete patient_res_tab;
+		delete med_res_tab;
 		delete stmt;
 		delete con;
 	}

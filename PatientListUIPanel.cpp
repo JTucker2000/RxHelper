@@ -98,7 +98,32 @@ Patient* PatientListUIPanel::getSelectedPatient()
 
 void PatientListUIPanel::initPatientsFromDatabase()
 {
-	// stuff
+	sql::Driver* driver = nullptr;
+	sql::Connection* con = nullptr;
+	sql::Statement* stmt = nullptr;
+	sql::ResultSet* res = nullptr;
+
+	try 
+	{
+		driver = get_driver_instance();
+		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
+		con->setSchema("RxHelperDB");
+		stmt = con->createStatement();
+		res = stmt->executeQuery("SELECT * FROM patient");
+
+		res->next();
+		wxMessageBox(res->getString(4).asStdString());
+		
+		delete res;
+		delete stmt;
+		delete con;
+	}
+	catch (sql::SQLException& e) {
+		wxLogDebug(e.what());
+		delete res;
+		delete stmt;
+		delete con;
+	}
 }
 
 Patient* PatientListUIPanel::getPatientByID(unsigned int id)

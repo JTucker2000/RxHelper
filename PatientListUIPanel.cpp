@@ -123,19 +123,16 @@ void PatientListUIPanel::initPatientsFromDatabase()
 			// 4. Add the Patient to patient_list.
 			// 5. Add the Patient to the listctrl with addPatientToList
 		}
-		
-		delete patient_res_tab;
-		delete med_res_tab;
-		delete stmt;
-		delete con;
 	}
-	catch (sql::SQLException& e) {
+	catch (sql::SQLException& e) 
+	{
 		wxLogDebug(e.what());
-		delete patient_res_tab;
-		delete med_res_tab;
-		delete stmt;
-		delete con;
 	}
+
+	delete patient_res_tab;
+	delete med_res_tab;
+	delete stmt;
+	delete con;
 }
 
 Patient* PatientListUIPanel::getPatientByID(unsigned int id)

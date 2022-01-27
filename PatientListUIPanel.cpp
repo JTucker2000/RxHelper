@@ -27,50 +27,7 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	patient_listctrl->InsertColumn(5, "Phone");
 	patient_listctrl->InsertColumn(6, "# of Medications");
 
-	// Patients and medications for UI testing.
-	Medication* testmed1 = new Medication(1, "Advil", "Pain Reliever", 5, DoseUnitEnum::milligrams, 6, TimeUnitEnum::hours, 5, 0);
-	Medication* testmed2 = new Medication(2, "Atorvastatin", "Reduces high cholesterol", 10, DoseUnitEnum::milligrams, 1, TimeUnitEnum::days, 20, 0);
-	Medication* testmed3 = new Medication(3, "Pepto", "Relieves indigestion", 20, DoseUnitEnum::milliliters, 6, TimeUnitEnum::hours, 12, 0);
-	Medication* testmed4 = new Medication(4, "Metformin", "Antidiabetic medication", 10, DoseUnitEnum::milligrams, 5, TimeUnitEnum::hours, 50, 0);
-	Medication* testmed5 = new Medication(5, "Duloxetine", "Antidepressant medication", 15, DoseUnitEnum::milliliters, 30, TimeUnitEnum::minutes, 46, 50);
-	Medication* testmed6 = new Medication(6, "Advil", "Pain Reliever", 10, DoseUnitEnum::milligrams, 3, TimeUnitEnum::hours, 5, 0);
-	Medication* testmed7 = new Medication(7, "Atorvastatin", "Reduces high cholesterol", 20, DoseUnitEnum::milligrams, 1, TimeUnitEnum::days, 30, 0);
-	Medication* testmed8 = new Medication(8, "Pepto", "Relieves indigestion", 20, DoseUnitEnum::milliliters, 6, TimeUnitEnum::hours, 12, 0);
-	Medication* testmed9 = new Medication(9, "Metformin", "Antidiabetic medication", 10, DoseUnitEnum::milligrams, 5, TimeUnitEnum::hours, 50, 0);
-	Medication* testmed10 = new Medication(10, "Duloxetine", "Antidepressant medication", 15, DoseUnitEnum::milliliters, 30, TimeUnitEnum::minutes, 55, 99);
-	std::vector<Medication*> pmedlist;
-	pmedlist.push_back(testmed1);
-	pmedlist.push_back(testmed10);
-	std::vector<Medication*> xmedlist;
-	xmedlist.push_back(testmed2);
-	xmedlist.push_back(testmed9);
-	std::vector<Medication*> dmedlist;
-	dmedlist.push_back(testmed3);
-	dmedlist.push_back(testmed8);
-	std::vector<Medication*> ymedlist;
-	ymedlist.push_back(testmed4);
-	ymedlist.push_back(testmed7);
-	std::vector<Medication*> amedlist;
-	amedlist.push_back(testmed5);
-	amedlist.push_back(testmed6);
-	Patient* p = new Patient(1, 21, TimeUnitEnum::years, "Jonathan", "Tucker", "5 Yeet Street", "Springfield", "65654", "777-777-7676", "Medicare", PhoneTypeEnum::Home, "MA", &pmedlist);
-	Patient* x = new Patient(2, 54, TimeUnitEnum::years, "David", "Doe", "567 Washington Street", "Newton", "63290", "123-674-1649", "Blue Cross Blue Shield", PhoneTypeEnum::Mobile, "DE", &xmedlist);
-	Patient* d = new Patient(3, 16, TimeUnitEnum::years, "Samantha", "Garth", "66 Rifton Road", "Jard", "12397", "926-548-5395", "None", PhoneTypeEnum::Mobile, "NH", &dmedlist);
-	Patient* y = new Patient(4, 33, TimeUnitEnum::years, "Guy", "Harmouth", "5432 Temple Lane", "Marshfield", "59345", "124-862-1548", "Blue Cross Blue Shield", PhoneTypeEnum::Other, "OH", &ymedlist);
-	Patient* a = new Patient(5, 42, TimeUnitEnum::years, "Julie", "Carlson", "4 Tennis Road", "Denham", "54823", "361-578-7835", "Cigna", PhoneTypeEnum::Mobile, "ME", &amedlist);
-	patient_list.push_back(p);
-	patient_list.push_back(x);
-	patient_list.push_back(d);
-	patient_list.push_back(y);
-	patient_list.push_back(a);
-	addPatientToListCtrl(patient_list[0]);
-	addPatientToListCtrl(patient_list[1]);
-	addPatientToListCtrl(patient_list[2]);
-	addPatientToListCtrl(patient_list[3]);
-	addPatientToListCtrl(patient_list[4]);
-
 	initPatientsFromDatabase();
-	// End of testing block.
 
 	resizeColumns();
 
@@ -103,8 +60,10 @@ void PatientListUIPanel::initPatientsFromDatabase()
 	sql::Driver* driver = nullptr;
 	sql::Connection* con = nullptr;
 	sql::Statement* stmt = nullptr;
+	sql::PreparedStatement* p_stmt = nullptr;
 	sql::ResultSet* patient_res_tab = nullptr;
 	sql::ResultSet* med_res_tab = nullptr;
+	std::vector<Medication*>* m_list = nullptr;
 
 	try 
 	{
@@ -112,27 +71,71 @@ void PatientListUIPanel::initPatientsFromDatabase()
 		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
 		con->setSchema("RxHelperDB");
 		stmt = con->createStatement();
+		p_stmt = con->prepareStatement("SELECT * FROM medication WHERE patient_id = ?");
 		patient_res_tab = stmt->executeQuery("SELECT * FROM patient");
 
 		// For each patient in the database.
 		while (patient_res_tab->next())
 		{
 			// 1. Put patient information into approprate variables.
+			unsigned int p_id = patient_res_tab->getUInt(1);
+			unsigned short int p_age = patient_res_tab->getUInt(2);
+			// Add age unit after adding helper function.
+			std::string p_first_name = patient_res_tab->getString(4).asStdString();
+			std::string p_last_name = patient_res_tab->getString(5).asStdString();
+			std::string p_str_addr = patient_res_tab->getString(6).asStdString();
+			std::string p_city = patient_res_tab->getString(7).asStdString();
+			std::string p_zip_code = patient_res_tab->getString(8).asStdString();
+			std::string p_state = patient_res_tab->getString(9).asStdString();
+			std::string p_phone_num = patient_res_tab->getString(10).asStdString();
+			// Add phone type after adding helper function.
+			std::string p_ins_name = patient_res_tab->getString(12).asStdString();
+
 			// 2. Grab medications for that specific patient (based on the patient's ID) and put them into a vector of Medication object pointers.
+			m_list = new std::vector<Medication*>();
+			p_stmt->setUInt64(1, p_id);
+			med_res_tab = p_stmt->executeQuery();
+			while (med_res_tab->next())
+			{
+				unsigned int m_id = med_res_tab->getUInt(1);
+				std::string m_drug_name = med_res_tab->getString(3).asStdString();
+				std::string m_description = med_res_tab->getString(4).asStdString();
+				unsigned int m_dosage = med_res_tab->getUInt(5);
+				// Add dosage unit after adding helper function.
+				unsigned int m_time_num = med_res_tab->getUInt(7);
+				// Add time unit after adding helper function.
+				unsigned int m_price_dollars = med_res_tab->getUInt(9);
+				unsigned int m_price_cents = med_res_tab->getUInt(10);
+
+				Medication* new_m = new Medication(m_id, m_drug_name, m_description, m_dosage, DoseUnitEnum::milligrams, m_time_num, TimeUnitEnum::hours, m_price_dollars, m_price_cents);
+				m_list->push_back(new_m);
+			}
+			delete med_res_tab;
+			med_res_tab = nullptr;
+
 			// 3. Use both of the previous steps to create a Patient object.
+			Patient* new_p = new Patient(p_id, p_age, TimeUnitEnum::years, p_first_name, p_last_name, p_str_addr, p_city, p_zip_code, p_phone_num, p_ins_name, PhoneTypeEnum::Home, p_state, m_list);
+			delete m_list;
+			m_list = nullptr;
+			
 			// 4. Add the Patient to patient_list.
-			// 5. Add the Patient to the listctrl with addPatientToList
+			patient_list.push_back(new_p);
+			
+			// 5. Add the Patient to the listctrl with addPatientToListCtrl
+			addPatientToListCtrl(new_p);
 		}
 	}
 	catch (sql::SQLException& e) 
 	{
 		wxLogDebug(e.what());
+		if (m_list != nullptr) delete m_list;
 	}
 
 	delete patient_res_tab;
-	delete med_res_tab;
 	delete stmt;
+	delete p_stmt;
 	delete con;
+	if (med_res_tab != nullptr) delete med_res_tab;
 }
 
 Patient* PatientListUIPanel::getPatientByID(unsigned int id)

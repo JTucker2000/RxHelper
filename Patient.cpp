@@ -16,7 +16,7 @@ Patient::Patient() : unique_id(-1)
 	med_list = {};
 }
 
-Patient::Patient(unsigned int id, unsigned int agenum, TimeUnitEnum ageunit, std::string fname, std::string lname,
+Patient::Patient(unsigned int id, unsigned short int agenum, TimeUnitEnum ageunit, std::string fname, std::string lname,
 	std::string addr, std::string cty, std::string zip, std::string phnum,
 	std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist) : unique_id(id) // TODO: Generate unique IDs for each medication, patient, and user. Hardcoded for now.
 {
@@ -36,7 +36,7 @@ Patient::Patient(unsigned int id, unsigned int agenum, TimeUnitEnum ageunit, std
 }
 
 const unsigned int Patient::getUniqueID() { return unique_id; }
-unsigned int Patient::getAge() { return age; }
+unsigned short int Patient::getAge() { return age; }
 TimeUnitEnum Patient::getAgeUnit() { return age_unit; }
 std::string Patient::getFirstName() { return first_name; }
 std::string Patient::getLastName() { return last_name; }

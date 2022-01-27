@@ -11,12 +11,12 @@ class Patient
 {
 public:
 	Patient();
-	Patient(unsigned int id, unsigned int agenum, TimeUnitEnum ageunit, std::string fname, std::string lname,
+	Patient(unsigned int id, unsigned short int agenum, TimeUnitEnum ageunit, std::string fname, std::string lname,
 		std::string addr, std::string cty, std::string zip, std::string phnum,
 		std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist);
 
 	const unsigned int getUniqueID();
-	unsigned int getAge();
+	unsigned short int getAge();
 	TimeUnitEnum getAgeUnit();
 	std::string getFirstName();
 	std::string getLastName();
@@ -33,7 +33,7 @@ public:
 
 private:
 	const unsigned int unique_id;
-	unsigned int age;
+	unsigned short int age;
 	TimeUnitEnum age_unit;
 	std::string first_name;
 	std::string last_name;

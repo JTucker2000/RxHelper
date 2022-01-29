@@ -18,6 +18,9 @@ namespace HelperFunctions
 	// Returns the std::string version of the given TimeUnitEnum.
 	std::string tuetostr(TimeUnitEnum t);
 
+	// Converts an std::string into a TimeUnitEnum.
+	TimeUnitEnum strtotue(std::string input);
+
 	// Converts the given dollars and cents unsigned integers into a price formatted std::string.
 	std::string pricetostr(unsigned int dollars, unsigned int cents);
 }

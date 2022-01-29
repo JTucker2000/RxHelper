@@ -80,7 +80,7 @@ void PatientListUIPanel::initPatientsFromDatabase()
 			// 1. Put patient information into approprate variables.
 			unsigned int p_id = patient_res_tab->getUInt(1);
 			unsigned short int p_age = patient_res_tab->getUInt(2);
-			// Add age unit after adding helper function.
+			TimeUnitEnum p_age_unit = HelperFunctions::strtotue(patient_res_tab->getString(3).asStdString());
 			std::string p_first_name = patient_res_tab->getString(4).asStdString();
 			std::string p_last_name = patient_res_tab->getString(5).asStdString();
 			std::string p_str_addr = patient_res_tab->getString(6).asStdString();
@@ -103,18 +103,18 @@ void PatientListUIPanel::initPatientsFromDatabase()
 				unsigned int m_dosage = med_res_tab->getUInt(5);
 				// Add dosage unit after adding helper function.
 				unsigned int m_time_num = med_res_tab->getUInt(7);
-				// Add time unit after adding helper function.
+				TimeUnitEnum m_time_unit = HelperFunctions::strtotue(med_res_tab->getString(8).asStdString());
 				unsigned int m_price_dollars = med_res_tab->getUInt(9);
 				unsigned int m_price_cents = med_res_tab->getUInt(10);
 
-				Medication* new_m = new Medication(m_id, m_drug_name, m_description, m_dosage, DoseUnitEnum::milligrams, m_time_num, TimeUnitEnum::hours, m_price_dollars, m_price_cents);
+				Medication* new_m = new Medication(m_id, m_drug_name, m_description, m_dosage, DoseUnitEnum::milligrams, m_time_num, m_time_unit, m_price_dollars, m_price_cents);
 				m_list->push_back(new_m);
 			}
 			delete med_res_tab;
 			med_res_tab = nullptr;
 
 			// 3. Use both of the previous steps to create a Patient object.
-			Patient* new_p = new Patient(p_id, p_age, TimeUnitEnum::years, p_first_name, p_last_name, p_str_addr, p_city, p_zip_code, p_phone_num, p_ins_name, PhoneTypeEnum::Home, p_state, m_list);
+			Patient* new_p = new Patient(p_id, p_age, p_age_unit, p_first_name, p_last_name, p_str_addr, p_city, p_zip_code, p_phone_num, p_ins_name, PhoneTypeEnum::Home, p_state, m_list);
 			delete m_list;
 			m_list = nullptr;
 			

@@ -74,6 +74,44 @@ std::string HelperFunctions::tuetostr(TimeUnitEnum t)
 	}
 }
 
+TimeUnitEnum HelperFunctions::strtotue(std::string input)
+{
+	std::string cur_word = "";
+
+	for (int i = 0; i < input.size() && i < 7; i++) // Break at 7, largest TimeUnitEnum word contains 7 letters.
+	{
+		cur_word += input[i];
+
+		if (cur_word == "days" || cur_word == "Days" || cur_word == "DAYS")
+		{
+			return TimeUnitEnum::days;
+		}
+		else if (cur_word == "years" || cur_word == "Years" || cur_word == "YEARS")
+		{
+			return TimeUnitEnum::years;
+		}
+		else if (cur_word == "weeks" || cur_word == "Weeks" || cur_word == "WEEKS")
+		{
+			return TimeUnitEnum::weeks;
+		}
+		else if (cur_word == "hours" || cur_word == "Hours" || cur_word == "HOURS")
+		{
+			return TimeUnitEnum::hours;
+		}
+		else if (cur_word == "months" || cur_word == "Months" || cur_word == "MONTHS")
+		{
+			return TimeUnitEnum::months;
+		}
+		else if (cur_word == "minutes" || cur_word == "Minutes" || cur_word == "MINUTES")
+		{
+			return TimeUnitEnum::minutes;
+		}
+	}
+
+	std::cout << "Error: Invalid string in strtotue. Exiting." << std::endl;
+	exit(-1);
+}
+
 std::string HelperFunctions::pricetostr(unsigned int dollars, unsigned int cents)
 {
 	if (cents > 99) return "Error: pricetostr cents value over 99.";

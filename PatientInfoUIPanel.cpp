@@ -88,6 +88,43 @@ void PatientInfoUIPanel::addMedicationToList(Medication* m)
 	resizeColumns();
 }
 
+void PatientInfoUIPanel::addMedicationToDatabase(Medication* m)
+{
+	if (m == nullptr) return;
+
+	sql::Driver* driver = nullptr;
+	sql::Connection* con = nullptr;
+	sql::PreparedStatement* p_stmt = nullptr;
+
+	try
+	{
+		driver = get_driver_instance();
+		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
+		con->setSchema("RxHelperDB");
+		p_stmt = con->prepareStatement("INSERT INTO medication(patient_id, drug_name, description, dosage, dosage_unit, time_num, time_unit, price_dollars, price_cents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+
+		//p_stmt->setUInt64(1, cur_patient->getUniqueID());
+		p_stmt->setUInt64(1, 4);
+		p_stmt->setString(2, m->getDrugName());
+		p_stmt->setString(3, m->getDescription());
+		p_stmt->setUInt(4, m->getDosage());
+		p_stmt->setString(5, HelperFunctions::duetostr(m->getDosageUnit()));
+		p_stmt->setUInt(6, m->getTimeNum());
+		p_stmt->setString(7, HelperFunctions::tuetostr(m->getTimeUnit()));
+		p_stmt->setUInt(8, m->getPriceDollars());
+		p_stmt->setUInt(9, m->getPriceCents());
+
+		delete(p_stmt->executeQuery()); 
+	}
+	catch (sql::SQLException& e)
+	{
+		wxLogDebug(e.what());
+	}
+
+	delete con;
+	delete p_stmt;
+}
+
 void PatientInfoUIPanel::fillListFromPatient(Patient* p)
 {
 	if (p == nullptr) return;

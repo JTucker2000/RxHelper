@@ -1,6 +1,7 @@
 #ifndef PATIENTINFOUIPANEL_H
 #define PATIENTINFOUIPANEL_H
 
+#include <mysql/jdbc.h>
 #include "wx/wx.h"
 #include "wx/listctrl.h"
 #include "ObjectIDs.h"
@@ -34,6 +35,9 @@ private:
 
 	// Adds the medication to the listctrl.
 	void addMedicationToList(Medication* m);
+
+	// Adds the medication to the database.
+	void addMedicationToDatabase(Medication* m);
 
 	// Fills the medication listctrl with all medications from a given patient.
 	void fillListFromPatient(Patient* p);

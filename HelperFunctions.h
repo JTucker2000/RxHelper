@@ -15,6 +15,9 @@ namespace HelperFunctions
 	// Returns the std::string version of the given DoseUnitEnum.
 	std::string duetostr(DoseUnitEnum d);
 
+	// Converts an std::string into a DoseUnitEnum.
+	DoseUnitEnum strtodue(std::string input);
+
 	// Returns the std::string version of the given TimeUnitEnum.
 	std::string tuetostr(TimeUnitEnum t);
 

@@ -39,6 +39,28 @@ std::string HelperFunctions::duetostr(DoseUnitEnum d)
 	}
 }
 
+DoseUnitEnum HelperFunctions::strtodue(std::string input)
+{
+	std::string cur_word = "";
+
+	for (int i = 0; i < input.size() && i < 11; i++) // Break at 11, largest DoseUnitEnum word contains 11 letters.
+	{
+		cur_word += input[i];
+
+		if (cur_word == "milligrams" || cur_word == "Milligrams" || cur_word == "MILLIGRAMS")
+		{
+			return DoseUnitEnum::milligrams;
+		}
+		else if (cur_word == "milliliters" || cur_word == "Milliliters" || cur_word == "MILLILITERS")
+		{
+			return DoseUnitEnum::milliliters;
+		}
+	}
+
+	std::cout << "Error: Invalid string in strtodue. Exiting." << std::endl;
+	exit(-1);
+}
+
 std::string HelperFunctions::tuetostr(TimeUnitEnum t)
 {
 	std::string ans;

@@ -101,13 +101,13 @@ void PatientListUIPanel::initPatientsFromDatabase()
 				std::string m_drug_name = med_res_tab->getString(3).asStdString();
 				std::string m_description = med_res_tab->getString(4).asStdString();
 				unsigned int m_dosage = med_res_tab->getUInt(5);
-				// Add dosage unit after adding helper function.
+				DoseUnitEnum m_dose_unit = HelperFunctions::strtodue(med_res_tab->getString(6).asStdString());
 				unsigned int m_time_num = med_res_tab->getUInt(7);
 				TimeUnitEnum m_time_unit = HelperFunctions::strtotue(med_res_tab->getString(8).asStdString());
 				unsigned int m_price_dollars = med_res_tab->getUInt(9);
 				unsigned int m_price_cents = med_res_tab->getUInt(10);
 
-				Medication* new_m = new Medication(m_id, m_drug_name, m_description, m_dosage, DoseUnitEnum::milligrams, m_time_num, m_time_unit, m_price_dollars, m_price_cents);
+				Medication* new_m = new Medication(m_id, m_drug_name, m_description, m_dosage, m_dose_unit, m_time_num, m_time_unit, m_price_dollars, m_price_cents);
 				m_list->push_back(new_m);
 			}
 			delete med_res_tab;

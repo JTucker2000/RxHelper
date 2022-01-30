@@ -134,6 +134,32 @@ TimeUnitEnum HelperFunctions::strtotue(std::string input)
 	exit(-1);
 }
 
+PhoneTypeEnum HelperFunctions::strtopte(std::string input)
+{
+	std::string cur_word = "";
+
+	for (int i = 0; i < input.size() && i < 6; i++) // Break at 6, largest PhoneTypeEnum word contains 6 letters.
+	{
+		cur_word += input[i];
+
+		if (cur_word == "home" || cur_word == "Home" || cur_word == "HOME")
+		{
+			return PhoneTypeEnum::Home;
+		}
+		else if (cur_word == "mobile" || cur_word == "Mobile" || cur_word == "MOBILE")
+		{
+			return PhoneTypeEnum::Mobile;
+		}
+		else if (cur_word == "other" || cur_word == "Other" || cur_word == "OTHER")
+		{
+			return PhoneTypeEnum::Other;
+		}
+	}
+
+	std::cout << "Error: Invalid string in strtopte. Exiting." << std::endl;
+	exit(-1);
+}
+
 std::string HelperFunctions::pricetostr(unsigned int dollars, unsigned int cents)
 {
 	if (cents > 99) return "Error: pricetostr cents value over 99.";

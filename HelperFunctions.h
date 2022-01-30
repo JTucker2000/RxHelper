@@ -5,6 +5,7 @@
 #include <string>
 #include "DoseUnitEnum.h"
 #include "TimeUnitEnum.h"
+#include "PhoneTypeEnum.h"
 
 namespace HelperFunctions
 {
@@ -23,6 +24,9 @@ namespace HelperFunctions
 
 	// Converts an std::string into a TimeUnitEnum.
 	TimeUnitEnum strtotue(std::string input);
+
+	// Converts an std::string into a PhoneTypeEnum.
+	PhoneTypeEnum strtopte(std::string input);
 
 	// Converts the given dollars and cents unsigned integers into a price formatted std::string.
 	std::string pricetostr(unsigned int dollars, unsigned int cents);

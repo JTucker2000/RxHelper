@@ -88,7 +88,7 @@ void PatientListUIPanel::initPatientsFromDatabase()
 			std::string p_zip_code = patient_res_tab->getString(8).asStdString();
 			std::string p_state = patient_res_tab->getString(9).asStdString();
 			std::string p_phone_num = patient_res_tab->getString(10).asStdString();
-			// Add phone type after adding helper function.
+			PhoneTypeEnum p_phone_type = HelperFunctions::strtopte(patient_res_tab->getString(11).asStdString());
 			std::string p_ins_name = patient_res_tab->getString(12).asStdString();
 
 			// 2. Grab medications for that specific patient (based on the patient's ID) and put them into a vector of Medication object pointers.
@@ -114,7 +114,7 @@ void PatientListUIPanel::initPatientsFromDatabase()
 			med_res_tab = nullptr;
 
 			// 3. Use both of the previous steps to create a Patient object.
-			Patient* new_p = new Patient(p_id, p_age, p_age_unit, p_first_name, p_last_name, p_str_addr, p_city, p_zip_code, p_phone_num, p_ins_name, PhoneTypeEnum::Home, p_state, m_list);
+			Patient* new_p = new Patient(p_id, p_age, p_age_unit, p_first_name, p_last_name, p_str_addr, p_city, p_zip_code, p_phone_num, p_ins_name, p_phone_type, p_state, m_list);
 			delete m_list;
 			m_list = nullptr;
 			

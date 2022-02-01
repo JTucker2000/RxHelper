@@ -189,7 +189,7 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	);
 	med_button_sizer->Add
 	(
-		new wxButton(this, wxID_ANY, "Add Medication", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		new wxButton(this, ADDMEDICATIONBTN_ID, "Add Medication", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
 		wxSizerFlags(1).Expand().Border(wxALL, 5)
 	);
 	med_button_sizer->Add

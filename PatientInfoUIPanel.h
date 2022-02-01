@@ -55,6 +55,9 @@ private:
 
 	// Returns pointer to medication in cur_patient based on its ID, nullptr if there is no medication with the ID or if cur_patient = nullptr.
 	Medication* getMedicationByID(unsigned int id);
+
+	// Handles event when the add medication button is pressed.
+	void addMedicationEvt(wxCommandEvent& event);
 };
 
 #endif // PATIENTINFOUIPANEL_H

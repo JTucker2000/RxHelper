@@ -33,6 +33,7 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	resizeColumns();
 
 	medication_listctrl->Bind(wxEVT_SIZE, &PatientInfoUIPanel::resizeColumnsEvt, this); // Automatically resize columns.
+	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::addMedicationEvt, this, ADDMEDICATIONBTN_ID); // Add medication button click.
 	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::removeMedicationEvt, this, REMOVEMEDICATIONBTN_ID); // Remove medication button click.
 	Bind(wxEVT_LIST_ITEM_SELECTED, &PatientInfoUIPanel::medicationListctrlItemSelect, this, MEDICATIONLISTCTRL_ID); // Medication listctrl item select.
 
@@ -191,6 +192,11 @@ Medication* PatientInfoUIPanel::getMedicationByID(unsigned int id)
 	}
 
 	return nullptr;
+}
+
+void PatientInfoUIPanel::addMedicationEvt(wxCommandEvent& event)
+{
+
 }
 
 PatientInfoUIPanel::~PatientInfoUIPanel()

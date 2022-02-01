@@ -223,6 +223,11 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	SetSizer(top_sizer);
 }
 
+Medication* PatientInfoMiddlePanel::createMedication()
+{
+	return nullptr; // Placeholder
+}
+
 void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)
 {
 	if (m == nullptr) return;

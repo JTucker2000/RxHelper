@@ -11,6 +11,11 @@ class PatientInfoMiddlePanel : public wxPanel
 public:
 	PatientInfoMiddlePanel(wxWindow* parent);
 
+	// Creates a medication object using the information currently entered in the middle panel.
+	// Returns a pointer to that object.
+	// Medication ID = 0, as it has not been added to the database yet.
+	Medication* createMedication();
+
 	// Fills the medication info UI panel with the given medication's information.
 	void fillMedicationInfo(Medication* m);
 

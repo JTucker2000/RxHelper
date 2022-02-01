@@ -70,7 +70,7 @@ void PatientInfoUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 	resizeColumns();
 }
 
-void PatientInfoUIPanel::addMedicationToList(Medication* m)
+void PatientInfoUIPanel::addMedicationToListCtrl(Medication* m)
 {
 	if (m == nullptr) return;
 
@@ -136,7 +136,7 @@ void PatientInfoUIPanel::fillListFromPatient(Patient* p)
 
 	for (int i = 0; i < med_list_pointer->size(); i++)
 	{
-		addMedicationToList(med_list_pointer->at(i));
+		addMedicationToListCtrl(med_list_pointer->at(i));
 	}
 }
 

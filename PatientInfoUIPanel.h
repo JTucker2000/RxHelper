@@ -34,7 +34,7 @@ private:
 	void resizeColumnsEvt(wxSizeEvent& event);
 
 	// Adds the medication to the listctrl.
-	void addMedicationToList(Medication* m);
+	void addMedicationToListCtrl(Medication* m);
 
 	// Adds the medication to the database.
 	// Sets the given medication's ID to the assigned ID from the database.

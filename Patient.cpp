@@ -34,6 +34,17 @@ Patient::Patient(unsigned int id, unsigned short int agenum, TimeUnitEnum ageuni
 	if(medlist) med_list = *medlist;
 }
 
+void Patient::addMedToList(Medication* m)
+{
+	if (m == nullptr)
+	{
+		std::cout << "Nullptr medication in addMedToList(), exiting." << std::endl;
+		exit(-1);
+	}
+
+	med_list.push_back(m);
+}
+
 const unsigned int Patient::getUniqueID() { return unique_id; }
 unsigned short int Patient::getAge() { return age; }
 TimeUnitEnum Patient::getAgeUnit() { return age_unit; }

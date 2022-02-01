@@ -1,6 +1,7 @@
 #ifndef PATIENT_H
 #define PATIENT_H
 
+#include <iostream>
 #include <vector>
 #include <string>
 #include "PhoneTypeEnum.h"
@@ -14,6 +15,9 @@ public:
 	Patient(unsigned int id, unsigned short int agenum, TimeUnitEnum ageunit, std::string fname, std::string lname,
 		std::string addr, std::string cty, std::string zip, std::string phnum,
 		std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist);
+
+	// Adds the given medication to the patient's med_list.
+	void addMedToList(Medication* m);
 
 	const unsigned int getUniqueID();
 	unsigned short int getAge();

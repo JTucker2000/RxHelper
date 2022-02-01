@@ -1,7 +1,8 @@
 #include "Medication.h"
 
-Medication::Medication() : unique_id(-1)
+Medication::Medication()
 {
+	unique_id = 0;
 	drug_name = "";
 	description = "";
 	dosage = 0;
@@ -13,8 +14,9 @@ Medication::Medication() : unique_id(-1)
 }
 
 Medication::Medication(unsigned int id, std::string drugname, std::string desc, unsigned int dose, DoseUnitEnum doseunit,
-	unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec) : unique_id(id)
+	unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec)
 {
+	unique_id = id;
 	drug_name = drugname;
 	description = desc;
 	dosage = dose;
@@ -25,7 +27,7 @@ Medication::Medication(unsigned int id, std::string drugname, std::string desc, 
 	price_cents = pricec;
 }
 
-const unsigned int Medication::getUniqueID() { return unique_id; }
+unsigned int Medication::getUniqueID() { return unique_id; }
 std::string Medication::getDrugName() { return drug_name; }
 std::string Medication::getDescription() { return description; }
 unsigned int Medication::getDosage() { return dosage; }

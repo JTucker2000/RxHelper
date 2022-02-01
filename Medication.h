@@ -12,7 +12,7 @@ public:
 	Medication(unsigned int id, std::string drugname, std::string desc, unsigned int dose, DoseUnitEnum doseunit,
 		unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec);
 
-	const unsigned int getUniqueID();
+	unsigned int getUniqueID();
 	std::string getDrugName();
 	std::string getDescription();
 	unsigned int getDosage();
@@ -25,7 +25,7 @@ public:
 	~Medication();
 
 private:
-	const unsigned int unique_id;
+	unsigned int unique_id;
 	std::string drug_name;
 	std::string description;
 	unsigned int dosage;

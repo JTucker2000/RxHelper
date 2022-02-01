@@ -30,6 +30,10 @@ namespace HelperFunctions
 
 	// Converts the given dollars and cents unsigned integers into a price formatted std::string.
 	std::string pricetostr(unsigned int dollars, unsigned int cents);
+
+	// Converts an std::string into an unsigned int, where the last first two digits are the cents.
+	// Ex. input = "$99.23", returns 9923
+	unsigned int strtoprice(std::string input);
 }
 
 #endif // HELPERFUNCTIONS_H

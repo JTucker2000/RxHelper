@@ -225,7 +225,56 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 
 Medication* PatientInfoMiddlePanel::createMedication()
 {
-	return nullptr; // Placeholder
+	std::string m_name = dname_txtctrl->GetValue().ToStdString();
+	std::string m_desc = desc_txtctrl->GetValue().ToStdString();
+	unsigned int m_price = HelperFunctions::strtoprice(price_txtctrl->GetValue().ToStdString());
+	unsigned int m_price_dollars = m_price / 100;
+	unsigned int m_price_cents = m_price % 100;
+	unsigned int m_dosage = HelperFunctions::stoui(dosage_txtctrl->GetValue().ToStdString());
+	unsigned int m_tnum = HelperFunctions::stoui(tnum_txtctrl->GetValue().ToStdString());
+
+	DoseUnitEnum m_dunit;
+	switch (dunit_cmbox->GetCurrentSelection())
+	{
+	case -1:
+		wxMessageBox("No dose unit selected for added medication. Defaults to milligrams.");
+		m_dunit = DoseUnitEnum::milligrams;
+		break;
+	case 0:
+		m_dunit = DoseUnitEnum::milligrams;
+		break;
+	case 1:
+		m_dunit = DoseUnitEnum::milliliters;
+		break;
+	default:
+		std::cout << "Error, invalid DoseUnitEnum in createMedication() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		exit(-1);
+		break;
+	}
+
+	TimeUnitEnum m_tunit;
+	switch (tunit_cmbox->GetCurrentSelection())
+	{
+	case -1:
+		wxMessageBox("No time unit selected for added medication. Defaults to hours.");
+		m_tunit = TimeUnitEnum::hours;
+		break;
+	case 0:
+		m_tunit = TimeUnitEnum::minutes;
+		break;
+	case 1:
+		m_tunit = TimeUnitEnum::hours;
+		break;
+	case 2:
+		m_tunit = TimeUnitEnum::days;
+		break;
+	default:
+		std::cout << "Error, invalid TimeUnitEnum in createMedication() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		exit(-1);
+		break;
+	}
+
+	return new Medication(0, m_name, m_desc, m_dosage, m_dunit, m_tnum, m_tunit, m_price_dollars, m_price_cents);
 }
 
 void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)

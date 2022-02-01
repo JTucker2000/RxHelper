@@ -22,6 +22,8 @@ public:
 	DoseUnitEnum getDosageUnit();
 	TimeUnitEnum getTimeUnit();
 
+	void setUniqueID(unsigned int val);
+
 	~Medication();
 
 private:

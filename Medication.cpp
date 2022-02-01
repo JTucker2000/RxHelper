@@ -37,6 +37,8 @@ unsigned int Medication::getPriceCents() { return price_cents; }
 DoseUnitEnum Medication::getDosageUnit() { return dosage_unit; }
 TimeUnitEnum Medication::getTimeUnit() { return time_unit; }
 
+void Medication::setUniqueID(unsigned int val) { unique_id = val; }
+
 Medication::~Medication()
 {
 

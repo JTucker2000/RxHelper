@@ -13,7 +13,7 @@ Medication::Medication() : unique_id(-1)
 }
 
 Medication::Medication(unsigned int id, std::string drugname, std::string desc, unsigned int dose, DoseUnitEnum doseunit,
-	unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec) : unique_id(id) // TODO: Generate unique IDs for each medication, patient, and user. Hardcoded for now.
+	unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec) : unique_id(id)
 {
 	drug_name = drugname;
 	description = desc;

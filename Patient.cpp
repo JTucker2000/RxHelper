@@ -18,9 +18,8 @@ Patient::Patient() : unique_id(-1)
 
 Patient::Patient(unsigned int id, unsigned short int agenum, TimeUnitEnum ageunit, std::string fname, std::string lname,
 	std::string addr, std::string cty, std::string zip, std::string phnum,
-	std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist) : unique_id(id) // TODO: Generate unique IDs for each medication, patient, and user. Hardcoded for now.
+	std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist) : unique_id(id)
 {
-	// TODO: Sanitize these before putting them in the container.
 	age = agenum;
 	age_unit = ageunit;
 	first_name = fname;

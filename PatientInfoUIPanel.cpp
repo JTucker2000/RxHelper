@@ -103,8 +103,7 @@ void PatientInfoUIPanel::addMedicationToDatabase(Medication* m)
 		con->setSchema("RxHelperDB");
 		p_stmt = con->prepareStatement("INSERT INTO medication(patient_id, drug_name, description, dosage, dosage_unit, time_num, time_unit, price_dollars, price_cents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
 
-		//p_stmt->setUInt64(1, cur_patient->getUniqueID());
-		p_stmt->setUInt64(1, 4);
+		p_stmt->setUInt64(1, cur_patient->getUniqueID());
 		p_stmt->setString(2, m->getDrugName());
 		p_stmt->setString(3, m->getDescription());
 		p_stmt->setUInt(4, m->getDosage());

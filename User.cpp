@@ -17,9 +17,8 @@ User::User() : unique_id(-1)
 
 User::User(unsigned int id, std::string user, std::string pass, std::string fname, std::string lname,
 	std::string addr, std::string cty, std::string zip, std::string job, std::string phnum,
-	PhoneTypeEnum phtype, std::string st) : unique_id(id) // TODO: Generate unique IDs for each medication, patient, and user. Hardcoded for now.
+	PhoneTypeEnum phtype, std::string st) : unique_id(id)
 {
-	// TODO: Sanitize these before putting them in the container.
 	username = user;
 	password = pass;
 	first_name = fname;

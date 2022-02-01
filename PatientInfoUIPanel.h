@@ -37,6 +37,7 @@ private:
 	void addMedicationToList(Medication* m);
 
 	// Adds the medication to the database.
+	// Sets the given medication's ID to the assigned ID from the database.
 	void addMedicationToDatabase(Medication* m);
 
 	// Fills the medication listctrl with all medications from a given patient.

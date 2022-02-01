@@ -6,15 +6,14 @@ unsigned int HelperFunctions::stoui(std::string input)
 
 	for (int i = 0; i < input.size(); i++)
 	{
-		if (input[i] >= '0' && input[i] <= '9') 
-		{
-			sum += (input[i] - '0') * (int)std::pow((double)10, (double)((input.size() - i) - 1));
-		}
-		else 
+		if (input[i] < '0' || input[i] > '9') 
 		{
 			std::cout << "Error: String cannot be converted into unsigned int. Exiting." << std::endl;
 			exit(-1);
 		}
+
+		sum *= 10;
+		sum += (input[i] - '0');
 	}
 
 	return sum;

@@ -114,9 +114,11 @@ void PatientInfoUIPanel::addMedicationToDatabase(Medication* m)
 		p_stmt->setUInt(8, m->getPriceDollars());
 		p_stmt->setUInt(9, m->getPriceCents());
 		delete(p_stmt->executeQuery()); 
+		delete(p_stmt);
 
 		p_stmt = con->prepareStatement("SELECT LAST_INSERT_ID();"); // Update medication's ID.
 		res = p_stmt->executeQuery();
+		res->next();
 		m->setUniqueID(res->getUInt(1));
 	}
 	catch (sql::SQLException& e)
@@ -196,7 +198,10 @@ Medication* PatientInfoUIPanel::getMedicationByID(unsigned int id)
 
 void PatientInfoUIPanel::addMedicationEvt(wxCommandEvent& event)
 {
-
+	Medication* new_med = patient_info_middle->createMedication();
+	addMedicationToDatabase(new_med);
+	addMedicationToListCtrl(new_med);
+	cur_patient->addMedToList(new_med);
 }
 
 PatientInfoUIPanel::~PatientInfoUIPanel()

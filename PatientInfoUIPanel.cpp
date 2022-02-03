@@ -143,7 +143,7 @@ void PatientInfoUIPanel::fillListFromPatient(Patient* p)
 	}
 }
 
-void PatientInfoUIPanel::removeMedication(int index)
+void PatientInfoUIPanel::removeMedicationListCtrl(int index)
 {
 	if (medication_listctrl->DeleteItem(index)) 
 	{
@@ -154,7 +154,7 @@ void PatientInfoUIPanel::removeMedication(int index)
 void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 {
 	long selected_item = medication_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-	removeMedication(selected_item);
+	removeMedicationListCtrl(selected_item);
 	event.Skip(true);
 }
 

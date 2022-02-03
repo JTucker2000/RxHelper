@@ -1,6 +1,6 @@
 #include "User.h"
 
-User::User() : unique_id(-1)
+User::User() : unique_id(0)
 {
 	username = "";
 	password = "";

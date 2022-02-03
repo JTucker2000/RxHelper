@@ -1,6 +1,6 @@
 #include "Patient.h"
 
-Patient::Patient() : unique_id(-1)
+Patient::Patient() : unique_id(0)
 {
 	age = 0;
 	age_unit = TimeUnitEnum::years;

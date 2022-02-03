@@ -55,6 +55,28 @@ Patient* PatientListUIPanel::getSelectedPatient()
 	return getPatientByID(patient_id); // Return patient associated with that ID.
 }
 
+void PatientListUIPanel::updatePatientMedNum()
+{
+	long selected_item = patient_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED); // Get selected item.
+	if (selected_item == -1) return;
+
+	wxListItem* rowinfo = new wxListItem(); // Get patient ID of selected item.
+	rowinfo->SetMask(wxLIST_MASK_TEXT);
+	rowinfo->SetId(selected_item);
+	rowinfo->SetColumn(0);
+	patient_listctrl->GetItem(*rowinfo);
+	std::string patient_id_string(rowinfo->GetText());
+	delete(rowinfo);
+
+	unsigned int patient_id = HelperFunctions::stoui(patient_id_string); // Convert ID to unsigned int.
+	
+	Patient* p = getPatientByID(patient_id); // Get the selected patient.
+
+	std::string num_meds = std::to_string(p->getMedList()->size());
+
+	patient_listctrl->SetItem(selected_item, 6, num_meds); // Replace old number of meds with current.
+}
+
 void PatientListUIPanel::initPatientsFromDatabase()
 {
 	sql::Driver* driver = nullptr;

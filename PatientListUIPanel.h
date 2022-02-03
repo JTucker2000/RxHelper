@@ -19,6 +19,8 @@ public:
 	// Returns a pointer to the currently selected patient in the listctrl.
 	Patient* getSelectedPatient();
 
+	// Updates the number of medications for the patient currently selected.
+	void updatePatientMedNum();
 private:
 	std::vector<Patient*> patient_list;
 

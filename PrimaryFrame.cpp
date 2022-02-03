@@ -102,7 +102,7 @@ void PrimaryFrame::clearPatientInfoOnRemove(wxCommandEvent& event)
 
 void PrimaryFrame::updatePatientMedNum(wxCommandEvent& event)
 {
-	wxMessageBox("TEST");
+	patient_list_ui_panel->updatePatientMedNum();
 }
 
 PrimaryFrame::~PrimaryFrame()

@@ -45,6 +45,20 @@ void Patient::addMedToList(Medication* m)
 	med_list.push_back(m);
 }
 
+void Patient::delMedFromList(unsigned int id)
+{
+	if (id == 0) return;
+
+	for (int i = 0; i < med_list.size(); i++)
+	{
+		if (med_list[i]->getUniqueID() == id)
+		{
+			med_list.erase(med_list.begin() + i);
+			break;
+		}
+	}
+}
+
 const unsigned int Patient::getUniqueID() { return unique_id; }
 unsigned short int Patient::getAge() { return age; }
 TimeUnitEnum Patient::getAgeUnit() { return age_unit; }

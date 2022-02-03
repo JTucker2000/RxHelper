@@ -19,6 +19,9 @@ public:
 	// Adds the given medication to the patient's med_list.
 	void addMedToList(Medication* m);
 
+	// Removes the medication with the given id from the patient's list if it exists.
+	void delMedFromList(unsigned int id);
+
 	const unsigned int getUniqueID();
 	unsigned short int getAge();
 	TimeUnitEnum getAgeUnit();

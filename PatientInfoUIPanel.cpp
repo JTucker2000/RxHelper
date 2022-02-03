@@ -192,6 +192,7 @@ void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 	unsigned int medication_id = HelperFunctions::stoui(medication_id_string); // Convert ID to unsigned int.
 
 	removeMedicationListCtrl(selected_item);
+	cur_patient->delMedFromList(medication_id);
 	removeMedicationDatabase(medication_id);
 
 	event.Skip(true);

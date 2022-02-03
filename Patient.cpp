@@ -53,6 +53,7 @@ void Patient::delMedFromList(unsigned int id)
 	{
 		if (med_list[i]->getUniqueID() == id)
 		{
+			delete(med_list[i]);
 			med_list.erase(med_list.begin() + i);
 			break;
 		}

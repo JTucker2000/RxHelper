@@ -180,6 +180,7 @@ void PatientInfoUIPanel::removeMedicationDatabase(unsigned int id)
 void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 {
 	long selected_item = medication_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
+	if (selected_item == -1) return;
 
 	wxListItem* rowinfo = new wxListItem(); // Get medication ID of selected item.
 	rowinfo->SetMask(wxLIST_MASK_TEXT);

@@ -183,8 +183,8 @@ unsigned int HelperFunctions::strtoprice(std::string input)
 
 	if ((str_size < 5) || (input[0] != '$')) // Invalid if not atleast size of '$0.00' or does not have '$' as first char.
 	{
-		std::cout << "Error: Invalid string in strtoprice. Exiting." << std::endl;
-		exit(-1);
+		wxMessageBox("Price is not formatted correctly. Defaults to $0.00.");
+		return 0;
 	}
 
 	unsigned int p_dollars = 0;
@@ -193,8 +193,8 @@ unsigned int HelperFunctions::strtoprice(std::string input)
 	{
 		if ((i == (str_size - 1)) || ((input[i] < '0') || (input[i] > '9'))) // Invalid if no decimal is reached or char isn't a digit.
 		{
-			std::cout << "Error: Invalid string in strtoprice. Exiting." << std::endl;
-			exit(-1);
+			wxMessageBox("Price is not formatted correctly. Defaults to $0.00.");
+			return 0;
 		}
 
 		p_dollars *= 10;
@@ -205,8 +205,8 @@ unsigned int HelperFunctions::strtoprice(std::string input)
 	unsigned int p_cents = 0;
 	if ((input[str_size - 1] < '0') || (input[str_size - 1] > '9') || (input[str_size - 2] < '0') || (input[str_size - 2] > '9')) // Invalid if last two chars aren't digits.
 	{
-		std::cout << "Error: Invalid string in strtoprice. Exiting." << std::endl;
-		exit(-1);
+		wxMessageBox("Price is not formatted correctly. Defaults to $0.00.");
+		return 0;
 	}
 	p_cents += (input[str_size - 2] - '0') * 10;
 	p_cents += (input[str_size - 1] - '0');

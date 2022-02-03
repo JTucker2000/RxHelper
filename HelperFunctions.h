@@ -1,8 +1,10 @@
 #ifndef HELPERFUNCTIONS_H
 #define HELPERFUNCTIONS_H
 
+
 #include <iostream>
 #include <string>
+#include "wx/wx.h"
 #include "DoseUnitEnum.h"
 #include "TimeUnitEnum.h"
 #include "PhoneTypeEnum.h"
@@ -33,6 +35,7 @@ namespace HelperFunctions
 
 	// Converts an std::string into an unsigned int, where the last first two digits are the cents.
 	// Ex. input = "$99.23", returns 9923
+	// Returns 0 if input is invalid.
 	unsigned int strtoprice(std::string input);
 }
 

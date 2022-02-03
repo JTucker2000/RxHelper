@@ -155,6 +155,7 @@ void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 {
 	long selected_item = medication_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
 	removeMedication(selected_item);
+	event.Skip(true);
 }
 
 void PatientInfoUIPanel::medicationListctrlItemSelect(wxCommandEvent& event)
@@ -202,6 +203,7 @@ void PatientInfoUIPanel::addMedicationEvt(wxCommandEvent& event)
 	addMedicationToDatabase(new_med);
 	addMedicationToListCtrl(new_med);
 	cur_patient->addMedToList(new_med);
+	event.Skip(true);
 }
 
 PatientInfoUIPanel::~PatientInfoUIPanel()

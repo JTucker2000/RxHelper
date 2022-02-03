@@ -151,10 +151,49 @@ void PatientInfoUIPanel::removeMedicationListCtrl(int index)
 	}
 }
 
+void PatientInfoUIPanel::removeMedicationDatabase(unsigned int id)
+{
+	if (id == 0) return;
+
+	sql::Driver* driver = nullptr;
+	sql::Connection* con = nullptr;
+	sql::PreparedStatement* p_stmt = nullptr;
+
+	try
+	{
+		driver = get_driver_instance();
+		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
+		con->setSchema("RxHelperDB");
+		p_stmt = con->prepareStatement("DELETE FROM medication WHERE id = ?");
+		p_stmt->setUInt(1, id);
+		delete(p_stmt->executeQuery());
+	}
+	catch (sql::SQLException& e)
+	{
+		wxLogDebug(e.what());
+	}
+
+	delete con;
+	delete p_stmt;
+}
+
 void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 {
 	long selected_item = medication_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
+
+	wxListItem* rowinfo = new wxListItem(); // Get medication ID of selected item.
+	rowinfo->SetMask(wxLIST_MASK_TEXT);
+	rowinfo->SetId(selected_item);
+	rowinfo->SetColumn(0);
+	medication_listctrl->GetItem(*rowinfo);
+	std::string medication_id_string(rowinfo->GetText());
+	delete(rowinfo);
+
+	unsigned int medication_id = HelperFunctions::stoui(medication_id_string); // Convert ID to unsigned int.
+
 	removeMedicationListCtrl(selected_item);
+	removeMedicationDatabase(medication_id);
+
 	event.Skip(true);
 }
 

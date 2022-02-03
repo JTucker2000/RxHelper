@@ -43,8 +43,9 @@ private:
 	// Fills the medication listctrl with all medications from a given patient.
 	void fillListFromPatient(Patient* p);
 
-	// Removes the medication at index from the listctrl. Evt version runs after remove button click.
+	// Removes the medication from the listctrl / database. Evt version runs after remove button click.
 	void removeMedicationListCtrl(int index);
+	void removeMedicationDatabase(unsigned int id);
 	void removeMedicationEvt(wxCommandEvent& event);
 
 	// Fills the medication info panel when an item is selected in the medication listctrl.

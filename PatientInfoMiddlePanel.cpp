@@ -57,7 +57,7 @@ PatientInfoMiddlePanel::PatientInfoMiddlePanel(wxWindow* parent) : wxPanel(paren
 	);
 
 	wxBoxSizer* tnum_sizer = new wxBoxSizer(wxHORIZONTAL); // Time number sizer.
-	wxStaticText* tnum_txt = new wxStaticText(this, wxID_ANY, "Frequency:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
+	wxStaticText* tnum_txt = new wxStaticText(this, wxID_ANY, "Taken every:", wxDefaultPosition, wxDefaultSize, 0L, wxStaticTextNameStr);
 	tnum_txtctrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxTextCtrlNameStr);
 	tnum_txt->SetFont(tempf1);
 	tnum_txtctrl->SetFont(tempf2);

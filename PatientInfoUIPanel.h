@@ -59,6 +59,9 @@ private:
 
 	// Handles event when the add medication button is pressed.
 	void addMedicationEvt(wxCommandEvent& event);
+
+	// Handles event when the save medication button is pressed.
+	void saveMedicationEvt(wxCommandEvent& event);
 };
 
 #endif // PATIENTINFOUIPANEL_H

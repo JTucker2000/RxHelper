@@ -33,6 +33,7 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 	resizeColumns();
 
 	medication_listctrl->Bind(wxEVT_SIZE, &PatientInfoUIPanel::resizeColumnsEvt, this); // Automatically resize columns.
+	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::saveMedicationEvt, this, SAVEMEDICATIONBTN_ID); // Save medication button click.
 	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::addMedicationEvt, this, ADDMEDICATIONBTN_ID); // Add medication button click.
 	patient_info_middle->Bind(wxEVT_BUTTON, &PatientInfoUIPanel::removeMedicationEvt, this, REMOVEMEDICATIONBTN_ID); // Remove medication button click.
 	Bind(wxEVT_LIST_ITEM_SELECTED, &PatientInfoUIPanel::medicationListctrlItemSelect, this, MEDICATIONLISTCTRL_ID); // Medication listctrl item select.
@@ -245,6 +246,15 @@ void PatientInfoUIPanel::addMedicationEvt(wxCommandEvent& event)
 	addMedicationToListCtrl(new_med);
 	cur_patient->addMedToList(new_med);
 	event.Skip(true);
+}
+
+void PatientInfoUIPanel::saveMedicationEvt(wxCommandEvent& event)
+{
+	wxMessageBox("Save medication button pressed"); // placeholder
+	// TO-DO:
+	// 1. Get pointer to currently selected medication.
+	// 2. Modify the medication data to match what is currently in the txtctrls.
+	// 3. Update the medication in the database to match the medication object.
 }
 
 PatientInfoUIPanel::~PatientInfoUIPanel()

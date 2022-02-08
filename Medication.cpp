@@ -38,6 +38,14 @@ DoseUnitEnum Medication::getDosageUnit() { return dosage_unit; }
 TimeUnitEnum Medication::getTimeUnit() { return time_unit; }
 
 void Medication::setUniqueID(unsigned int val) { unique_id = val; }
+void Medication::setDrugName(std::string val) { drug_name = val; }
+void Medication::setDescription(std::string val) { description = val; }
+void Medication::setDosage(unsigned int val) { dosage = val; }
+void Medication::setTimeNum(unsigned int val) { time_num = val; }
+void Medication::setPriceDollars(unsigned int val) { price_dollars = val; }
+void Medication::setPriceCents(unsigned int val) { price_cents = val; }
+void Medication::setDosageUnit(DoseUnitEnum val) { dosage_unit = val; }
+void Medication::setTimeUnit(TimeUnitEnum val) { time_unit = val; }
 
 Medication::~Medication()
 {

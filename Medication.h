@@ -23,6 +23,14 @@ public:
 	TimeUnitEnum getTimeUnit();
 
 	void setUniqueID(unsigned int val);
+	void setDrugName(std::string val);
+	void setDescription(std::string val);
+	void setDosage(unsigned int val);
+	void setTimeNum(unsigned int val);
+	void setPriceDollars(unsigned int val);
+	void setPriceCents(unsigned int val);
+	void setDosageUnit(DoseUnitEnum val);
+	void setTimeUnit(TimeUnitEnum val);
 
 	~Medication();
 

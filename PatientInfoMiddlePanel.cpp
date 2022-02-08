@@ -277,6 +277,11 @@ Medication* PatientInfoMiddlePanel::createMedication()
 	return new Medication(0, m_name, m_desc, m_dosage, m_dunit, m_tnum, m_tunit, m_price_dollars, m_price_cents);
 }
 
+void PatientInfoMiddlePanel::modifyMedication(Medication* m)
+{
+	// placeholder
+}
+
 void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)
 {
 	if (m == nullptr) return;

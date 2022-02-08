@@ -16,6 +16,9 @@ public:
 	// Medication ID = 0, as it has not been added to the database yet.
 	Medication* createMedication();
 
+	// Modifies the given medication using the information currently entered in the middle panel.
+	void modifyMedication(Medication* m);
+
 	// Fills the medication info UI panel with the given medication's information.
 	void fillMedicationInfo(Medication* m);
 

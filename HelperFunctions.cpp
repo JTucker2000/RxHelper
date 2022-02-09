@@ -8,8 +8,8 @@ unsigned int HelperFunctions::stoui(std::string input)
 	{
 		if (input[i] < '0' || input[i] > '9') 
 		{
-			std::cout << "Error: String cannot be converted into unsigned int. Exiting." << std::endl;
-			exit(-1);
+			wxLogDebug("Error: String cannot be converted into unsigned int in stoui(). Returning 0.");
+			return 0;
 		}
 
 		sum *= 10;
@@ -33,8 +33,9 @@ std::string HelperFunctions::duetostr(DoseUnitEnum d)
 		return ans;
 		break;
 	default:
-		std::cout << "Error: Invalid DoseUnitEnum in duetostr. Exiting." << std::endl;
-		exit(-1);
+		wxLogDebug("Error: Invalid DoseUnitEnum in duetostr(). Returning 'Error'.");
+		ans = "Error";
+		return ans;
 	}
 }
 
@@ -56,8 +57,8 @@ DoseUnitEnum HelperFunctions::strtodue(std::string input)
 		}
 	}
 
-	std::cout << "Error: Invalid string in strtodue. Exiting." << std::endl;
-	exit(-1);
+	wxLogDebug("Error: Invalid string in strtodue(). Returning DoseUnitEnum::milligrams.");
+	return DoseUnitEnum::milligrams;
 }
 
 std::string HelperFunctions::tuetostr(TimeUnitEnum t)
@@ -90,8 +91,9 @@ std::string HelperFunctions::tuetostr(TimeUnitEnum t)
 		return ans;
 		break;
 	default:
-		std::cout << "Error: Invalid TimeUnitEnum in tuetostr. Exiting." << std::endl;
-		exit(-1);
+		wxLogDebug("Error: Invalid TimeUnitEnum in tuetostr(). Returning 'Error'.");
+		ans = "Error";
+		return ans;
 	}
 }
 
@@ -129,8 +131,8 @@ TimeUnitEnum HelperFunctions::strtotue(std::string input)
 		}
 	}
 
-	std::cout << "Error: Invalid string in strtotue. Exiting." << std::endl;
-	exit(-1);
+	wxLogDebug("Error: Invalid string in strtotue(). Returning TimeUnitEnum::days.");
+	return TimeUnitEnum::days;
 }
 
 PhoneTypeEnum HelperFunctions::strtopte(std::string input)
@@ -155,13 +157,17 @@ PhoneTypeEnum HelperFunctions::strtopte(std::string input)
 		}
 	}
 
-	std::cout << "Error: Invalid string in strtopte. Exiting." << std::endl;
-	exit(-1);
+	wxLogDebug("Error: Invalid string in strtopte(). Returning PhoneTypeEnum::Home.");
+	return PhoneTypeEnum::Home;
 }
 
 std::string HelperFunctions::pricetostr(unsigned int dollars, unsigned int cents)
 {
-	if (cents > 99) return "Error: pricetostr cents value over 99.";
+	if (cents > 99)
+	{
+		wxLogDebug("Error: Cents over 99 in pricetostr(). Returning 'Error'.");
+		return std::string("Error");
+	}
 
 	std::string cents_str;
 	if (cents < 10)

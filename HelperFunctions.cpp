@@ -57,8 +57,8 @@ DoseUnitEnum HelperFunctions::strtodue(std::string input)
 		}
 	}
 
-	wxLogDebug("Error: Invalid string in strtodue(). Returning DoseUnitEnum::milligrams.");
-	return DoseUnitEnum::milligrams;
+	wxLogDebug("Error: Invalid string in strtodue(). Returning DoseUnitEnum::error.");
+	return DoseUnitEnum::error;
 }
 
 std::string HelperFunctions::tuetostr(TimeUnitEnum t)
@@ -131,8 +131,8 @@ TimeUnitEnum HelperFunctions::strtotue(std::string input)
 		}
 	}
 
-	wxLogDebug("Error: Invalid string in strtotue(). Returning TimeUnitEnum::days.");
-	return TimeUnitEnum::days;
+	wxLogDebug("Error: Invalid string in strtotue(). Returning TimeUnitEnum::error.");
+	return TimeUnitEnum::error;
 }
 
 PhoneTypeEnum HelperFunctions::strtopte(std::string input)
@@ -157,8 +157,8 @@ PhoneTypeEnum HelperFunctions::strtopte(std::string input)
 		}
 	}
 
-	wxLogDebug("Error: Invalid string in strtopte(). Returning PhoneTypeEnum::Home.");
-	return PhoneTypeEnum::Home;
+	wxLogDebug("Error: Invalid string in strtopte(). Returning PhoneTypeEnum::error.");
+	return PhoneTypeEnum::error;
 }
 
 std::string HelperFunctions::pricetostr(unsigned int dollars, unsigned int cents)

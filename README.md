@@ -29,3 +29,4 @@ These goals are listed in the order in which they will be completed.
 - Finish remaining application-database interactions
 - Add functionality to the patient search UI
 - Add the ability to create new accounts
+- Refactor disorganized / repetative code

@@ -132,6 +132,11 @@ void PatientInfoUIPanel::addMedicationToDatabase(Medication* m)
 	delete res;
 }
 
+void PatientInfoUIPanel::modifyMedicationInDatabase(Medication* m)
+{
+	// placeholder
+}
+
 void PatientInfoUIPanel::fillListFromPatient(Patient* p)
 {
 	if (p == nullptr) return;

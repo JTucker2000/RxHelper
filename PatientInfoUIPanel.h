@@ -40,6 +40,10 @@ private:
 	// Sets the given medication's ID to the assigned ID from the database.
 	void addMedicationToDatabase(Medication* m);
 
+	// Modifies the medication in the database associated with the ID of the given medication.
+	// Changes values in the database to match the given medication.
+	void modifyMedicationInDatabase(Medication* m);
+
 	// Fills the medication listctrl with all medications from a given patient.
 	void fillListFromPatient(Patient* p);
 

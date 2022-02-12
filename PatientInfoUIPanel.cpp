@@ -304,6 +304,12 @@ void PatientInfoUIPanel::addMedicationEvt(wxCommandEvent& event)
 void PatientInfoUIPanel::saveMedicationEvt(wxCommandEvent& event)
 {
 	Medication* m = getSelectedMedication();
+	if (m == nullptr)
+	{
+		wxMessageBox("No medication selected.");
+		return;
+	}
+
 	patient_info_middle->modifyMedication(m);
 	modifyMedicationInDatabase(m);
 	refreshPanel();

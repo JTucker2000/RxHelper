@@ -21,6 +21,10 @@ public:
 	// Resets all textctrls, listctrls, and comboboxes back to their default state.
 	void clearPanel();
 
+	// Refreshes the current patient's information throughout the panel.
+	// If there is no patient selected, it does nothing.
+	void refreshPanel();
+
 	~PatientInfoUIPanel();
 
 private:

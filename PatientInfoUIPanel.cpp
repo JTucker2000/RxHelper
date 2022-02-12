@@ -57,6 +57,15 @@ void PatientInfoUIPanel::clearPanel()
 	medication_listctrl->DeleteAllItems();
 }
 
+void PatientInfoUIPanel::refreshPanel()
+{
+	if (cur_patient == nullptr) return;
+
+	clearPanel();
+	patient_info_top->fillPanel(cur_patient);
+	fillListFromPatient(cur_patient);
+}
+
 void PatientInfoUIPanel::resizeColumns()
 {
 	if (!medication_listctrl) return;
@@ -289,6 +298,7 @@ void PatientInfoUIPanel::saveMedicationEvt(wxCommandEvent& event)
 	Medication* m = getSelectedMedication();
 	patient_info_middle->modifyMedication(m);
 	modifyMedicationInDatabase(m);
+	refreshPanel();
 }
 
 PatientInfoUIPanel::~PatientInfoUIPanel()

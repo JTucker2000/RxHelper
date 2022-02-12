@@ -234,7 +234,11 @@ void PatientInfoUIPanel::removeMedicationDatabase(unsigned int id)
 void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 {
 	long selected_item = medication_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-	if (selected_item == -1) return;
+	if (selected_item == -1)
+	{
+		wxMessageBox("No medication selected.");
+		return;
+	}
 
 	wxListItem* rowinfo = new wxListItem(); // Get medication ID of selected item.
 	rowinfo->SetMask(wxLIST_MASK_TEXT);
@@ -294,6 +298,12 @@ Medication* PatientInfoUIPanel::getMedicationByID(unsigned int id)
 
 void PatientInfoUIPanel::addMedicationEvt(wxCommandEvent& event)
 {
+	if (cur_patient == nullptr)
+	{
+		wxMessageBox("No patient selected.");
+		return;
+	}
+
 	Medication* new_med = patient_info_middle->createMedication();
 	addMedicationToDatabase(new_med);
 	addMedicationToListCtrl(new_med);

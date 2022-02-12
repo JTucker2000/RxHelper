@@ -101,7 +101,11 @@ void PatientInfoUIPanel::addMedicationToListCtrl(Medication* m)
 
 void PatientInfoUIPanel::addMedicationToDatabase(Medication* m)
 {
-	if (m == nullptr) return;
+	if (m == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in addMedicationToDatabase(). Unable to add medication to database.");
+		return;
+	}
 
 	sql::Driver* driver = nullptr;
 	sql::Connection* con = nullptr;
@@ -143,7 +147,11 @@ void PatientInfoUIPanel::addMedicationToDatabase(Medication* m)
 
 void PatientInfoUIPanel::modifyMedicationInDatabase(Medication* m)
 {
-	if (m == nullptr) return;
+	if (m == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in modifyMedicationInDatabase(). Unable to modify medication in database.");
+		return;
+	}
 
 	sql::Driver* driver = nullptr;
 	sql::Connection* con = nullptr;

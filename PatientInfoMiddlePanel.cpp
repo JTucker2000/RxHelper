@@ -281,8 +281,8 @@ void PatientInfoMiddlePanel::modifyMedication(Medication* m)
 {
 	if (m == nullptr)
 	{
-		std::cout << "Error, nullptr in modifyMedication() in PatientInfoMiddlePanel. Exiting." << std::endl;
-		exit(-1);
+		wxLogDebug("Warning: Nullptr in modifyMedication(). Unable to modify medication.");
+		return;
 	}
 
 	std::string m_name = dname_txtctrl->GetValue().ToStdString();

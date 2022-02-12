@@ -134,7 +134,38 @@ void PatientInfoUIPanel::addMedicationToDatabase(Medication* m)
 
 void PatientInfoUIPanel::modifyMedicationInDatabase(Medication* m)
 {
-	// placeholder
+	if (m == nullptr) return;
+
+	sql::Driver* driver = nullptr;
+	sql::Connection* con = nullptr;
+	sql::PreparedStatement* p_stmt = nullptr;
+	sql::ResultSet* res = nullptr;
+
+	try
+	{
+		driver = get_driver_instance();
+		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
+		con->setSchema("RxHelperDB");
+		p_stmt = con->prepareStatement("UPDATE medication SET drug_name = ?, description = ?, dosage = ?, dosage_unit = ?, time_num = ?, time_unit = ?, price_dollars = ?, price_cents = ? WHERE id = ?;");
+		p_stmt->setString(1, m->getDrugName());
+		p_stmt->setString(2, m->getDescription());
+		p_stmt->setUInt(3, m->getDosage());
+		p_stmt->setString(4, HelperFunctions::duetostr(m->getDosageUnit()));
+		p_stmt->setUInt(5, m->getTimeNum());
+		p_stmt->setString(6, HelperFunctions::tuetostr(m->getTimeUnit()));
+		p_stmt->setUInt(7, m->getPriceDollars());
+		p_stmt->setUInt(8, m->getPriceCents());
+		p_stmt->setUInt(9, m->getUniqueID());
+		delete(p_stmt->executeQuery());
+	}
+	catch (sql::SQLException& e)
+	{
+		wxLogDebug(e.what());
+	}
+
+	delete con;
+	delete p_stmt;
+	delete res;
 }
 
 void PatientInfoUIPanel::fillListFromPatient(Patient* p)
@@ -255,11 +286,9 @@ void PatientInfoUIPanel::addMedicationEvt(wxCommandEvent& event)
 
 void PatientInfoUIPanel::saveMedicationEvt(wxCommandEvent& event)
 {
-	wxMessageBox("Save medication button pressed"); // placeholder
-	// TO-DO:
-	// 1. Get pointer to currently selected medication.
-	// 2. Modify the medication data to match what is currently in the txtctrls.
-	// 3. Update the medication in the database to match the medication object.
+	Medication* m = getSelectedMedication();
+	patient_info_middle->modifyMedication(m);
+	modifyMedicationInDatabase(m);
 }
 
 PatientInfoUIPanel::~PatientInfoUIPanel()

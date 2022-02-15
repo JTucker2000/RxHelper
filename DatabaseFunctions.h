@@ -9,6 +9,9 @@
 
 namespace DatabaseFunctions
 {
+	// Removes the patient and their associated medications from the database.
+	void removePatientFromDatabase(unsigned int id);
+
 	// Adds the medication to the database.
 	// Sets the given medication's ID to the assigned ID from the database.
 	// Medication is assigned to the given patient.
@@ -19,7 +22,7 @@ namespace DatabaseFunctions
 	void modifyMedicationInDatabase(Medication* m);
 
 	// Removes the medication with the given id from the database.
-	void removeMedicationDatabase(unsigned int id);
+	void removeMedicationFromDatabase(unsigned int id);
 }
 
 #endif // DATABASEFUNCTIONS_H

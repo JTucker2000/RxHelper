@@ -140,7 +140,7 @@ void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 
 	removeMedicationListCtrl(selected_item);
 	cur_patient->delMedFromList(medication_id);
-	DatabaseFunctions::removeMedicationDatabase(medication_id);
+	DatabaseFunctions::removeMedicationFromDatabase(medication_id);
 
 	event.Skip(true);
 }

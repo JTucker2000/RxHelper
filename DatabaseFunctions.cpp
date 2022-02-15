@@ -1,5 +1,10 @@
 #include "DatabaseFunctions.h"
 
+void DatabaseFunctions::removePatientFromDatabase(unsigned int id)
+{
+	// placeholder
+}
+
 void DatabaseFunctions::addMedicationToDatabase(Medication* m, Patient* p)
 {
 	if ((m == nullptr) || (p == nullptr))
@@ -86,7 +91,7 @@ void DatabaseFunctions::modifyMedicationInDatabase(Medication* m)
 	delete res;
 }
 
-void DatabaseFunctions::removeMedicationDatabase(unsigned int id)
+void DatabaseFunctions::removeMedicationFromDatabase(unsigned int id)
 {
 	if (id == 0) return;
 

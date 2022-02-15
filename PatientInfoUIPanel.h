@@ -1,12 +1,12 @@
 #ifndef PATIENTINFOUIPANEL_H
 #define PATIENTINFOUIPANEL_H
 
-#include <mysql/jdbc.h>
 #include "wx/wx.h"
 #include "wx/listctrl.h"
 #include "ObjectIDs.h"
 #include "Patient.h"
 #include "HelperFunctions.h"
+#include "DatabaseFunctions.h"
 #include "PatientInfoTopPanel.h"
 #include "PatientInfoMiddlePanel.h"
 
@@ -40,20 +40,11 @@ private:
 	// Adds the medication to the listctrl.
 	void addMedicationToListCtrl(Medication* m);
 
-	// Adds the medication to the database.
-	// Sets the given medication's ID to the assigned ID from the database.
-	void addMedicationToDatabase(Medication* m);
-
-	// Modifies the medication in the database associated with the ID of the given medication.
-	// Changes values in the database to match the given medication.
-	void modifyMedicationInDatabase(Medication* m);
-
 	// Fills the medication listctrl with all medications from a given patient.
 	void fillListFromPatient(Patient* p);
 
-	// Removes the medication from the listctrl / database. Evt version runs after remove button click.
+	// Removes the medication from the listctrl. Evt version runs after remove button click.
 	void removeMedicationListCtrl(int index);
-	void removeMedicationDatabase(unsigned int id);
 	void removeMedicationEvt(wxCommandEvent& event);
 
 	// Fills the medication info panel when an item is selected in the medication listctrl.

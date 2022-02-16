@@ -2,7 +2,33 @@
 
 void DatabaseFunctions::removePatientFromDatabase(unsigned int id)
 {
-	// placeholder
+	if (id == 0) return;
+
+	sql::Driver* driver = nullptr;
+	sql::Connection* con = nullptr;
+	sql::PreparedStatement* p_stmt = nullptr;
+
+	try
+	{
+		driver = get_driver_instance(); // Start by deleting all medications associated with the patient.
+		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
+		con->setSchema("RxHelperDB");
+		p_stmt = con->prepareStatement("DELETE FROM medication WHERE patient_id = ?");
+		p_stmt->setUInt(1, id);
+		delete(p_stmt->executeQuery());
+		delete p_stmt;
+
+		p_stmt = con->prepareStatement("DELETE FROM patient WHERE id = ?"); // Then delete the patient.
+		p_stmt->setUInt(1, id);
+		delete(p_stmt->executeQuery());
+	}
+	catch (sql::SQLException& e)
+	{
+		wxLogDebug(e.what());
+	}
+
+	delete con;
+	delete p_stmt;
 }
 
 void DatabaseFunctions::addMedicationToDatabase(Medication* m, Patient* p)

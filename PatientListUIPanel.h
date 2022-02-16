@@ -9,6 +9,7 @@
 #include "Patient.h"
 #include "PatientListBtnPanel.h"
 #include "HelperFunctions.h"
+#include "DatabaseFunctions.h"
 
 class PatientListUIPanel : public wxPanel
 {

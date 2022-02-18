@@ -286,6 +286,68 @@ PatientInfoTopPanel::PatientInfoTopPanel(wxWindow* parent) : wxPanel(parent, wxI
 	SetSizer(top_sizer);
 }
 
+Patient* PatientInfoTopPanel::createPatient()
+{
+	unsigned int p_age = HelperFunctions::stoui(age_txtctrl->GetValue().ToStdString());
+	std::string p_fname = fname_txtctrl->GetValue().ToStdString();
+	std::string p_lname = lname_txtctrl->GetValue().ToStdString();
+	std::string p_addr = addr_txtctrl->GetValue().ToStdString();
+	std::string p_city = city_txtctrl->GetValue().ToStdString();
+	std::string p_zip = zip_txtctrl->GetValue().ToStdString();
+	std::string p_phnum = phnum_txtctrl->GetValue().ToStdString();
+	std::string p_insname = insname_txtctrl->GetValue().ToStdString();
+	std::string p_state = state_txtctrl->GetValue().ToStdString();
+
+	TimeUnitEnum p_ageunit;
+	switch (age_unit_cmbox->GetCurrentSelection())
+	{
+	case -1:
+		wxMessageBox("No time unit selected for added patient. Defaults to years.");
+		p_ageunit = TimeUnitEnum::years;
+		break;
+	case 0:
+		p_ageunit = TimeUnitEnum::years;
+		break;
+	case 1:
+		p_ageunit = TimeUnitEnum::months;
+		break;
+	case 2:
+		p_ageunit = TimeUnitEnum::weeks;
+		break;
+	case 3:
+		p_ageunit = TimeUnitEnum::days;
+		break;
+	default:
+		wxLogDebug("Error: Invalid TimeUnitEnum in createPatient() in PatientInfoTopPanel. Exiting.");
+		exit(-1);
+		break;
+	}
+
+	PhoneTypeEnum p_phtype;
+	switch (phtype_cmbox->GetCurrentSelection())
+	{
+	case -1:
+		wxMessageBox("No phone type selected for added patient. Defaults to mobile.");
+		p_phtype = PhoneTypeEnum::Mobile;
+		break;
+	case 0:
+		p_phtype = PhoneTypeEnum::Home;
+		break;
+	case 1:
+		p_phtype = PhoneTypeEnum::Mobile;
+		break;
+	case 2:
+		p_phtype = PhoneTypeEnum::Other;
+		break;
+	default:
+		wxLogDebug("Error: Invalid PhoneTypeEnum in createPatient() in PatientInfoTopPanel. Exiting.");
+		exit(-1);
+		break;
+	}
+
+	return new Patient(0, p_age, p_ageunit, p_fname, p_lname, p_addr, p_city, p_zip, p_phnum, p_insname, p_phtype, p_state, {});
+}
+
 void PatientInfoTopPanel::clearPanel()
 {
 	fname_txtctrl->Clear();

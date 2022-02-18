@@ -22,6 +22,7 @@ public:
 
 	// Updates the number of medications for the patient currently selected.
 	void updatePatientMedNum();
+
 private:
 	std::vector<Patient*> patient_list;
 

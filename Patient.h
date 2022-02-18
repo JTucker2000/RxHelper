@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "wx/wx.h"
 #include "PhoneTypeEnum.h"
 #include "TimeUnitEnum.h"
 #include "Medication.h"
@@ -35,6 +36,20 @@ public:
 	PhoneTypeEnum getPhoneType();
 	std::string getState();
 	std::vector<Medication*>* getMedList();
+
+	void setUniqueID(unsigned int val);
+	void setAge(unsigned short int val);
+	void setAgeUnit(TimeUnitEnum val);
+	void setFirstName(std::string val);
+	void setLastName(std::string val);
+	void setStreetAddr(std::string val);
+	void setCity(std::string val);
+	void setZipCode(std::string val);
+	void setPhoneNum(std::string val);
+	void setInsuranceName(std::string val);
+	void setPhoneType(PhoneTypeEnum val);
+	void setState(std::string val);
+	void setMedList(std::vector<Medication*>* val);
 
 	~Patient();
 

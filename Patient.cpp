@@ -76,6 +76,30 @@ PhoneTypeEnum Patient::getPhoneType() { return phone_type; }
 std::string Patient::getState() { return state; }
 std::vector<Medication*>* Patient::getMedList() { return &med_list; }
 
+void Patient::setUniqueID(unsigned int val) { unique_id = val; }
+void Patient::setAge(unsigned short int val) { age = val; }
+void Patient::setAgeUnit(TimeUnitEnum val) { age_unit = val; }
+void Patient::setFirstName(std::string val) { first_name = val; }
+void Patient::setLastName(std::string val) { last_name = val; }
+void Patient::setStreetAddr(std::string val) { street_addr = val; }
+void Patient::setCity(std::string val) { city = val; }
+void Patient::setZipCode(std::string val) { zip_code = val; }
+void Patient::setPhoneNum(std::string val) { phone_number = val; }
+void Patient::setInsuranceName(std::string val) { insurance_name = val; }
+void Patient::setPhoneType(PhoneTypeEnum val) { phone_type = val; }
+void Patient::setState(std::string val) { state = val; }
+void Patient::setMedList(std::vector<Medication*>* val)
+{
+	if (val == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in setMedList() in Patient class. Cannot set medication list.");
+		return;
+	}
+	
+	deleteMedList();
+	med_list = *val;
+}
+
 void Patient::deleteMedList()
 {
 	for (int i = 0; i < med_list.size(); i++)

@@ -13,6 +13,19 @@ Medication::Medication()
 	price_cents = 0;
 }
 
+Medication::Medication(Medication* m)
+{
+	unique_id = 0;
+	drug_name = m->getDrugName();
+	description = m->getDescription();
+	dosage = m->getDosage();
+	dosage_unit = m->getDosageUnit();
+	time_num = m->getTimeNum();
+	time_unit = m->getTimeUnit();
+	price_dollars = m->getPriceDollars();
+	price_cents = m->getPriceCents();
+}
+
 Medication::Medication(unsigned int id, std::string drugname, std::string desc, unsigned int dose, DoseUnitEnum doseunit,
 	unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec)
 {

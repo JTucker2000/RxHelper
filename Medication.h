@@ -9,6 +9,7 @@ class Medication
 {
 public:
 	Medication();
+	Medication(Medication* m); // Note: Copy constructor sets ID of new object to 0. Indicates it has not been added to the database.
 	Medication(unsigned int id, std::string drugname, std::string desc, unsigned int dose, DoseUnitEnum doseunit,
 		unsigned int time, TimeUnitEnum timeunit, unsigned int priced, unsigned int pricec);
 

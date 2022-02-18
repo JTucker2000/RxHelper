@@ -18,8 +18,8 @@ public:
 	// Fills the patient info UI panel with the given patient's information.
 	void fillPatientInfo(Patient* p);
 
-	// Creates a patient object using the information currently entered in the panel.
-	// This includes all of the medications currently in the listctrl. Returns a pointer to that object.
+	// Creates a new patient object using the information currently entered in the panel.
+	// This includes all of the medications currently assigned to the patient. Returns a pointer to that object.
 	// Patient ID = 0 and all Medication IDs = 0, as they have not been added to the database yet.
 	Patient* createPatient();
 

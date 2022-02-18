@@ -52,10 +52,17 @@ void PatientInfoUIPanel::fillPatientInfo(Patient* p)
 
 Patient* PatientInfoUIPanel::createPatient()
 {
-	return nullptr; // placeholder
-	// 1. Create patient object using information in top panel.
-	// 2. Create a list of medications from what is currently in the medication_listctrl. Give to patient object.
-	// 3. Return a pointer to the object, with all IDs set to 0 to indicate they have not been added to the database.
+	Patient* p = patient_info_top->createPatient(); // Create patient without medications.
+
+	// Create a list of the medications, with their IDs set to 0.
+	std::vector<Medication*>* original_list = cur_patient->getMedList();
+	std::vector<Medication*>* new_list = new std::vector<Medication*>();
+	for (int i = 0; i < original_list->size(); i++)
+	{
+		// work in progress
+	}
+
+	return p;
 }
 
 void PatientInfoUIPanel::clearPanel()

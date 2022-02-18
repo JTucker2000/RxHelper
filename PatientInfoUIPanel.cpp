@@ -50,6 +50,14 @@ void PatientInfoUIPanel::fillPatientInfo(Patient* p)
 	fillListFromPatient(p);
 }
 
+Patient* PatientInfoUIPanel::createPatient()
+{
+	return nullptr; // placeholder
+	// 1. Create patient object using information in top panel.
+	// 2. Create a list of medications from what is currently in the medication_listctrl. Give to patient object.
+	// 3. Return a pointer to the object, with all IDs set to 0 to indicate they have not been added to the database.
+}
+
 void PatientInfoUIPanel::clearPanel()
 {
 	patient_info_top->clearPanel();

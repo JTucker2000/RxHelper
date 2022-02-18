@@ -59,9 +59,13 @@ Patient* PatientInfoUIPanel::createPatient()
 	std::vector<Medication*>* new_list = new std::vector<Medication*>();
 	for (int i = 0; i < original_list->size(); i++)
 	{
-		// work in progress
+		Medication* new_m = new Medication(original_list->at(i));
+		new_list->push_back(new_m);
 	}
 
+	p->setMedList(new_list);
+
+	delete(new_list);
 	return p;
 }
 

@@ -22,7 +22,7 @@ public:
 	// Removes the medication with the given id from the patient's list if it exists.
 	void delMedFromList(unsigned int id);
 
-	const unsigned int getUniqueID();
+	unsigned int getUniqueID();
 	unsigned short int getAge();
 	TimeUnitEnum getAgeUnit();
 	std::string getFirstName();
@@ -39,7 +39,7 @@ public:
 	~Patient();
 
 private:
-	const unsigned int unique_id;
+	unsigned int unique_id;
 	unsigned short int age;
 	TimeUnitEnum age_unit;
 	std::string first_name;

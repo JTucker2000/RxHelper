@@ -1,7 +1,8 @@
 #include "Patient.h"
 
-Patient::Patient() : unique_id(0)
+Patient::Patient()
 {
+	unique_id = 0;
 	age = 0;
 	age_unit = TimeUnitEnum::years;
 	first_name = "";
@@ -18,8 +19,9 @@ Patient::Patient() : unique_id(0)
 
 Patient::Patient(unsigned int id, unsigned short int agenum, TimeUnitEnum ageunit, std::string fname, std::string lname,
 	std::string addr, std::string cty, std::string zip, std::string phnum,
-	std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist) : unique_id(id)
+	std::string insname, PhoneTypeEnum phtype, std::string st, std::vector<Medication*>* medlist)
 {
+	unique_id = id;
 	age = agenum;
 	age_unit = ageunit;
 	first_name = fname;
@@ -60,7 +62,7 @@ void Patient::delMedFromList(unsigned int id)
 	}
 }
 
-const unsigned int Patient::getUniqueID() { return unique_id; }
+unsigned int Patient::getUniqueID() { return unique_id; }
 unsigned short int Patient::getAge() { return age; }
 TimeUnitEnum Patient::getAgeUnit() { return age_unit; }
 std::string Patient::getFirstName() { return first_name; }

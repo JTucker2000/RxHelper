@@ -187,6 +187,14 @@ void PatientListUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 	resizeColumns();
 }
 
+void PatientListUIPanel::addPatientEvt(wxCommandEvent& event)
+{
+	// 1. Get a new patient object from PatientInfoUIPanel
+	// 2. Add the patient to the database
+	// 3. Add the patient to patient_list
+	// 4. Add the patient to the listctrl
+}
+
 void PatientListUIPanel::addPatientToListCtrl(Patient* p)
 {
 	if (p == nullptr) return;

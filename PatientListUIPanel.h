@@ -38,6 +38,9 @@ private:
 	void resizeColumns();
 	void resizeColumnsEvt(wxSizeEvent& event);
 
+	// Adds a patient when the add patient button is clicked.
+	void addPatientEvt(wxCommandEvent& event);
+
 	// Adds the patient to the listctrl.
 	void addPatientToListCtrl(Patient* p);
 

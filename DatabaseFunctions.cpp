@@ -2,7 +2,11 @@
 
 void DatabaseFunctions::removePatientFromDatabase(unsigned int id)
 {
-	if (id == 0) return;
+	if (id == 0)
+	{
+		wxLogDebug("Warning: 0 ID in removePatientFromDatabase(). Unable to remove patient from database.");
+		return;
+	}
 
 	sql::Driver* driver = nullptr;
 	sql::Connection* con = nullptr;
@@ -119,7 +123,11 @@ void DatabaseFunctions::modifyMedicationInDatabase(Medication* m)
 
 void DatabaseFunctions::removeMedicationFromDatabase(unsigned int id)
 {
-	if (id == 0) return;
+	if (id == 0)
+	{
+		wxLogDebug("Warning: 0 ID in removeMedicationFromDatabase(). Unable to remove medication from database.");
+		return;
+	}
 
 	sql::Driver* driver = nullptr;
 	sql::Connection* con = nullptr;

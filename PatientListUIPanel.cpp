@@ -55,6 +55,13 @@ Patient* PatientListUIPanel::getSelectedPatient()
 	return getPatientByID(patient_id); // Return patient associated with that ID.
 }
 
+void PatientListUIPanel::addPatient(Patient* p)
+{
+	// 1. Add the patient to the database
+	// 2. Add the patient to patient_list
+	// 3. Add the patient to the listctrl
+}
+
 void PatientListUIPanel::updatePatientMedNum()
 {
 	long selected_item = patient_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED); // Get selected item.
@@ -185,14 +192,6 @@ void PatientListUIPanel::resizeColumns()
 void PatientListUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 {
 	resizeColumns();
-}
-
-void PatientListUIPanel::addPatientEvt(wxCommandEvent& event)
-{
-	// 1. Get a new patient object from PatientInfoUIPanel
-	// 2. Add the patient to the database
-	// 3. Add the patient to patient_list
-	// 4. Add the patient to the listctrl
 }
 
 void PatientListUIPanel::addPatientToListCtrl(Patient* p)

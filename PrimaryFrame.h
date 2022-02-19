@@ -34,6 +34,9 @@ private:
 	// Handles the event when the login button is pressed.
 	void loginButtonPress(wxCommandEvent& event);
 
+	// Handles the event when the add patient button is pressed.
+	void addPatientButtonPress(wxCommandEvent& event);
+
 	// Handles the event when an item is selected in the patient listctrl.
 	void patientListctrlItemSelect(wxCommandEvent& event);
 

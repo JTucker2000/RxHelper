@@ -87,6 +87,12 @@ void PrimaryFrame::loginButtonPress(wxCommandEvent& event)
 	}
 }
 
+void PrimaryFrame::addPatientButtonPress(wxCommandEvent& event)
+{
+	// 1. Get new patient from patient_info_ui_panel.
+	// 2. Add new patient to patient_list_ui_panel, which also adds the patient to the database.
+}
+
 void PrimaryFrame::patientListctrlItemSelect(wxCommandEvent& event)
 {
 	Patient* selected_patient = patient_list_ui_panel->getSelectedPatient(); // Get a pointer to the currently selected patient.

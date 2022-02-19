@@ -20,6 +20,9 @@ public:
 	// Returns a pointer to the currently selected patient in the listctrl.
 	Patient* getSelectedPatient();
 
+	// Adds the given patient to the database, patient_list, and listctrl.
+	void addPatient(Patient* p);
+
 	// Updates the number of medications for the patient currently selected.
 	void updatePatientMedNum();
 
@@ -37,9 +40,6 @@ private:
 	// Resizes columns in listctrl. Evt version runs after window resize event.
 	void resizeColumns();
 	void resizeColumnsEvt(wxSizeEvent& event);
-
-	// Adds a patient when the add patient button is clicked.
-	void addPatientEvt(wxCommandEvent& event);
 
 	// Adds the patient to the listctrl.
 	void addPatientToListCtrl(Patient* p);

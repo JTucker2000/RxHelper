@@ -9,6 +9,10 @@
 
 namespace DatabaseFunctions
 {
+	// Adds the patient to the database.
+	// Sets the given patient's ID to the assigned ID from the database.
+	void addPatientToDatabase(Patient* p);
+
 	// Removes the patient and their associated medications from the database.
 	void removePatientFromDatabase(unsigned int id);
 

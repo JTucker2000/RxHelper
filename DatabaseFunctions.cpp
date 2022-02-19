@@ -1,5 +1,10 @@
 #include "DatabaseFunctions.h"
 
+void DatabaseFunctions::addPatientToDatabase(Patient* p)
+{
+	// placeholder
+}
+
 void DatabaseFunctions::removePatientFromDatabase(unsigned int id)
 {
 	if (id == 0)

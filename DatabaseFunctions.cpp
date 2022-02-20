@@ -37,6 +37,11 @@ void DatabaseFunctions::addPatientToDatabase(Patient* p)
 		res = p_stmt->executeQuery();
 		res->next();
 		p->setUniqueID(res->getUInt(1));
+
+		for (int i = 0; i < p->getMedList()->size(); i++) // Put all of the patient's medications into the database.
+		{
+			DatabaseFunctions::addMedicationToDatabase(p->getMedList()->at(i), p);
+		}
 	}
 	catch (sql::SQLException& e)
 	{

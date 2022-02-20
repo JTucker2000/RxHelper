@@ -40,6 +40,7 @@ void PrimaryFrame::initializeMainPageUI()
 	patient_list_ui_panel = new PatientListUIPanel(this);
 
 	patient_list_ui_panel->Bind(wxEVT_LIST_ITEM_SELECTED, &PrimaryFrame::patientListctrlItemSelect, this, PATIENTLISTCTRL_ID); // Handle main page UI events.
+	patient_list_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::addPatientButtonPress, this, ADDPATIENTBTN_ID);
 	patient_list_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::clearPatientInfoOnRemove, this, REMOVEPATIENTBTN_ID);
 	patient_info_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::updatePatientMedNum, this, REMOVEMEDICATIONBTN_ID);
 	patient_info_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::updatePatientMedNum, this, ADDMEDICATIONBTN_ID);

@@ -89,8 +89,8 @@ void PrimaryFrame::loginButtonPress(wxCommandEvent& event)
 
 void PrimaryFrame::addPatientButtonPress(wxCommandEvent& event)
 {
-	// 1. Get new patient from patient_info_ui_panel.
-	// 2. Add new patient to patient_list_ui_panel, which also adds the patient to the database.
+	Patient* p = patient_info_ui_panel->createPatient();
+	patient_list_ui_panel->addPatient(p);
 }
 
 void PrimaryFrame::patientListctrlItemSelect(wxCommandEvent& event)

@@ -57,9 +57,9 @@ Patient* PatientListUIPanel::getSelectedPatient()
 
 void PatientListUIPanel::addPatient(Patient* p)
 {
-	// 1. Add the patient to the database
-	// 2. Add the patient to patient_list
-	// 3. Add the patient to the listctrl
+	DatabaseFunctions::addPatientToDatabase(p);
+	patient_list.push_back(p);
+	addPatientToListCtrl(p);
 }
 
 void PatientListUIPanel::updatePatientMedNum()

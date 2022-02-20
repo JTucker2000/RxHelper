@@ -28,7 +28,7 @@ void DatabaseFunctions::addPatientToDatabase(Patient* p)
 		p_stmt->setString(7, p->getZipCode());
 		p_stmt->setString(8, p->getState());
 		p_stmt->setString(9, p->getPhoneNum());
-		//p_stmt->setString(10, p->getPhoneType()); MAKE HELPER FUNCTION FOR PhoneTypeEnum -> std::string
+		p_stmt->setString(10, HelperFunctions::ptetostr(p->getPhoneType()));
 		p_stmt->setString(11, p->getInsuranceName());
 		delete(p_stmt->executeQuery());
 		delete(p_stmt);

@@ -135,6 +135,30 @@ TimeUnitEnum HelperFunctions::strtotue(std::string input)
 	return TimeUnitEnum::error;
 }
 
+std::string HelperFunctions::ptetostr(PhoneTypeEnum pt)
+{
+	std::string ans;
+	switch (pt)
+	{
+	case PhoneTypeEnum::Home:
+		ans = "Home";
+		return ans;
+		break;
+	case PhoneTypeEnum::Mobile:
+		ans = "Mobile";
+		return ans;
+		break;
+	case PhoneTypeEnum::Other:
+		ans = "Other";
+		return ans;
+		break;
+	default:
+		wxLogDebug("Error: Invalid PhoneTypeEnum in ptetostr(). Returning 'Error'.");
+		ans = "Error";
+		return ans;
+	}
+}
+
 PhoneTypeEnum HelperFunctions::strtopte(std::string input)
 {
 	std::string cur_word = "";

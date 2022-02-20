@@ -27,6 +27,9 @@ namespace HelperFunctions
 	// Converts an std::string into a TimeUnitEnum.
 	TimeUnitEnum strtotue(std::string input);
 
+	// Returns the std::string version of the given PhoneTypeEnum.
+	std::string ptetostr(PhoneTypeEnum pt);
+
 	// Converts an std::string into a PhoneTypeEnum.
 	PhoneTypeEnum strtopte(std::string input);
 

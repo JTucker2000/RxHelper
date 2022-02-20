@@ -54,6 +54,12 @@ Patient* PatientInfoUIPanel::createPatient()
 {
 	Patient* p = patient_info_top->createPatient(); // Create patient without medications.
 
+	if (cur_patient == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr cur_patient in PatientInfoUIPanel::createPatient(). Unable to fill med list.");
+		return p;
+	}
+
 	// Create a list of the medications, with their IDs set to 0.
 	std::vector<Medication*>* original_list = cur_patient->getMedList();
 	std::vector<Medication*>* new_list = new std::vector<Medication*>();

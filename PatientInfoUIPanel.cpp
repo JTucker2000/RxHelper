@@ -43,7 +43,12 @@ PatientInfoUIPanel::PatientInfoUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 
 void PatientInfoUIPanel::fillPatientInfo(Patient* p)
 {
-	if (p == nullptr) return;
+	if (p == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in PatientInfoUIPanel::fillPatientInfo(). Unable to fill panel with patient information.");
+		return;
+	}
+
 	cur_patient = p;
 	clearPanel();
 	patient_info_top->fillPanel(p);
@@ -56,7 +61,7 @@ Patient* PatientInfoUIPanel::createPatient()
 
 	if (cur_patient == nullptr)
 	{
-		wxLogDebug("Warning: Nullptr cur_patient in PatientInfoUIPanel::createPatient(). Unable to fill med list.");
+		wxLogDebug("Warning: Nullptr cur_patient in PatientInfoUIPanel::createPatient(). Unable to fill patient's med list.");
 		return p;
 	}
 
@@ -84,7 +89,11 @@ void PatientInfoUIPanel::clearPanel()
 
 void PatientInfoUIPanel::refreshPanel()
 {
-	if (cur_patient == nullptr) return;
+	if (cur_patient == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr cur_patient in PatientInfoUIPanel::refreshPanel(). Unable to refresh panel.");
+		return;
+	}
 
 	clearPanel();
 	patient_info_top->fillPanel(cur_patient);
@@ -93,7 +102,12 @@ void PatientInfoUIPanel::refreshPanel()
 
 void PatientInfoUIPanel::resizeColumns()
 {
-	if (!medication_listctrl) return;
+	if (medication_listctrl == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr medication_listctrl in PatientInfoUIPanel::resizeColumns(). Unable to resize columns.");
+		return;
+	}
+
 	medication_listctrl->SetColumnWidth(0, wxLIST_AUTOSIZE_USEHEADER);
 	medication_listctrl->SetColumnWidth(1, wxLIST_AUTOSIZE_USEHEADER);
 	medication_listctrl->SetColumnWidth(2, wxLIST_AUTOSIZE_USEHEADER);
@@ -108,7 +122,11 @@ void PatientInfoUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 
 void PatientInfoUIPanel::addMedicationToListCtrl(Medication* m)
 {
-	if (m == nullptr) return;
+	if (m == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in PatientInfoUIPanel::addMedicationToListCtrl(). Unable to add medication to the listctrl.");
+		return;
+	}
 
 	std::string doseage_unit_str = HelperFunctions::duetostr(m->getDosageUnit());
 	std::string time_unit_str = HelperFunctions::tuetostr(m->getTimeUnit());
@@ -126,9 +144,18 @@ void PatientInfoUIPanel::addMedicationToListCtrl(Medication* m)
 
 void PatientInfoUIPanel::fillListFromPatient(Patient* p)
 {
-	if (p == nullptr) return;
+	if (p == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr p in PatientInfoUIPanel::fillListFromPatient(). Unable to fill list from patient information.");
+		return;
+	}
+
 	std::vector<Medication*>* med_list_pointer = p->getMedList();
-	if (med_list_pointer == nullptr) return;
+	if (med_list_pointer == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr med_list_pointer in PatientInfoUIPanel::fillListFromPatient(). Unable to fill list from patient information.");
+		return;
+	}
 
 	for (int i = 0; i < med_list_pointer->size(); i++)
 	{
@@ -173,7 +200,11 @@ void PatientInfoUIPanel::removeMedicationEvt(wxCommandEvent& event)
 void PatientInfoUIPanel::medicationListctrlItemSelect(wxCommandEvent& event)
 {
 	Medication* selected_medication = getSelectedMedication(); // Get a pointer to the currently selected medication.
-	if (selected_medication == nullptr) { return; }
+	if (selected_medication == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in PatientInfoUIPanel::medicationListctrlItemSelect(). Unable to handle item select event.");
+		return;
+	}
 
 	patient_info_middle->clearPanel(); // Fill medication info UI with medication information.
 	patient_info_middle->fillMedicationInfo(selected_medication);
@@ -182,7 +213,11 @@ void PatientInfoUIPanel::medicationListctrlItemSelect(wxCommandEvent& event)
 Medication* PatientInfoUIPanel::getSelectedMedication()
 {
 	long selected_item = medication_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED); // Get selected item.
-	if (selected_item == -1) return nullptr;
+	if (selected_item == -1)
+	{
+		wxLogDebug("Warning: No medication selected in PatientInfoUIPanel::getSelectedMedication(). Returning nullptr.");
+		return nullptr;
+	}
 
 	wxListItem* rowinfo = new wxListItem(); // Get medication ID of selected item.
 	rowinfo->SetMask(wxLIST_MASK_TEXT);
@@ -199,7 +234,11 @@ Medication* PatientInfoUIPanel::getSelectedMedication()
 
 Medication* PatientInfoUIPanel::getMedicationByID(unsigned int id)
 {
-	if (cur_patient == nullptr) return nullptr;
+	if (cur_patient == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr cur_patient in PatientInfoUIPanel::getMedicationByID(). Unable to get medication. Returning nullptr.");
+		return nullptr;
+	}
 
 	for (int i = 0; i < cur_patient->getMedList()->size(); i++)
 	{

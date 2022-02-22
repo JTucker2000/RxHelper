@@ -13,6 +13,10 @@ namespace DatabaseFunctions
 	// Sets the given patient's ID to the assigned ID from the database.
 	void addPatientToDatabase(Patient* p);
 
+	// Modifies the patient in the database associated with the ID of the given patient.
+	// Changes values in the database to match the given patient.
+	void modifyPatientInDatabase(Patient* p);
+
 	// Removes the patient and their associated medications from the database.
 	void removePatientFromDatabase(unsigned int id);
 

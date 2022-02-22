@@ -53,6 +53,11 @@ void DatabaseFunctions::addPatientToDatabase(Patient* p)
 	delete res;
 }
 
+void DatabaseFunctions::modifyPatientInDatabase(Patient* p)
+{
+	// placeholder
+}
+
 void DatabaseFunctions::removePatientFromDatabase(unsigned int id)
 {
 	if (id == 0)

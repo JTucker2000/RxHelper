@@ -62,7 +62,7 @@ void PatientListUIPanel::addPatient(Patient* p)
 	addPatientToListCtrl(p);
 }
 
-void PatientListUIPanel::updatePatientMedNum()
+void PatientListUIPanel::updatePatient()
 {
 	long selected_item = patient_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED); // Get selected item.
 	if (selected_item == -1) return;
@@ -79,9 +79,18 @@ void PatientListUIPanel::updatePatientMedNum()
 	
 	Patient* p = getPatientByID(patient_id); // Get the selected patient.
 
+	// Replace old information with current information.
+	std::string pname = p->getLastName() + ", " + p->getFirstName();
 	std::string num_meds = std::to_string(p->getMedList()->size());
-
-	patient_listctrl->SetItem(selected_item, 6, num_meds); // Replace old number of meds with current.
+	std::string id_num = std::to_string(p->getUniqueID());
+	patient_listctrl->SetItem(selected_item, 0, id_num);
+	patient_listctrl->SetItem(selected_item, 1, pname);
+	patient_listctrl->SetItem(selected_item, 2, p->getStreetAddr());
+	patient_listctrl->SetItem(selected_item, 3, p->getZipCode());
+	patient_listctrl->SetItem(selected_item, 4, p->getState());
+	patient_listctrl->SetItem(selected_item, 5, p->getPhoneNum());
+	patient_listctrl->SetItem(selected_item, 6, num_meds);
+	resizeColumns();
 }
 
 void PatientListUIPanel::initPatientsFromDatabase()

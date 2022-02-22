@@ -23,8 +23,8 @@ public:
 	// Adds the given patient to the database, patient_list, and listctrl.
 	void addPatient(Patient* p);
 
-	// Updates the number of medications for the patient currently selected.
-	void updatePatientMedNum();
+	// Updates all information for the patient currently selected in the listctrl.
+	void updatePatient();
 
 private:
 	std::vector<Patient*> patient_list;

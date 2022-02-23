@@ -55,7 +55,45 @@ void DatabaseFunctions::addPatientToDatabase(Patient* p)
 
 void DatabaseFunctions::modifyPatientInDatabase(Patient* p)
 {
-	// placeholder
+	if (p == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in modifyPatientInDatabase(). Unable to modify patient in database.");
+		return;
+	}
+
+	sql::Driver* driver = nullptr;
+	sql::Connection* con = nullptr;
+	sql::PreparedStatement* p_stmt = nullptr;
+	sql::ResultSet* res = nullptr;
+
+	try
+	{
+		driver = get_driver_instance();
+		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
+		con->setSchema("RxHelperDB");
+		p_stmt = con->prepareStatement("UPDATE patient SET age = ?, age_unit = ?, first_name = ?, last_name = ?, street_addr = ?, city = ?, zip_code = ?, state = ?, phone_number = ?, phone_type = ?, insurance_name = ? WHERE id = ?;");
+		p_stmt->setInt(1, p->getAge());
+		p_stmt->setString(2, HelperFunctions::tuetostr(p->getAgeUnit()));
+		p_stmt->setString(3, p->getFirstName());
+		p_stmt->setString(4, p->getLastName());
+		p_stmt->setString(5, p->getStreetAddr());
+		p_stmt->setString(6, p->getCity());
+		p_stmt->setString(7, p->getZipCode());
+		p_stmt->setString(8, p->getState());
+		p_stmt->setString(9, p->getPhoneNum());
+		p_stmt->setString(10, HelperFunctions::ptetostr(p->getPhoneType()));
+		p_stmt->setString(11, p->getInsuranceName());
+		p_stmt->setUInt(12, p->getUniqueID());
+		delete(p_stmt->executeQuery());
+	}
+	catch (sql::SQLException& e)
+	{
+		wxLogDebug(e.what());
+	}
+
+	delete con;
+	delete p_stmt;
+	delete res;
 }
 
 void DatabaseFunctions::removePatientFromDatabase(unsigned int id)

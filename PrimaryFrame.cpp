@@ -96,8 +96,9 @@ void PrimaryFrame::addPatientButtonPress(wxCommandEvent& event)
 
 void PrimaryFrame::savePatientButtonPress(wxCommandEvent& event)
 {
-	// 1. Modify currently selected patient using info in PatientInfoUIPanel's top panel.
-	// 2. Refresh PatientInfoUIPanel and PatientListUIPanel with saved information.
+	patient_info_ui_panel->modifyPatient();
+	patient_info_ui_panel->refreshPanel();
+	patient_list_ui_panel->updatePatient();
 }
 
 void PrimaryFrame::patientListctrlItemSelect(wxCommandEvent& event)

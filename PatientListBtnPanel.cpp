@@ -6,7 +6,7 @@ PatientListBtnPanel::PatientListBtnPanel(wxWindow* parent) : wxPanel(parent, wxI
 	wxBoxSizer* button_sizer = new wxBoxSizer(wxHORIZONTAL);
 	button_sizer->Add
 	(
-		new wxButton(this, wxID_ANY, "Save Patient", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		new wxButton(this, SAVEPATIENTBTN_ID, "Save Patient", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
 		wxSizerFlags(1).Expand().Border(wxALL, 5)
 	);
 	button_sizer->Add

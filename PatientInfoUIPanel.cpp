@@ -80,6 +80,11 @@ Patient* PatientInfoUIPanel::createPatient()
 	return p;
 }
 
+void PatientInfoUIPanel::modifyPatient()
+{
+	// placeholder
+}
+
 void PatientInfoUIPanel::clearPanel()
 {
 	patient_info_top->clearPanel();

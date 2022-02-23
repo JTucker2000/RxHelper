@@ -348,6 +348,11 @@ Patient* PatientInfoTopPanel::createPatient()
 	return new Patient(0, p_age, p_ageunit, p_fname, p_lname, p_addr, p_city, p_zip, p_phnum, p_insname, p_phtype, p_state, {});
 }
 
+void PatientInfoTopPanel::modifyPatient(Patient* p)
+{
+	// placeholder
+}
+
 void PatientInfoTopPanel::clearPanel()
 {
 	fname_txtctrl->Clear();

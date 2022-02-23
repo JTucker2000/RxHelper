@@ -16,6 +16,10 @@ public:
 	// Patient ID = 0, as it has not been added to the database yet.
 	Patient* createPatient();
 
+	// Modifies the given patient object so that it's values match the values
+	// currently entered into the top panel.
+	void modifyPatient(Patient* p);
+
 	// Resets all textctrls and comboboxes back to their default state.
 	void clearPanel();
 

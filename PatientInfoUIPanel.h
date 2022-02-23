@@ -23,8 +23,8 @@ public:
 	// Patient ID = 0 and all Medication IDs = 0, as they have not been added to the database yet.
 	Patient* createPatient();
 
-	// Modifies the currently selected patient object (cur_patient) so that it's values match the values
-	// currently entered into the top panel.
+	// Modifies the currently selected patient (cur_patient) so that it's values match the values
+	// currently entered into the top panel. Also modifies the patient's values in the database.
 	void modifyPatient();
 
 	// Resets all textctrls, listctrls, and comboboxes back to their default state.

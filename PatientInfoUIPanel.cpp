@@ -89,6 +89,7 @@ void PatientInfoUIPanel::modifyPatient()
 	}
 
 	patient_info_top->modifyPatient(cur_patient);
+	DatabaseFunctions::modifyPatientInDatabase(cur_patient);
 }
 
 void PatientInfoUIPanel::clearPanel()

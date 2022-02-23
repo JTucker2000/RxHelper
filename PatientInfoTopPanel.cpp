@@ -350,7 +350,80 @@ Patient* PatientInfoTopPanel::createPatient()
 
 void PatientInfoTopPanel::modifyPatient(Patient* p)
 {
-	// placeholder
+	if (p == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in PatientInfoTopPanel::modifyPatient(Patient* p). Unable to modify patient.");
+		return;
+	}
+
+	unsigned int p_age = HelperFunctions::stoui(age_txtctrl->GetValue().ToStdString());
+	std::string p_fname = fname_txtctrl->GetValue().ToStdString();
+	std::string p_lname = lname_txtctrl->GetValue().ToStdString();
+	std::string p_addr = addr_txtctrl->GetValue().ToStdString();
+	std::string p_city = city_txtctrl->GetValue().ToStdString();
+	std::string p_zip = zip_txtctrl->GetValue().ToStdString();
+	std::string p_phnum = phnum_txtctrl->GetValue().ToStdString();
+	std::string p_insname = insname_txtctrl->GetValue().ToStdString();
+	std::string p_state = state_txtctrl->GetValue().ToStdString();
+
+	TimeUnitEnum p_ageunit;
+	switch (age_unit_cmbox->GetCurrentSelection())
+	{
+	case -1:
+		wxMessageBox("No time unit selected for modified patient. Defaults to years.");
+		p_ageunit = TimeUnitEnum::years;
+		break;
+	case 0:
+		p_ageunit = TimeUnitEnum::years;
+		break;
+	case 1:
+		p_ageunit = TimeUnitEnum::months;
+		break;
+	case 2:
+		p_ageunit = TimeUnitEnum::weeks;
+		break;
+	case 3:
+		p_ageunit = TimeUnitEnum::days;
+		break;
+	default:
+		wxLogDebug("Error: Invalid TimeUnitEnum in PatientInfoTopPanel::modifyPatient(Patient* p). Exiting.");
+		exit(-1);
+		break;
+	}
+
+	PhoneTypeEnum p_phtype;
+	switch (phtype_cmbox->GetCurrentSelection())
+	{
+	case -1:
+		wxMessageBox("No phone type selected for modified patient. Defaults to mobile.");
+		p_phtype = PhoneTypeEnum::Mobile;
+		break;
+	case 0:
+		p_phtype = PhoneTypeEnum::Home;
+		break;
+	case 1:
+		p_phtype = PhoneTypeEnum::Mobile;
+		break;
+	case 2:
+		p_phtype = PhoneTypeEnum::Other;
+		break;
+	default:
+		wxLogDebug("Error: Invalid PhoneTypeEnum in PatientInfoTopPanel::modifyPatient(Patient* p). Exiting.");
+		exit(-1);
+		break;
+	}
+
+	p->setAge(p_age);
+	p->setAgeUnit(p_ageunit);
+	p->setFirstName(p_fname);
+	p->setLastName(p_lname);
+	p->setStreetAddr(p_addr);
+	p->setCity(p_city);
+	p->setZipCode(p_zip);
+	p->setState(p_state);
+	p->setInsuranceName(p_insname);
+	p->setPhoneNum(p_phnum);
+	p->setPhoneType(p_phtype);
 }
 
 void PatientInfoTopPanel::clearPanel()

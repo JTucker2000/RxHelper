@@ -82,7 +82,13 @@ Patient* PatientInfoUIPanel::createPatient()
 
 void PatientInfoUIPanel::modifyPatient()
 {
-	// placeholder
+	if (cur_patient == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr cur_patient in PatientInfoUIPanel::modifyPatient(). Unable to modify patient.");
+		return;
+	}
+
+	patient_info_top->modifyPatient(cur_patient);
 }
 
 void PatientInfoUIPanel::clearPanel()

@@ -40,7 +40,11 @@ PatientListUIPanel::PatientListUIPanel(wxWindow* parent) : wxPanel(parent, wxID_
 Patient* PatientListUIPanel::getSelectedPatient()
 {
 	long selected_item = patient_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED); // Get selected item.
-	if (selected_item == -1) return nullptr;
+	if (selected_item == -1)
+	{
+		wxLogDebug("Warning: No patient selected in PatientListUIPanel::getSelectedPatient(). Returning nullptr.");
+		return nullptr;
+	}
 
 	wxListItem* rowinfo = new wxListItem(); // Get patient ID of selected item.
 	rowinfo->SetMask(wxLIST_MASK_TEXT);
@@ -65,7 +69,11 @@ void PatientListUIPanel::addPatient(Patient* p)
 void PatientListUIPanel::updatePatient()
 {
 	long selected_item = patient_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED); // Get selected item.
-	if (selected_item == -1) return;
+	if (selected_item == -1)
+	{
+		wxLogDebug("Warning: No patient selected in PatientListUIPanel::updatePatient(). Cannot update patient.");
+		return;
+	}
 
 	wxListItem* rowinfo = new wxListItem(); // Get patient ID of selected item.
 	rowinfo->SetMask(wxLIST_MASK_TEXT);
@@ -188,7 +196,12 @@ Patient* PatientListUIPanel::getPatientByID(unsigned int id)
 
 void PatientListUIPanel::resizeColumns()
 {
-	if (!patient_listctrl) return;
+	if (patient_listctrl == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr patient_listctrl in PatientListUIPanel::resizeColumns(). Cannot resize columns.");
+		return;
+	}
+
 	patient_listctrl->SetColumnWidth(0, wxLIST_AUTOSIZE_USEHEADER);
 	patient_listctrl->SetColumnWidth(1, wxLIST_AUTOSIZE_USEHEADER);
 	patient_listctrl->SetColumnWidth(2, wxLIST_AUTOSIZE_USEHEADER);
@@ -205,7 +218,11 @@ void PatientListUIPanel::resizeColumnsEvt(wxSizeEvent& event)
 
 void PatientListUIPanel::addPatientToListCtrl(Patient* p)
 {
-	if (p == nullptr) return;
+	if (p == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in PatientListUIPanel::addPatientToListCtrl(). Cannot add patient to listctrl.");
+		return;
+	}
 
 	std::string pname = p->getLastName() + ", " + p->getFirstName();
 	std::string num_meds = std::to_string(p->getMedList()->size());
@@ -230,7 +247,11 @@ void PatientListUIPanel::removePatient(int index)
 void PatientListUIPanel::removePatientEvt(wxCommandEvent& event)
 {
 	long selected_item = patient_listctrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED); // Get selected item.
-	if (selected_item == -1) return;
+	if (selected_item == -1)
+	{
+		wxLogDebug("Warning: No patient selected in PatientListUIPanel::removePatientEvt(). Cannot remove patient.");
+		return;
+	}
 
 	wxListItem* rowinfo = new wxListItem(); // Get patient ID of selected item.
 	rowinfo->SetMask(wxLIST_MASK_TEXT);

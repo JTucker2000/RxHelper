@@ -307,7 +307,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 		wxSizerFlags().Center()
 	);
 
-	Bind(wxEVT_BUTTON, &MainSearchUIPanel::clearSearch, this, CLEARSEARCHBTN_ID); // Handle login UI events.
+	Bind(wxEVT_BUTTON, &MainSearchUIPanel::clearSearch, this, CLEARSEARCHBTN_ID); // Handle main search UI events.
 
 	SetSizer(main_search_sizer);
 }

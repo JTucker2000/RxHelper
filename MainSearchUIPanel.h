@@ -2,12 +2,19 @@
 #define MAINSEARCHUIPANEL_H
 
 #include "wx/wx.h"
+#include "HelperFunctions.h"
 #include "ObjectIDs.h"
+#include "Patient.h"
 
 class MainSearchUIPanel : public wxPanel
 {
 public:
 	MainSearchUIPanel(wxWindow* parent);
+
+	// Creates a new patient object using the information currently entered in the panel.
+	// Will be used to pass information about what the user is searching for.
+	Patient* createPatient();
+
 	~MainSearchUIPanel();
 
 private:

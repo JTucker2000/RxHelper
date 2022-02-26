@@ -40,6 +40,9 @@ private:
 	// Handles the event when the save patient button is pressed.
 	void savePatientButtonPress(wxCommandEvent& event);
 
+	// Handles the event when the search button is pressed.
+	void searchButtonPress(wxCommandEvent& event);
+
 	// Handles the event when an item is selected in the patient listctrl.
 	void patientListctrlItemSelect(wxCommandEvent& event);
 

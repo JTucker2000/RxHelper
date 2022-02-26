@@ -102,6 +102,13 @@ void PrimaryFrame::savePatientButtonPress(wxCommandEvent& event)
 	patient_list_ui_panel->updatePatient();
 }
 
+void PrimaryFrame::searchButtonPress(wxCommandEvent& event)
+{
+	// 1. Get patient object containing search query information from MainSearchUIPanel.
+	// 2. Give patient to PatientListUIPanel so it can sort its list.
+	// The list will be sorted based on all nonempty fields in the search UI.
+}
+
 void PrimaryFrame::patientListctrlItemSelect(wxCommandEvent& event)
 {
 	Patient* selected_patient = patient_list_ui_panel->getSelectedPatient(); // Get a pointer to the currently selected patient.

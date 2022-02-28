@@ -26,6 +26,10 @@ public:
 	// Updates all information for the patient currently selected in the listctrl.
 	void updatePatient();
 
+	// Sorts patient_listctrl so that only patients with matching values to patient p are shown. 
+	// If a value in patient p is empty, it will be ignored when sorting.
+	void sortListByPatient(Patient* p);
+
 private:
 	std::vector<Patient*> patient_list;
 

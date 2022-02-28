@@ -101,6 +101,11 @@ void PatientListUIPanel::updatePatient()
 	resizeColumns();
 }
 
+void PatientListUIPanel::sortListByPatient(Patient* p)
+{
+	
+}
+
 void PatientListUIPanel::initPatientsFromDatabase()
 {
 	sql::Driver* driver = nullptr;

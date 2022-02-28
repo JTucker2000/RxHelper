@@ -104,9 +104,8 @@ void PrimaryFrame::savePatientButtonPress(wxCommandEvent& event)
 
 void PrimaryFrame::searchButtonPress(wxCommandEvent& event)
 {
-	// 1. Get patient object containing search query information from MainSearchUIPanel.
-	// 2. Give patient to PatientListUIPanel so it can sort its list.
-	// The list will be sorted based on all nonempty fields in the search UI.
+	Patient* p = main_search_ui_panel->createPatient();
+	patient_list_ui_panel->sortListByPatient(p);
 }
 
 void PrimaryFrame::patientListctrlItemSelect(wxCommandEvent& event)

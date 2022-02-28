@@ -271,7 +271,7 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 	wxBoxSizer* search_button_sizer = new wxBoxSizer(wxHORIZONTAL); // Sizer for this panel's buttons.
 	search_button_sizer->Add
 	(
-		new wxButton(this, wxID_ANY, "Apply Search", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
+		new wxButton(this, APPLYSEARCHBTN_ID, "Apply Search", wxDefaultPosition, wxDefaultSize, 0L, wxDefaultValidator, wxButtonNameStr),
 		wxSizerFlags(1).Expand().Border(wxALL, 10)
 	);
 	search_button_sizer->Add

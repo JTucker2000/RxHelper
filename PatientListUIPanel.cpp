@@ -103,7 +103,25 @@ void PatientListUIPanel::updatePatient()
 
 void PatientListUIPanel::sortListByPatient(Patient* p)
 {
-	
+	patient_listctrl->DeleteAllItems(); // Start with an empty list.
+
+	for (int i = 0; i < patient_list.size(); i++) // Go through each patient to see if it should be included in the listctrl.
+	{
+		if (((p->getAge() == patient_list[i]->getAge()) || (p->getAge() == 0)) &&
+			((p->getAgeUnit() == patient_list[i]->getAgeUnit()) || (p->getAgeUnit() == TimeUnitEnum::error)) &&
+			((p->getFirstName() == patient_list[i]->getFirstName()) || (p->getFirstName() == "")) &&
+			((p->getLastName() == patient_list[i]->getLastName()) || (p->getLastName() == "")) &&
+			((p->getStreetAddr() == patient_list[i]->getStreetAddr()) || (p->getStreetAddr() == "")) &&
+			((p->getCity() == patient_list[i]->getCity()) || (p->getCity() == "")) &&
+			((p->getZipCode() == patient_list[i]->getZipCode()) || (p->getZipCode() == "")) &&
+			((p->getPhoneNum() == patient_list[i]->getPhoneNum()) || (p->getPhoneNum() == "")) &&
+			((p->getInsuranceName() == patient_list[i]->getInsuranceName()) || (p->getInsuranceName() == "")) &&
+			((p->getPhoneType() == patient_list[i]->getPhoneType()) || (p->getPhoneType() == PhoneTypeEnum::error)) &&
+			((p->getState() == patient_list[i]->getState()) || (p->getState() == "")))
+		{
+			addPatientToListCtrl(patient_list[i]);
+		}
+	}
 }
 
 void PatientListUIPanel::initPatientsFromDatabase()

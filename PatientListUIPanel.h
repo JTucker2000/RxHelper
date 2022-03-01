@@ -26,6 +26,9 @@ public:
 	// Updates all information for the patient currently selected in the listctrl.
 	void updatePatient();
 
+	// Clears the listctrl and readds all patients in patient_list.
+	void fillFromList();
+
 	// Sorts patient_listctrl so that only patients with matching values to patient p are shown. 
 	// If a value in patient p is empty, it will be ignored when sorting.
 	void sortListByPatient(Patient* p);

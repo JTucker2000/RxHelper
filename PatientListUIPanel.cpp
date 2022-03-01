@@ -101,6 +101,16 @@ void PatientListUIPanel::updatePatient()
 	resizeColumns();
 }
 
+void PatientListUIPanel::fillFromList()
+{
+	patient_listctrl->DeleteAllItems();
+
+	for (int i = 0; i < patient_list.size(); i++)
+	{
+		addPatientToListCtrl(patient_list[i]);
+	}
+}
+
 void PatientListUIPanel::sortListByPatient(Patient* p)
 {
 	patient_listctrl->DeleteAllItems(); // Start with an empty list.

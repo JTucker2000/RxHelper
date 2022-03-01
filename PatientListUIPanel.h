@@ -48,8 +48,8 @@ private:
 	// Adds the patient to the listctrl.
 	void addPatientToListCtrl(Patient* p);
 
-	// Removes the patient at index from the listctrl. Evt version runs after remove button click.
-	void removePatient(int index);
+	// Removes the patient at index from the list / listctrl. Evt version runs after remove button click.
+	void removePatient(int index, int id);
 	void removePatientEvt(wxCommandEvent& event);
 
 	// Frees all memory associated with the patient list.

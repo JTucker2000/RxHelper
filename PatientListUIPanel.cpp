@@ -262,9 +262,17 @@ void PatientListUIPanel::addPatientToListCtrl(Patient* p)
 	resizeColumns();
 }
 
-void PatientListUIPanel::removePatient(int index)
+void PatientListUIPanel::removePatient(int index, int id)
 {
 	patient_listctrl->DeleteItem(index);
+	for (int i = 0; i < patient_list.size(); i++)
+	{
+		if (patient_list[i]->getUniqueID() == id)
+		{
+			delete(patient_list[i]);
+			patient_list.erase(patient_list.begin() + i);
+		}
+	}
 }
 
 void PatientListUIPanel::removePatientEvt(wxCommandEvent& event)
@@ -288,7 +296,7 @@ void PatientListUIPanel::removePatientEvt(wxCommandEvent& event)
 
 	Patient* p = getPatientByID(patient_id); // Get the selected patient.
 
-	removePatient(selected_item); // Remove patient from list / database.
+	removePatient(selected_item, p->getUniqueID()); // Remove patient from listctrl / list / database.
 	DatabaseFunctions::removePatientFromDatabase(p->getUniqueID());
 
 	event.Skip(true); // Pass event to the parent class.

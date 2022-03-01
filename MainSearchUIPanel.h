@@ -15,6 +15,9 @@ public:
 	// Will be used to pass information about what the user is searching for.
 	Patient* createPatient();
 
+	// Resets all textctrls and comboboxes back to their default state.
+	void clearPanel();
+
 	~MainSearchUIPanel();
 
 private:
@@ -32,9 +35,6 @@ private:
 	// Combobox pointers.
 	wxComboBox* phtype_cmbox = nullptr;
 	wxComboBox* age_unit_cmbox = nullptr;
-
-	// Resets all textctrls and comboboxes back to their default state.
-	void clearSearch(wxCommandEvent& event);
 };
 
 #endif // MAINSEARCHUIPANEL_H

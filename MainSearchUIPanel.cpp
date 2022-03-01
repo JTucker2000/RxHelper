@@ -307,8 +307,6 @@ MainSearchUIPanel::MainSearchUIPanel(wxWindow* parent) : wxPanel(parent, wxID_AN
 		wxSizerFlags().Center()
 	);
 
-	Bind(wxEVT_BUTTON, &MainSearchUIPanel::clearSearch, this, CLEARSEARCHBTN_ID); // Handle main search UI events.
-
 	SetSizer(main_search_sizer);
 }
 
@@ -374,7 +372,7 @@ Patient* MainSearchUIPanel::createPatient()
 	return new Patient(0, p_age, p_ageunit, p_fname, p_lname, p_addr, p_city, p_zip, p_phnum, p_insname, p_phtype, p_state, {});
 }
 
-void MainSearchUIPanel::clearSearch(wxCommandEvent& event)
+void MainSearchUIPanel::clearPanel()
 {
 	fname_txtctrl->Clear();
 	age_txtctrl->Clear();

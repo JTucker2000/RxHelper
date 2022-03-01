@@ -46,6 +46,7 @@ void PrimaryFrame::initializeMainPageUI()
 	patient_info_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::updatePatient, this, REMOVEMEDICATIONBTN_ID);
 	patient_info_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::updatePatient, this, ADDMEDICATIONBTN_ID);
 	main_search_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::searchButtonPress, this, APPLYSEARCHBTN_ID);
+	main_search_ui_panel->Bind(wxEVT_BUTTON, &PrimaryFrame::clearSearchButtonPress, this, CLEARSEARCHBTN_ID);
 
 	main_search_ui_panel->Hide(); // Hidden on program start.
 	patient_info_ui_panel->Hide();
@@ -108,6 +109,12 @@ void PrimaryFrame::searchButtonPress(wxCommandEvent& event)
 	Patient* p = main_search_ui_panel->createPatient();
 	patient_list_ui_panel->sortListByPatient(p);
 	delete(p);
+}
+
+void PrimaryFrame::clearSearchButtonPress(wxCommandEvent& event)
+{
+	main_search_ui_panel->clearPanel();
+	patient_list_ui_panel->fillFromList();
 }
 
 void PrimaryFrame::patientListctrlItemSelect(wxCommandEvent& event)

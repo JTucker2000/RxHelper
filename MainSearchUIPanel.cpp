@@ -326,8 +326,7 @@ Patient* MainSearchUIPanel::createPatient()
 	switch (age_unit_cmbox->GetCurrentSelection())
 	{
 	case -1:
-		wxMessageBox("No time unit selected for added patient. Defaults to years.");
-		p_ageunit = TimeUnitEnum::years;
+		p_ageunit = TimeUnitEnum::error;
 		break;
 	case 0:
 		p_ageunit = TimeUnitEnum::years;
@@ -351,8 +350,7 @@ Patient* MainSearchUIPanel::createPatient()
 	switch (phtype_cmbox->GetCurrentSelection())
 	{
 	case -1:
-		wxMessageBox("No phone type selected for added patient. Defaults to mobile.");
-		p_phtype = PhoneTypeEnum::Mobile;
+		p_phtype = PhoneTypeEnum::error;
 		break;
 	case 0:
 		p_phtype = PhoneTypeEnum::Home;

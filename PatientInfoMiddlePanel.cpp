@@ -247,7 +247,7 @@ Medication* PatientInfoMiddlePanel::createMedication()
 		m_dunit = DoseUnitEnum::milliliters;
 		break;
 	default:
-		std::cout << "Error, invalid DoseUnitEnum in createMedication() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		wxLogDebug("Error: Invalid DoseUnitEnum in PatientInfoMiddlePanel::createMedication(). Exiting.");
 		exit(-1);
 		break;
 	}
@@ -269,7 +269,7 @@ Medication* PatientInfoMiddlePanel::createMedication()
 		m_tunit = TimeUnitEnum::days;
 		break;
 	default:
-		std::cout << "Error, invalid TimeUnitEnum in createMedication() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		wxLogDebug("Error: Invalid TimeUnitEnum in PatientInfoMiddlePanel::createMedication(). Exiting.");
 		exit(-1);
 		break;
 	}
@@ -281,7 +281,7 @@ void PatientInfoMiddlePanel::modifyMedication(Medication* m)
 {
 	if (m == nullptr)
 	{
-		wxLogDebug("Warning: Nullptr in modifyMedication(). Unable to modify medication.");
+		wxLogDebug("Warning: Nullptr in PatientInfoMiddlePanel::modifyMedication(). Unable to modify medication.");
 		return;
 	}
 
@@ -307,7 +307,7 @@ void PatientInfoMiddlePanel::modifyMedication(Medication* m)
 		m_dunit = DoseUnitEnum::milliliters;
 		break;
 	default:
-		std::cout << "Error, invalid DoseUnitEnum in modifyMedication() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		wxLogDebug("Error: Invalid DoseUnitEnum in PatientInfoMiddlePanel::modifyMedication(). Exiting.");
 		exit(-1);
 		break;
 	}
@@ -329,7 +329,7 @@ void PatientInfoMiddlePanel::modifyMedication(Medication* m)
 		m_tunit = TimeUnitEnum::days;
 		break;
 	default:
-		std::cout << "Error, invalid TimeUnitEnum in modifyMedication() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		wxLogDebug("Error: Invalid TimeUnitEnum in PatientInfoMiddlePanel::modifyMedication(). Exiting.");
 		exit(-1);
 		break;
 	}
@@ -346,7 +346,11 @@ void PatientInfoMiddlePanel::modifyMedication(Medication* m)
 
 void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)
 {
-	if (m == nullptr) return;
+	if (m == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in PatientInfoMiddlePanel::fillMedicationInfo(). Unable to fill medication info.");
+		return;
+	}
 	dname_txtctrl->SetValue(m->getDrugName());
 	dosage_txtctrl->SetValue(std::to_string(m->getDosage()));
 	tnum_txtctrl->SetValue(std::to_string(m->getTimeNum()));
@@ -362,7 +366,7 @@ void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)
 		dunit_cmbox->SetSelection(1);
 		break;
 	default:
-		std::cout << "Error, invalid DoseUnitEnum in fillMedicationInfo() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		wxLogDebug("Error: Invalid DoseUnitEnum in PatientInfoMiddlePanel::fillMedicationInfo(). Exiting.");
 		exit(-1);
 		break;
 	}
@@ -378,7 +382,7 @@ void PatientInfoMiddlePanel::fillMedicationInfo(Medication* m)
 		tunit_cmbox->SetSelection(2);
 		break;
 	default:
-		std::cout << "Error, invalid TimeUnitEnum in fillMedicationInfo() in PatientInfoMiddlePanel. Exiting." << std::endl;
+		wxLogDebug("Error: Invalid TimeUnitEnum in PatientInfoMiddlePanel::fillMedicationInfo(). Exiting.");
 		exit(-1);
 		break;
 	}

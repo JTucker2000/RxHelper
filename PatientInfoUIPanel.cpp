@@ -97,6 +97,7 @@ void PatientInfoUIPanel::clearPanel()
 	patient_info_top->clearPanel();
 	patient_info_middle->clearPanel();
 	medication_listctrl->DeleteAllItems();
+	cur_patient = nullptr;
 }
 
 void PatientInfoUIPanel::refreshPanel()

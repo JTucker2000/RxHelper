@@ -49,9 +49,8 @@ private:
 	// Handles the event when an item is selected in the patient listctrl.
 	void patientListctrlItemSelect(wxCommandEvent& event);
 
-	// Handles the event when a patient is removed from the listctrl.
-	// This function clears the PatientInfoUIPanel when a patient is removed.
-	void clearPatientInfoOnRemove(wxCommandEvent& event);
+	// This function clears the PatientInfoUIPanel.
+	void clearPatientInfo(wxCommandEvent& event);
 
 	// Handles the event when the patient information needs to be updated in the patient list ui.
 	// Currently triggered by remove / add medication buttons.

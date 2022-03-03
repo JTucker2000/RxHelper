@@ -306,8 +306,8 @@ void PatientListUIPanel::removePatientEvt(wxCommandEvent& event)
 
 	Patient* p = getPatientByID(patient_id); // Get the selected patient.
 
-	removePatient(selected_item, p->getUniqueID()); // Remove patient from listctrl / list / database.
-	DatabaseFunctions::removePatientFromDatabase(p->getUniqueID());
+	DatabaseFunctions::removePatientFromDatabase(p->getUniqueID()); // Remove patient from listctrl / list / database.
+	removePatient(selected_item, p->getUniqueID());
 
 	event.Skip(true); // Pass event to the parent class.
 }

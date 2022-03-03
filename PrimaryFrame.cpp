@@ -108,12 +108,14 @@ void PrimaryFrame::searchButtonPress(wxCommandEvent& event)
 {
 	Patient* p = main_search_ui_panel->createPatient();
 	patient_list_ui_panel->sortListByPatient(p);
+	patient_info_ui_panel->clearPanel();
 	delete(p);
 }
 
 void PrimaryFrame::clearSearchButtonPress(wxCommandEvent& event)
 {
 	main_search_ui_panel->clearPanel();
+	patient_info_ui_panel->clearPanel();
 	patient_list_ui_panel->fillFromList();
 }
 

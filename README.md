@@ -26,6 +26,5 @@ I would consider these remaining goals to be the bare minimum of what needs to b
 Once these are completed, I will likely continue to improve the application and add new features.
 
 These goals are listed in the order in which they will be completed.
-- Add functionality to the patient search UI
 - Add the ability to create new accounts
 - Refactor disorganized / repetative code

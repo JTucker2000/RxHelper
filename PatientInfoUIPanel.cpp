@@ -49,8 +49,8 @@ void PatientInfoUIPanel::fillPatientInfo(Patient* p)
 		return;
 	}
 
-	cur_patient = p;
 	clearPanel();
+	cur_patient = p;
 	patient_info_top->fillPanel(p);
 	fillListFromPatient(p);
 }
@@ -97,6 +97,7 @@ void PatientInfoUIPanel::clearPanel()
 	patient_info_top->clearPanel();
 	patient_info_middle->clearPanel();
 	medication_listctrl->DeleteAllItems();
+	cur_patient = nullptr;
 }
 
 void PatientInfoUIPanel::refreshPanel()
@@ -107,8 +108,11 @@ void PatientInfoUIPanel::refreshPanel()
 		return;
 	}
 
+	Patient* temp = cur_patient; // Clear the panel, while still retaining the current patient.
 	clearPanel();
-	patient_info_top->fillPanel(cur_patient);
+	cur_patient = temp;
+
+	patient_info_top->fillPanel(cur_patient); // Refill the patient's information.
 	fillListFromPatient(cur_patient);
 }
 

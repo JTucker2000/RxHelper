@@ -28,6 +28,7 @@ public:
 	void modifyPatient();
 
 	// Resets all textctrls, listctrls, and comboboxes back to their default state.
+	// Resets cur_patient to nullptr.
 	void clearPanel();
 
 	// Refreshes the current patient's information throughout the panel.

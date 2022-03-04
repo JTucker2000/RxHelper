@@ -12,7 +12,7 @@ public:
 		std::string addr, std::string cty, std::string zip, std::string job, std::string phnum,
 		PhoneTypeEnum phtype, std::string st);
 
-	const unsigned int getUniqueID();
+	unsigned int getUniqueID();
 	std::string getUsername();
 	std::string getPassword();
 	std::string getFirstName();
@@ -28,9 +28,8 @@ public:
 	~User();
 
 private:
-	const unsigned int unique_id;
+	unsigned int unique_id;
 	std::string username;
-	// plaintext password for now, can add encryption later.
 	std::string password;
 	std::string first_name;
 	std::string last_name;

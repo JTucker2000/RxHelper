@@ -1,7 +1,8 @@
 #include "User.h"
 
-User::User() : unique_id(0)
+User::User()
 {
+	unique_id = 0;
 	username = "";
 	password = "";
 	first_name = "";
@@ -17,8 +18,9 @@ User::User() : unique_id(0)
 
 User::User(unsigned int id, std::string user, std::string pass, std::string fname, std::string lname,
 	std::string addr, std::string cty, std::string zip, std::string job, std::string phnum,
-	PhoneTypeEnum phtype, std::string st) : unique_id(id)
+	PhoneTypeEnum phtype, std::string st)
 {
+	unique_id = id;
 	username = user;
 	password = pass;
 	first_name = fname;
@@ -32,7 +34,7 @@ User::User(unsigned int id, std::string user, std::string pass, std::string fnam
 	state = st;
 }
 
-const unsigned int User::getUniqueID() { return unique_id; }
+unsigned int User::getUniqueID() { return unique_id; }
 std::string User::getUsername() { return username; }
 std::string User::getPassword() { return password; }
 std::string User::getFirstName() { return first_name; }

@@ -6,6 +6,7 @@
 #include "HelperFunctions.h"
 #include "Patient.h"
 #include "Medication.h"
+#include "User.h"
 
 namespace DatabaseFunctions
 {
@@ -31,7 +32,17 @@ namespace DatabaseFunctions
 
 	// Removes the medication with the given id from the database.
 	void removeMedicationFromDatabase(unsigned int id);
+
+	// Adds the user to the database.
+	// Sets the given user's ID to the assigned ID from the database.
+	void addUserToDatabase(User* u);
+
+	// Modifies the user in the database associated with the ID of the given user.
+	// Changes values in the database to match the given user.
+	void modifyUserInDatabase(User* u);
+
+	// Removes the user with the given id from the database.
+	void removeUserFromDatabase(unsigned int id);
 }
 
 #endif // DATABASEFUNCTIONS_H
-

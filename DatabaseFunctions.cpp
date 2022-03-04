@@ -246,3 +246,18 @@ void DatabaseFunctions::removeMedicationFromDatabase(unsigned int id)
 	delete con;
 	delete p_stmt;
 }
+
+void DatabaseFunctions::addUserToDatabase(User* u)
+{
+	// placeholder
+}
+
+void DatabaseFunctions::modifyUserInDatabase(User* u)
+{
+	// placeholder
+}
+
+void DatabaseFunctions::removeUserFromDatabase(unsigned int id)
+{
+	// placeholder
+}

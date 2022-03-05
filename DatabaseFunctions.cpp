@@ -249,7 +249,50 @@ void DatabaseFunctions::removeMedicationFromDatabase(unsigned int id)
 
 void DatabaseFunctions::addUserToDatabase(User* u)
 {
-	// placeholder
+	if (u == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in addUserToDatabase(). Unable to add user to database.");
+		return;
+	}
+
+	sql::Driver* driver = nullptr;
+	sql::Connection* con = nullptr;
+	sql::PreparedStatement* p_stmt = nullptr;
+	sql::ResultSet* res = nullptr;
+
+	try
+	{
+		driver = get_driver_instance(); // Insert user into the database.
+		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
+		con->setSchema("RxHelperDB");
+		p_stmt = con->prepareStatement("INSERT INTO user(username, password, first_name, last_name, street_addr, city, zip_code, state, phone_number, phone_type, job_title) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+		p_stmt->setString(1, u->getUsername());
+		p_stmt->setString(2, u->getPassword());
+		p_stmt->setString(3, u->getFirstName());
+		p_stmt->setString(4, u->getLastName());
+		p_stmt->setString(5, u->getStreetAddr());
+		p_stmt->setString(6, u->getCity());
+		p_stmt->setString(7, u->getZipCode());
+		p_stmt->setString(8, u->getState());
+		p_stmt->setString(9, u->getPhoneNum());
+		p_stmt->setString(10, HelperFunctions::ptetostr(u->getPhoneType()));
+		p_stmt->setString(11, u->getJob());
+		delete(p_stmt->executeQuery());
+		delete(p_stmt);
+
+		//p_stmt = con->prepareStatement("SELECT LAST_INSERT_ID();"); // Update user's ID.
+		//res = p_stmt->executeQuery();
+		//res->next();
+		//u->setUniqueID(res->getUInt(1)); // Need to add setters
+	}
+	catch (sql::SQLException& e)
+	{
+		wxLogDebug(e.what());
+	}
+
+	delete con;
+	delete p_stmt;
+	delete res;
 }
 
 void DatabaseFunctions::modifyUserInDatabase(User* u)

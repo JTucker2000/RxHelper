@@ -280,10 +280,10 @@ void DatabaseFunctions::addUserToDatabase(User* u)
 		delete(p_stmt->executeQuery());
 		delete(p_stmt);
 
-		//p_stmt = con->prepareStatement("SELECT LAST_INSERT_ID();"); // Update user's ID.
-		//res = p_stmt->executeQuery();
-		//res->next();
-		//u->setUniqueID(res->getUInt(1)); // Need to add setters
+		p_stmt = con->prepareStatement("SELECT LAST_INSERT_ID();"); // Update user's ID.
+		res = p_stmt->executeQuery();
+		res->next();
+		u->setUniqueID(res->getUInt(1));
 	}
 	catch (sql::SQLException& e)
 	{
@@ -297,10 +297,73 @@ void DatabaseFunctions::addUserToDatabase(User* u)
 
 void DatabaseFunctions::modifyUserInDatabase(User* u)
 {
-	// placeholder
+	if (u == nullptr)
+	{
+		wxLogDebug("Warning: Nullptr in modifyUserInDatabase(). Unable to modify user in database.");
+		return;
+	}
+
+	sql::Driver* driver = nullptr;
+	sql::Connection* con = nullptr;
+	sql::PreparedStatement* p_stmt = nullptr;
+	sql::ResultSet* res = nullptr;
+
+	try
+	{
+		driver = get_driver_instance();
+		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
+		con->setSchema("RxHelperDB");
+		p_stmt = con->prepareStatement("UPDATE user SET username = ?, password = ?, first_name = ?, last_name = ?, street_addr = ?, city = ?, zip_code = ?, state = ?, phone_number = ?, phone_type = ?, job_title = ? WHERE id = ?;");
+		p_stmt->setString(1, u->getUsername());
+		p_stmt->setString(2, u->getPassword());
+		p_stmt->setString(3, u->getFirstName());
+		p_stmt->setString(4, u->getLastName());
+		p_stmt->setString(5, u->getStreetAddr());
+		p_stmt->setString(6, u->getCity());
+		p_stmt->setString(7, u->getZipCode());
+		p_stmt->setString(8, u->getState());
+		p_stmt->setString(9, u->getPhoneNum());
+		p_stmt->setString(10, HelperFunctions::ptetostr(u->getPhoneType()));
+		p_stmt->setString(11, u->getJob());
+		p_stmt->setUInt(12, u->getUniqueID());
+		delete(p_stmt->executeQuery());
+	}
+	catch (sql::SQLException& e)
+	{
+		wxLogDebug(e.what());
+	}
+
+	delete con;
+	delete p_stmt;
+	delete res;
 }
 
 void DatabaseFunctions::removeUserFromDatabase(unsigned int id)
 {
-	// placeholder
+	if (id == 0)
+	{
+		wxLogDebug("Warning: 0 ID in removeUserFromDatabase(). Unable to remove user from database.");
+		return;
+	}
+
+	sql::Driver* driver = nullptr;
+	sql::Connection* con = nullptr;
+	sql::PreparedStatement* p_stmt = nullptr;
+
+	try
+	{
+		driver = get_driver_instance();
+		con = driver->connect("tcp://127.0.0.1:3306", "root", "password");
+		con->setSchema("RxHelperDB");
+		p_stmt = con->prepareStatement("DELETE FROM user WHERE id = ?");
+		p_stmt->setUInt(1, id);
+		delete(p_stmt->executeQuery());
+	}
+	catch (sql::SQLException& e)
+	{
+		wxLogDebug(e.what());
+	}
+
+	delete con;
+	delete p_stmt;
 }

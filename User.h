@@ -25,6 +25,19 @@ public:
 	PhoneTypeEnum getPhoneType();
 	std::string getState();
 
+	void setUniqueID(unsigned int val);
+	void setUsername(std::string val);
+	void setPassword(std::string val);
+	void setFirstName(std::string val);
+	void setLastName(std::string val);
+	void setStreetAddr(std::string val);
+	void setCity(std::string val);
+	void setZipCode(std::string val);
+	void setJob(std::string val);
+	void setPhoneNum(std::string val);
+	void setPhoneType(PhoneTypeEnum val);
+	void setState(std::string val);
+
 	~User();
 
 private:

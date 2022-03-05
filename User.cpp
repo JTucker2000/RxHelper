@@ -47,6 +47,19 @@ std::string User::getPhoneNum() { return phone_number; }
 PhoneTypeEnum User::getPhoneType() { return phone_type; }
 std::string User::getState() { return state; }
 
+void User::setUniqueID(unsigned int val) { unique_id = val; }
+void User::setUsername(std::string val) { username = val; }
+void User::setPassword(std::string val) { password = val; }
+void User::setFirstName(std::string val) { first_name = val; }
+void User::setLastName(std::string val) { last_name = val; }
+void User::setStreetAddr(std::string val) { street_addr = val; }
+void User::setCity(std::string val) { city = val; }
+void User::setZipCode(std::string val) { zip_code = val; }
+void User::setJob(std::string val) { job_title = val; }
+void User::setPhoneNum(std::string val) { phone_number = val; }
+void User::setPhoneType(PhoneTypeEnum val) { phone_type = val; }
+void User::setState(std::string val) { state = val; }
+
 User::~User()
 {
 

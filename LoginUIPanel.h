@@ -2,7 +2,9 @@
 #define LOGINUIPANEL_H
 
 #include <vector>
+#include <mysql/jdbc.h>
 #include "wx/wx.h"
+#include "HelperFunctions.h"
 #include "ObjectIDs.h"
 #include "User.h"
 
@@ -23,6 +25,9 @@ private:
 	// Textctrl pointers for this panel.
 	wxTextCtrl* user_txtctrl = nullptr;
 	wxTextCtrl* pass_txtctrl = nullptr;
+
+	// Pulls all user information from the database. Only happens once on program startup when this object is created.
+	void initUsersFromDatabase();
 
 	// Frees all memory associated with the user list.
 	void deleteUserList();

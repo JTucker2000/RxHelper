@@ -59,13 +59,7 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 	);
 	SetSizer(lpanel_sizer);
 
-	// Add users for testing.
-	User* user1 = new User(1, "Jondoe12", "Thegrapes1123", "Jon", "Doe", "54 Tree Street", "Jacksonville", "02345", "Pharmacist", "745-465-2454", PhoneTypeEnum::Home, "ME");
-	User* user2 = new User(2, "ITSTIM1998", "NowayMYMAN759", "Tim", "Timson", "5 Tim Road", "Timsville", "53563", "Pharmacist", "467-135-2784", PhoneTypeEnum::Home, "MA");
-	User* user3 = new User(3, "Default", "password", "", "", "", "", "", "", "", PhoneTypeEnum::Other, "");
-	user_list.push_back(user1);
-	user_list.push_back(user2);
-	user_list.push_back(user3);
+	initUsersFromDatabase();
 }
 
 bool LoginUIPanel::validateUser()

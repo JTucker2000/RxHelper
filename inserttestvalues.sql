@@ -16,3 +16,9 @@ VALUES
 (4, "Prozac", "Antidepressant", 25, "milligrams", 8, "hours", 75, 50),
 (4, "Morphine", "Pain reducer", 30, "milligrams", 8, "hours", 50, 0),
 (4, "Pepto", "Relieves indigestion", 50, "milliliters", 2, "hours", 12, 99);
+
+INSERT INTO user(username, password, first_name, last_name, street_addr, city, zip_code, state, phone_number, phone_type, job_title)
+VALUES
+("Jondoe12", "Thegrapes1123", "Jon", "Doe", "54 Tree Street", "Jacksonville", "02345", "ME", "7454652454", "Home", "Pharmacist"),
+("ITSTIM1998", "NowayMYMAN759", "Tim", "Timson", "5 Tim Road", "Timsville", "53563", "MA", "4671352784", "Home", "Pharmacist"),
+("Default", "password", "", "", "", "", "", "", "", "Other", "");

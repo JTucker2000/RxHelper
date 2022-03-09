@@ -38,6 +38,11 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 		new wxButton(this, LOGINBUTTON_ID, "Log In", wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxButtonNameStr),
 		wxSizerFlags().Center().Border(wxALL, 10)
 	);
+	lbutton_sizer->Add
+	(
+		new wxButton(this, wxID_ANY, "Create Account", wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxButtonNameStr),
+		wxSizerFlags().Center().Border(wxALL, 10)
+	);
 	lbutton_sizer->AddStretchSpacer(1);
 
 	// Sizer for login panel.

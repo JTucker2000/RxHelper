@@ -22,6 +22,12 @@ public:
 private:
 	std::vector<User*> user_list;
 
+	// Sizer for login page.
+	wxBoxSizer* lpanel_sizer = nullptr;
+
+	// Sizer for account creation page.
+	wxBoxSizer* newacc_sizer = nullptr;
+
 	// Textctrl pointers for this panel.
 	wxTextCtrl* user_txtctrl = nullptr;
 	wxTextCtrl* pass_txtctrl = nullptr;

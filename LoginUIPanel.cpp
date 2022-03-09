@@ -2,6 +2,7 @@
 
 LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefaultPosition, wxSize(300, 180), 2621440L, wxPanelNameStr)
 {
+	// First, build login page.
 	// Sizer for Username.
 	wxBoxSizer* user_sizer = new wxBoxSizer(wxVERTICAL);
 	user_txtctrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxTextCtrlNameStr);
@@ -45,8 +46,7 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 	);
 	lbutton_sizer->AddStretchSpacer(1);
 
-	// Sizer for login panel.
-	wxBoxSizer* lpanel_sizer = new wxBoxSizer(wxVERTICAL);
+	lpanel_sizer = new wxBoxSizer(wxVERTICAL);
 	lpanel_sizer->Add
 	(
 		user_sizer,
@@ -62,9 +62,12 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 		lbutton_sizer,
 		wxSizerFlags().Expand()
 	);
-	SetSizer(lpanel_sizer);
+	SetSizer(lpanel_sizer); // Program starts on login page.
 
-	initUsersFromDatabase();
+	// Second, build account creation page.
+	// <build UI here>
+
+	initUsersFromDatabase(); // Third, get list of users from the database.
 }
 
 bool LoginUIPanel::validateUser()

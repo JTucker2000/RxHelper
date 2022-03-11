@@ -41,7 +41,7 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 	);
 	lbutton_sizer->Add
 	(
-		new wxButton(this, wxID_ANY, "Create Account", wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxButtonNameStr),
+		new wxButton(this, CREATEACCOUNTBTN_ID, "Create Account", wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxButtonNameStr),
 		wxSizerFlags().Center().Border(wxALL, 10)
 	);
 	lbutton_sizer->AddStretchSpacer(1);
@@ -68,6 +68,8 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 	// <build UI here>
 
 	initUsersFromDatabase(); // Third, get list of users from the database.
+
+	Bind(wxEVT_BUTTON, &LoginUIPanel::createAccountButtonPress, this, CREATEACCOUNTBTN_ID); // Handle login UI events.
 }
 
 bool LoginUIPanel::validateUser()
@@ -130,6 +132,11 @@ void LoginUIPanel::initUsersFromDatabase()
 	delete user_res_tab;
 	delete stmt;
 	delete con;
+}
+
+void LoginUIPanel::createAccountButtonPress(wxCommandEvent& event)
+{
+	wxMessageBox("placeholder");
 }
 
 void LoginUIPanel::deleteUserList()

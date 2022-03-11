@@ -34,6 +34,9 @@ private:
 
 	// Pulls all user information from the database. Only happens once on program startup when this object is created.
 	void initUsersFromDatabase();
+	
+	// Handles the event when the create account button is pressed.
+	void createAccountButtonPress(wxCommandEvent& event);
 
 	// Frees all memory associated with the user list.
 	void deleteUserList();

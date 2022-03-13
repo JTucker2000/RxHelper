@@ -4,7 +4,7 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 {
 	// First, build login page.
 	// Sizer for Username.
-	wxBoxSizer* user_sizer = new wxBoxSizer(wxVERTICAL);
+	user_sizer = new wxBoxSizer(wxVERTICAL);
 	user_txtctrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxTextCtrlNameStr);
 	user_sizer->Add
 	(
@@ -18,7 +18,7 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 	);
 
 	// Sizer for Password.
-	wxBoxSizer* pass_sizer = new wxBoxSizer(wxVERTICAL);
+	pass_sizer = new wxBoxSizer(wxVERTICAL);
 	pass_txtctrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD, wxDefaultValidator, wxTextCtrlNameStr);
 	pass_sizer->Add
 	(
@@ -32,7 +32,7 @@ LoginUIPanel::LoginUIPanel(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefau
 	);
 
 	// Sizer for login button.
-	wxBoxSizer* lbutton_sizer = new wxBoxSizer(wxHORIZONTAL);
+	lbutton_sizer = new wxBoxSizer(wxHORIZONTAL);
 	lbutton_sizer->AddStretchSpacer(1);
 	lbutton_sizer->Add
 	(
@@ -136,7 +136,10 @@ void LoginUIPanel::initUsersFromDatabase()
 
 void LoginUIPanel::createAccountButtonPress(wxCommandEvent& event)
 {
-	wxMessageBox("placeholder");
+	lpanel_sizer->Hide(user_sizer, true);
+	lpanel_sizer->Hide(pass_sizer, true);
+	lpanel_sizer->Hide(lbutton_sizer, true);
+	SetSizer(newacc_sizer);
 }
 
 void LoginUIPanel::deleteUserList()

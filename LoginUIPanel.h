@@ -22,8 +22,11 @@ public:
 private:
 	std::vector<User*> user_list;
 
-	// Sizer for login page.
+	// Sizers for login page.
 	wxBoxSizer* lpanel_sizer = nullptr;
+	wxBoxSizer* user_sizer = nullptr;
+	wxBoxSizer* pass_sizer = nullptr;
+	wxBoxSizer* lbutton_sizer = nullptr;
 
 	// Sizer for account creation page.
 	wxBoxSizer* newacc_sizer = nullptr;

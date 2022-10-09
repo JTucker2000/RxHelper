@@ -1,11 +1,11 @@
 # RxHelper
-A Windows application that allows users to easily view, search, add, or modify patient information.
+An application that allows users to easily view, search, add, or modify patient information.
 
 ## --- About ---
 I was inspired to work on this project because I am currently working part-time at a CVS Pharmacy.
 As a part of my job, I give customers prescriptions which have been prepared by a pharmacist.
 It gave me the idea to try and create my own pharmacy-based application. The final product I've
-created doesn't have much real world functionality; but it did teach me a lot about Windows application
+created doesn't have much real world functionality; but it did teach me a lot about application
 development and databases. The program takes patient data from a MySQL database and displays it as shown
 in the screenshots below. Since I don't have access to any real patient information, the patients can
 be added by running a provided script that inputs test values. Alternatively, the user can add patients
@@ -30,4 +30,5 @@ The easiest way to build this project is to compile the source code (not includi
 wxWidgets 3.1.5 and MySQL Connector C++ 8.0 libraries. The application will build and run in this state, but most of 
 its functionality comes from being connected to a MySQL database. I have provided .sql files which can be used
 to create a local database (using MySQL Server 8.0) in the same format as the program requires. There is also a .sql file
-which will load test values into the database.
+which will load test values into the database. Thanks to wxWidgets compatability across platforms, this can be done on
+most Windows, Mac, or Linux platforms. Currently, this has only been tested on Windows 10 and Ubuntu.
